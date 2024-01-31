@@ -13,6 +13,11 @@ const LandingPage = () => {
         <div style={{ color: color }}>
       
       <button onClick={() => updateColor('var(--secondary-color)')}>Change Color</button>
+      <lord-icon
+        src="https://cdn.lordicon.com/cnpvyndp.json"
+        trigger="click"
+        style={{ width: '250px', height: '250px' }}
+      />
     </div>
         <Menu 
           menuItemStyles={{
