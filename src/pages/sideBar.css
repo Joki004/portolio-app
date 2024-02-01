@@ -1,12 +1,13 @@
 .chevron{
     transition: all 0.3s ease-in-out;
+    
+  
 }
 .chevronRight{
     display: none;
 }
 
 .MenuItemsClass{
-    border: solid 1px #e6e6e6;
     margin-top: 20px;
     margin-bottom: 20px;
 }

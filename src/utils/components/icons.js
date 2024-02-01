@@ -122,7 +122,7 @@ export const CustomIcon = ({
   collapsed = false,
 }) => {
   console.log(size);
-  const { outlineColor } = useElementsColor();
+  const {  mainColor20Lighter } = useElementsColor();
   const [state, setState] = useState(null);
   const playerRef = useRef(null);
 
@@ -136,7 +136,7 @@ export const CustomIcon = ({
     ...IconStyle,
     width: parseInt(boxsize) + 10 + "px",
     height: parseInt(boxsize) + 10 + "px",
-    color: outlineColor,
+    color: mainColor20Lighter,
     border: collapsed === false ? "none" : "solid 3px",
   };
 

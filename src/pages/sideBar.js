@@ -13,11 +13,17 @@ const ImageLinks = {
 
 const SideBar = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const { color, updateColor, subtitle2, outlineColor } = useElementsColor();
+  const {
+    mainColor,
+    mainColor10Lighter,
+    mainColor20Lighter,
+    updateColor,
+    subtitle2,
+    chevronBackground
+  } = useElementsColor();
   const [image, setImage] = useState(null);
 
   useEffect(() => {}, [collapsed]);
-  let boxsize = "50px";
   let sideBarstyle = {
     height: "100vh",
     postion: "absolute",
@@ -25,14 +31,14 @@ const SideBar = () => {
   let sideBarCss = {
     display: "flex",
     height: "100vh",
-    border: "1px solid black",
     maxWidth: "max-content",
   };
   const sideBarcollapseDiv = {
-    width: "50px",
+    width: "40px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor:chevronBackground
   };
 
   const menuItemStyles = {
@@ -50,7 +56,7 @@ const SideBar = () => {
     },
     MenuItem: {
       height: "50px",
-      border: "1px solid red",
+
       marginTop: "10px",
       fontSize: "15px",
     },
@@ -81,13 +87,17 @@ const SideBar = () => {
     },
     socialsLinks: {
       border: "1px solid black",
-      height: "60px",
-      width: "60px",
+      height: "40px",
+      width: "40px",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       cursor: "pointer",
       borderRadius: "8px",
+    },
+    titleBox: { padding: "10px", height: "20px" },
+    socialBox: {
+      height: "110px",
     },
   };
 
@@ -114,7 +124,7 @@ const SideBar = () => {
   return (
     <div className="SideBar" style={{ ...sideBarCss }}>
       <Sidebar
-        style={{ ...sideBarstyle, paddingLeft: "10px", backgroundColor: color }}
+        style={{ ...sideBarstyle, backgroundColor: mainColor,borderColor:chevronBackground }}
         collapsed={collapsed}
         image={image}
         transitionDuration={500}
@@ -128,11 +138,11 @@ const SideBar = () => {
             size={menuItemStyles.size.logoSize}
             boxsize={menuItemStyles.size.logoBoxsize}
             collapsed={collapsed}
-            color={outlineColor}
+            color={mainColor10Lighter}
           >
             My portfolio
           </SideBarHeader>
-          <div style={{height:"50px"}}>
+          <div style={{ ...menuDivs.titleBox }}>
             {collapsed === false ? (
               <Typography variant="body1" fontWeight={700} color={subtitle2}>
                 General
@@ -151,7 +161,7 @@ const SideBar = () => {
                   iconName={"HomeIcon"}
                   boxsize={menuItemStyles.size.IconBorder}
                   collapsed={collapsed}
-                  colorIcon={outlineColor}
+                  colorIcon={mainColor10Lighter}
                 />
               }
             >
@@ -166,7 +176,7 @@ const SideBar = () => {
                   iconName={"aboutIcon"}
                   boxsize={menuItemStyles.size.IconBorder}
                   collapsed={collapsed}
-                  colorIcon={outlineColor}
+                  colorIcon={mainColor10Lighter}
                 />
               }
               style={{ ...menuItemStyles.MenuItem }}
@@ -179,7 +189,7 @@ const SideBar = () => {
                     iconName={"aboutIcon"}
                     boxsize={menuItemStyles.size.subIconBorder}
                     collapsed={collapsed}
-                    colorIcon={outlineColor}
+                    colorIcon={mainColor10Lighter}
                   />
                 }
                 style={{ ...menuItemStyles.MenuItem }}
@@ -194,7 +204,7 @@ const SideBar = () => {
                     iconName={"educationIcon"}
                     boxsize={menuItemStyles.size.subIconBorder}
                     collapsed={collapsed}
-                    colorIcon={outlineColor}
+                    colorIcon={mainColor10Lighter}
                   />
                 }
                 style={{ ...menuItemStyles.MenuItem }}
@@ -214,7 +224,7 @@ const SideBar = () => {
                   iconName={"workIcon"}
                   boxsize={menuItemStyles.size.IconBorder}
                   collapsed={collapsed}
-                  colorIcon={outlineColor}
+                  colorIcon={mainColor10Lighter}
                 />
               }
             >
@@ -232,7 +242,7 @@ const SideBar = () => {
                   iconName={"bugIcon"}
                   boxsize={menuItemStyles.size.IconBorder}
                   collapsed={collapsed}
-                  colorIcon={outlineColor}
+                  colorIcon={mainColor10Lighter}
                 />
               }
             >
@@ -250,7 +260,7 @@ const SideBar = () => {
                   iconName={"emailIcon"}
                   boxsize={menuItemStyles.size.IconBorder}
                   collapsed={collapsed}
-                  colorIcon={outlineColor}
+                  colorIcon={mainColor10Lighter}
                 />
               }
             >
@@ -258,65 +268,74 @@ const SideBar = () => {
               Get in touch{" "}
             </MenuItem>
           </div>
-          {collapsed === false ? (
-            <div style={{ ...menuDivs.socials }}>
-              <Typography variant="body1" fontWeight={700} color={subtitle2}>
-                Socials
-              </Typography>
-              <div style={{ ...menuDivs.socialsLinksBox }}>
-                <a
-                  style={{
-                    ...menuDivs.socialsLinks,
-                    backgroundColor: "#0a66c2",
-                    borderColor: "#0a66c2",
-                  }}
-                  href="https://www.linkedin.com/in/joki-8b40a7244/"
-                  target="_blank"
-                >
-                  <box-icon
-                    type="logo"
-                    size={"50px"}
-                    name="linkedin"
-                    color="#fff"
-                  ></box-icon>
-                </a>
-                <a
-                  style={{ ...menuDivs.socialsLinks }}
-                  href="https://github.com/Joki004"
-                  target="_blank"
-                >
-                  {" "}
-                  <box-icon name="github" size={"50px"} type="logo"></box-icon>
-                </a>
-                <a
-                  style={{ ...menuDivs.socialsLinks }}
-                  href="mailto:jorammumb15.jm@gmail.com"
-                  target="_blank"
-                >
-                  {" "}
-                  <box-icon name="envelope" size={"50px"}></box-icon>
-                </a>
+          <div style={{ ...menuDivs.socialBox }}>
+            {collapsed === false ? (
+              <div style={{ ...menuDivs.socials }}>
+                <Typography variant="body1" fontWeight={700} color={subtitle2}>
+                  Socials
+                </Typography>
+                <div style={{ ...menuDivs.socialsLinksBox }}>
+                  <a
+                    style={{
+                      ...menuDivs.socialsLinks,
+                      backgroundColor: "#0a66c2",
+                      borderColor: "#0a66c2",
+                    }}
+                    href="https://www.linkedin.com/in/joki-8b40a7244/"
+                    target="_blank"
+                  >
+                    <box-icon
+                      type="logo"
+                      size={"30px"}
+                      name="linkedin"
+                      color="#fff"
+                    ></box-icon>
+                  </a>
+                  <a
+                    style={{ ...menuDivs.socialsLinks }}
+                    href="https://github.com/Joki004"
+                    target="_blank"
+                  >
+                    {" "}
+                    <box-icon
+                      name="github"
+                      size={"30px"}
+                      type="logo"
+                    ></box-icon>
+                  </a>
+                  <a
+                    style={{ ...menuDivs.socialsLinks }}
+                    href="mailto:jorammumb15.jm@gmail.com"
+                    target="_blank"
+                  >
+                    {" "}
+                    <box-icon name="envelope" size={"30px"}></box-icon>
+                  </a>
+                </div>
               </div>
-            </div>
-          ) : null}
+            ) : null}
+          </div>
 
-          {collapsed === false ? (
-            <Typography variant="body1" fontWeight={700} color={subtitle2}>
-              Settings
-            </Typography>
-          ) : null}
+          <div style={{ ...menuDivs.titleBox }}>
+            {" "}
+            {collapsed === false ? (
+              <Typography variant="body1" fontWeight={700} color={subtitle2}>
+                Settings
+              </Typography>
+            ) : null}
+          </div>
+
           <MenuItem
             style={{
               ...menuItemStyles.MenuItem,
-              position: "absolute",
             }}
             icon={
               <CustomIcon
-                size={menuItemStyles.size.IconSize}
+                size={parseInt(menuItemStyles.size.IconSize) + 20}
                 iconName={"settingsIcon"}
-                boxsize={menuItemStyles.size.IconBorder}
-                collapsed={collapsed}
-                colorIcon={outlineColor}
+                boxsize={parseInt(menuItemStyles.size.IconBorder) + 10}
+                collapsed={false}
+                colorIcon={mainColor10Lighter}
               />
             }
           >
@@ -325,7 +344,7 @@ const SideBar = () => {
           </MenuItem>
         </Menu>
 
-        <div style={{ color: color }}>
+        <div style={{ color: mainColor10Lighter }}>
           <button onClick={() => updateColor("var(--secondary-color)")}>
             Change Color
           </button>
@@ -333,17 +352,21 @@ const SideBar = () => {
       </Sidebar>
 
       <div className={"sideBarcollapse"} style={{ ...sideBarcollapseDiv }}>
-        <div className="chevronLeft .chevron" onClick={handleCollapsed}>
+        <div className="chevronLeft .chevron" onClick={handleCollapsed} style={{  height: "50px",width:"90%"}}>
           <box-icon
             type="solid"
             name="chevron-left"
+            size="50px"
+            color={mainColor20Lighter}
             animation={"fade-left-hover"}
           ></box-icon>
         </div>
-        <div className="chevronRight .chevron" onClick={handleCollapsed}>
+        <div className="chevronRight .chevron" onClick={handleCollapsed} style={{  height: "50px",width:"90%"}}>
           <box-icon
             type="solid"
             name="chevron-right"
+            size="50px"
+            color={mainColor20Lighter}
             animation={"fade-right-hover"}
           ></box-icon>
         </div>
