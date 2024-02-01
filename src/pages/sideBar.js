@@ -36,6 +36,10 @@ const SideBar = () => {
   };
 
   const menuItemStyles = {
+    root: {
+      fontSize: "13px",
+      fontWeight: 400,
+    },
     button: {
       // the active class will be added automatically by react router
       // so we can use it to style the active menu item
@@ -43,6 +47,16 @@ const SideBar = () => {
         backgroundColor: "#13395e",
         color: "#b6c8d9",
       },
+    },
+    MenuItem: {
+      height: "50px",
+      border: "1px solid red",
+      marginTop: "10px",
+      fontSize: "15px",
+    },
+    size: {
+      IconSize: "20px",
+      IconBorder: "20px",
     },
   };
 
@@ -53,6 +67,7 @@ const SideBar = () => {
     HandleChevronDisplay();
     console.log(collapsed);
   };
+
   const HandleChevronDisplay = () => {
     let chevronLeft = document.querySelector(".chevronLeft");
     let chevronRight = document.querySelector(".chevronRight");
@@ -64,10 +79,11 @@ const SideBar = () => {
       chevronRight.style.display = "none";
     }
   };
+
   return (
     <div className="SideBar" style={{ ...sideBarCss }}>
       <Sidebar
-        style={{ ...sideBarstyle, paddingLeft: "10px" ,backgroundColor:color}}
+        style={{ ...sideBarstyle, paddingLeft: "10px", backgroundColor: color }}
         collapsed={collapsed}
         defaultCollapsed={true}
         image={image}
@@ -77,7 +93,10 @@ const SideBar = () => {
             menuItemStyles,
           }}
         >
-          <SideBarHeader boxsize={boxsize} collapsed={collapsed}>
+          <SideBarHeader
+            boxsize={menuItemStyles.size.IconBorder}
+            collapsed={collapsed}
+          >
             My portfolio
           </SideBarHeader>
           <Typography variant="body2" fontWeight={800} color={subtitle2}>
@@ -86,34 +105,99 @@ const SideBar = () => {
           <div className="MenuItemsClass">
             <MenuItem
               style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-start",
+                ...menuItemStyles.MenuItem,
               }}
               icon={
                 <CustomIcon
-                  size="30px"
+                  size={menuItemStyles.size.IconSize}
                   iconName={"HomeIcon"}
-                  boxsize={boxsize}
+                  boxsize={menuItemStyles.size.IconBorder}
                 />
               }
             >
               {" "}
               Home{" "}
             </MenuItem>
+
+            <SubMenu style={{ ...menuItemStyles.MenuItem }} label="About">
+              <MenuItem style={{ ...menuItemStyles.MenuItem }}>
+                {" "}
+                About me{" "}
+              </MenuItem>
+              <MenuItem style={{ ...menuItemStyles.MenuItem }}>
+                {" "}
+                Education Experience{" "}
+              </MenuItem>
+            </SubMenu>
+
             <MenuItem
+              style={{
+                ...menuItemStyles.MenuItem,
+              }}
               icon={
                 <CustomIcon
-                  size="30px"
+                  size={menuItemStyles.size.IconSize}
                   iconName={"HomeIcon"}
-                  boxsize={boxsize}
+                  boxsize={menuItemStyles.size.IconBorder}
                 />
               }
             >
               {" "}
-              About{" "}
+              projects{" "}
             </MenuItem>
+
+            <MenuItem
+              style={{
+                ...menuItemStyles.MenuItem,
+              }}
+              icon={
+                <CustomIcon
+                  size={menuItemStyles.size.IconSize}
+                  iconName={"HomeIcon"}
+                  boxsize={menuItemStyles.size.IconBorder}
+                />
+              }
+            >
+              {" "}
+              Skills{" "}
+            </MenuItem>
+
+            <MenuItem
+              style={{
+                ...menuItemStyles.MenuItem,
+              }}
+              icon={
+                <CustomIcon
+                  size={menuItemStyles.size.IconSize}
+                  iconName={"HomeIcon"}
+                  boxsize={menuItemStyles.size.IconBorder}
+                />
+              }
+            >
+              {" "}
+              Get in touch{" "}
+            </MenuItem>
+
+            
           </div>
+          <Typography variant="body2" fontWeight={800} color={subtitle2}>
+            social
+          </Typography>
+          <MenuItem
+              style={{
+                ...menuItemStyles.MenuItem,
+              }}
+              icon={
+                <CustomIcon
+                  size={menuItemStyles.size.IconSize}
+                  iconName={"HomeIcon"}
+                  boxsize={menuItemStyles.size.IconBorder}
+                />
+              }
+            >
+              {" "}
+              Setings{" "}
+            </MenuItem>
         </Menu>
         <div style={{ color: color }}>
           <button onClick={() => updateColor("var(--secondary-color)")}>
