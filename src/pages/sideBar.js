@@ -19,7 +19,7 @@ const SideBar = () => {
     mainColor20Lighter,
     updateColor,
     subtitle2,
-    chevronBackground
+    chevronBackground,
   } = useElementsColor();
   const [image, setImage] = useState(null);
 
@@ -34,11 +34,11 @@ const SideBar = () => {
     maxWidth: "max-content",
   };
   const sideBarcollapseDiv = {
-    width: "40px",
+    width: "45px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor:chevronBackground
+    backgroundColor: chevronBackground,
   };
 
   const menuItemStyles = {
@@ -124,7 +124,11 @@ const SideBar = () => {
   return (
     <div className="SideBar" style={{ ...sideBarCss }}>
       <Sidebar
-        style={{ ...sideBarstyle, backgroundColor: mainColor,borderColor:chevronBackground }}
+        style={{
+          ...sideBarstyle,
+          backgroundColor: mainColor,
+          borderColor: chevronBackground,
+        }}
         collapsed={collapsed}
         image={image}
         transitionDuration={500}
@@ -345,14 +349,27 @@ const SideBar = () => {
         </Menu>
 
         <div style={{ color: mainColor10Lighter }}>
-          <button onClick={() => updateColor("var(--secondary-color)")}>
-            Change Color
+          <button
+            onClick={() => updateColor("var(--primary-color)")}
+            style={{ backgroundColor: "var(--primary-color)" }}
+          >
+            Change Color 1
+          </button>
+          <button
+            onClick={() => updateColor("var(--secondary-color)")}
+            style={{ backgroundColor: "var(--secondary-color)" }}
+          >
+            Change Color 2
           </button>
         </div>
       </Sidebar>
 
       <div className={"sideBarcollapse"} style={{ ...sideBarcollapseDiv }}>
-        <div className="chevronLeft .chevron" onClick={handleCollapsed} style={{  height: "50px",width:"90%"}}>
+        <div
+          className="chevronLeft .chevron"
+          onClick={handleCollapsed}
+          style={{ height: "50px", width: "90%" }}
+        >
           <box-icon
             type="solid"
             name="chevron-left"
@@ -361,7 +378,11 @@ const SideBar = () => {
             animation={"fade-left-hover"}
           ></box-icon>
         </div>
-        <div className="chevronRight .chevron" onClick={handleCollapsed} style={{  height: "50px",width:"90%"}}>
+        <div
+          className="chevronRight .chevron"
+          onClick={handleCollapsed}
+          style={{ height: "50px", width: "90%" }}
+        >
           <box-icon
             type="solid"
             name="chevron-right"
