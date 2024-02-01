@@ -4,8 +4,8 @@ import { Typography } from "../utils/components/typography";
 import { CustomIcon } from "../utils/components/icons";
 import { useElementsColor } from "../utils/functions/context";
 
-const SideBarHeader = ({ children, boxsize, collapsed }) => {
-    const {outlineColor} = useElementsColor()
+const SideBarHeader = ({ children, boxsize, collapsed, size, color }) => {
+  const { outlineColor } = useElementsColor();
   const sideBarHeaderStyle = {
     marginTop: "10px",
     marginBottom: "20px",
@@ -30,10 +30,16 @@ const SideBarHeader = ({ children, boxsize, collapsed }) => {
   return (
     <div style={{ ...sideBarHeaderStyle }}>
       <div>
-        <CustomIcon size="70px" iconName={"qrCodeIcon"} boxsize={boxsize} />
+        <CustomIcon
+          size={size}
+          iconName={"qrCodeIcon"}
+          boxsize={boxsize}
+          collapsed={collapsed}
+          colorIcon={outlineColor}
+        />
       </div>
       {collapsed === true ? null : (
-        <Typography variant="subtitle1" fontWeight={800} color={outlineColor}>
+        <Typography variant="h6" fontWeight={800} color={outlineColor}>
           {children}
         </Typography>
       )}

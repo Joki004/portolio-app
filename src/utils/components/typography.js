@@ -36,7 +36,7 @@ const StyledTypography = styled.p`
         `;
       case 'h6':
         return `
-        font-size: 24px; 
+        font-size: 22px; 
         line-height: 32px;
         `;
       case 'subtitle1':
