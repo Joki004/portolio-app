@@ -121,7 +121,7 @@ export const CustomIcon = ({
   boxsize = "50px",
   collapsed = false,
 }) => {
-  console.log(size);
+ 
   const {  mainColor20Lighter } = useElementsColor();
   const [state, setState] = useState(null);
   const playerRef = useRef(null);

@@ -5,6 +5,7 @@ import { CustomIcon } from "../utils/components/icons";
 import "../pages/sideBar.css";
 import SideBarHeader from "../pages/sideBarHeader";
 import { Typography } from "../utils/components/typography";
+import { SettingModal } from "../utils/functions/function";
 
 const ImageLinks = {
   image1:
@@ -22,6 +23,14 @@ const SideBar = () => {
     chevronBackground,
   } = useElementsColor();
   const [image, setImage] = useState(null);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+  };
+  const handleShow = () => {
+    setShow(true);
+  };
 
   useEffect(() => {}, [collapsed]);
   let sideBarstyle = {
@@ -342,10 +351,16 @@ const SideBar = () => {
                 colorIcon={mainColor10Lighter}
               />
             }
+            onClick={() => handleShow()}
           >
             {" "}
             Setings{" "}
           </MenuItem>
+          <SettingModal
+            show={show}
+            handleClose={() => handleClose()}
+            handleShow={() => handleShow()}
+          />
         </Menu>
 
         <div style={{ color: mainColor10Lighter }}>
