@@ -4,6 +4,7 @@ import { useElementsColor } from "../functions/context";
 
 //ALL IMPORTS FROM ICO JSON FILES
 const iconHome = require("../../assets/home-system-regular-41.json");
+const qrCode = require("../../assets/qr-code-wired-lineal-1335.json");
 
 //ALL STATES FOR EACH ICON
 
@@ -14,6 +15,10 @@ const iconStateMap = {
     hover2: "hover-home-2",
     morph1: "morph-home1",
     morph2: "morph-home2",
+  },
+  qrCodeIcon: {
+    clicked: "loopp-line",
+    hover1: "hover-Pinch",
   },
 };
 const IconStyle = {
@@ -28,13 +33,20 @@ const getIconType = (iconName) => {
   if (iconName === "HomeIcon") {
     return iconHome;
   }
+  switch (iconName) {
+    case "HomeIcon":
+      return iconHome;
+    case "qrCodeIcon":
+      return qrCode;
+  }
 };
 
 const getIconState = (iconName, currentState) => {
   if (!iconStateMap[iconName]) throw new Error("Icon not found");
+  const iconState = iconStateMap[iconName];
   if ((iconName = "HomeIcon")) {
-    console.log("HomeIcon");
-    const iconState = iconStateMap[iconName];
+    return currentState === "enter" ? iconState.hover1 : null;
+  } else if ((iconName = "qrCodeIcon")) {
     return currentState === "enter" ? iconState.hover1 : null;
   }
   return null;
@@ -44,7 +56,7 @@ export const CustomIcon = ({
   colorIcon = "#3c3c3c",
   size = "250px",
   iconName,
-  boxsize="50px",
+  boxsize = "50px",
 }) => {
   const { outlineColor } = useElementsColor();
   const [state, setState] = useState(null);
@@ -61,7 +73,6 @@ export const CustomIcon = ({
     width: parseInt(boxsize) + 10 + "px",
     height: parseInt(boxsize) + 10 + "px",
     color: outlineColor,
-  
   };
 
   const handleClicked = () => {
@@ -86,13 +97,10 @@ export const CustomIcon = ({
       <Player
         ref={playerRef}
         state={state}
-        size={parseInt(size)+50}
+        size={parseInt(size) + 50}
         icon={icontype} // You can replace this with the appropriate icon based on iconName
         colorize={colorIcon}
-        
       />
     </div>
   );
 };
-
-

@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import LandingPage from './pages/landingPage';
+import SideBar from './pages/sideBar';
 import { ElementsColorProvider } from './utils/functions/context';
-
+import 'boxicons';
 function App() {
   return (
     <ElementsColorProvider>
-    <LandingPage />
+    <SideBar />
     </ElementsColorProvider>
   );
 }
