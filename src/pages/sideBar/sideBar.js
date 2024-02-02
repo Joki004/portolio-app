@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import { useElementsColor } from "../utils/functions/context";
-import { CustomIcon } from "../utils/components/icons";
-import "../pages/sideBar.css";
-import SideBarHeader from "../pages/sideBarHeader";
-import { Typography } from "../utils/components/typography";
-import { SettingModal } from "../utils/functions/function";
+import { useElements } from "../../utils/functions/context";
+import { CustomIcon } from "../../utils/components/icons";
+import "../sideBar/sideBar.css";
+import SideBarHeader from "./sideBarHeader";
+import { Typography } from "../../utils/components/typography";
+import { SettingModal } from "../../utils/components/settingModal";
 
 const ImageLinks = {
   image1:
@@ -18,11 +18,12 @@ const SideBar = () => {
     mainColor,
     mainColor10Lighter,
     mainColor20Lighter,
-    updateColor,
     subtitle2,
     chevronBackground,
-  } = useElementsColor();
-  const [image, setImage] = useState(null);
+    sideBarBackgroundMode,
+    darkMode,
+  } = useElements();
+  // const [image, setImage] = useState();
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -30,6 +31,33 @@ const SideBar = () => {
   };
   const handleShow = () => {
     setShow(true);
+  };
+
+  const determineSidebarColor = () => {
+    if (sideBarBackgroundMode === "color") {
+      return mainColor;
+    } else if (
+      sideBarBackgroundMode === "image" ||
+      sideBarBackgroundMode === "regular"
+    ) {
+      return darkMode
+        ? "var(--dark-theme-app-bar)"
+        : "var(--light-theme-app-bar)";
+    } else {
+      return "var(--light-theme-app-bar)";
+    }
+  };
+  const determineSidebarColorChevron = () => {
+    if (sideBarBackgroundMode === "color") {
+      return chevronBackground;
+    } else if (
+      sideBarBackgroundMode === "image" ||
+      sideBarBackgroundMode === "regular"
+    ) {
+      return darkMode ? "#b9b9b9" : "var(--light-theme-app-bar)";
+    } else {
+      return "var(--light-theme-app-bar)";
+    }
   };
 
   useEffect(() => {}, [collapsed]);
@@ -41,13 +69,6 @@ const SideBar = () => {
     display: "flex",
     height: "100vh",
     maxWidth: "max-content",
-  };
-  const sideBarcollapseDiv = {
-    width: "45px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: chevronBackground,
   };
 
   const menuItemStyles = {
@@ -70,13 +91,25 @@ const SideBar = () => {
       fontSize: "15px",
     },
     size: {
-      IconSize: "20px",
-      IconBorder: "20px",
+      IconSize: collapsed ? "35px" : "30px",
+      IconBorder: collapsed ? "35px" : "30px",
       logoSize: "50px",
       logoBoxsize: "50px",
-      subIconSize: "15px",
-      subIconBorder: "15px",
+      subIconSize: "30px",
+      subIconBorder: "30px",
     },
+    sideBarBackground: {
+      backgroundColor: determineSidebarColor(),
+    },
+  };
+  const sideBarcollapseDiv = {
+    width: "45px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: determineSidebarColorChevron(),
+    borderRight: "1px solid",
+    borderColor: chevronBackground,
   };
 
   const menuDivs = {
@@ -135,11 +168,12 @@ const SideBar = () => {
       <Sidebar
         style={{
           ...sideBarstyle,
-          backgroundColor: mainColor,
+          backgroundColor: menuItemStyles.sideBarBackground.backgroundColor,
           borderColor: chevronBackground,
+          borderRight: "none",
         }}
         collapsed={collapsed}
-        image={image}
+        image={sideBarBackgroundMode === "image" ? ImageLinks.image1 : null}
         transitionDuration={500}
       >
         <Menu
@@ -296,6 +330,7 @@ const SideBar = () => {
                     }}
                     href="https://www.linkedin.com/in/joki-8b40a7244/"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     <box-icon
                       type="logo"
@@ -308,6 +343,7 @@ const SideBar = () => {
                     style={{ ...menuDivs.socialsLinks }}
                     href="https://github.com/Joki004"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     {" "}
                     <box-icon
@@ -320,6 +356,7 @@ const SideBar = () => {
                     style={{ ...menuDivs.socialsLinks }}
                     href="mailto:jorammumb15.jm@gmail.com"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     {" "}
                     <box-icon name="envelope" size={"30px"}></box-icon>
@@ -341,6 +378,7 @@ const SideBar = () => {
           <MenuItem
             style={{
               ...menuItemStyles.MenuItem,
+              marginTop: "20px",
             }}
             icon={
               <CustomIcon
@@ -363,20 +401,7 @@ const SideBar = () => {
           />
         </Menu>
 
-        <div style={{ color: mainColor10Lighter }}>
-          <button
-            onClick={() => updateColor("var(--primary-color)")}
-            style={{ backgroundColor: "var(--primary-color)" }}
-          >
-            Change Color 1
-          </button>
-          <button
-            onClick={() => updateColor("var(--secondary-color)")}
-            style={{ backgroundColor: "var(--secondary-color)" }}
-          >
-            Change Color 2
-          </button>
-        </div>
+        <div style={{ color: mainColor10Lighter }}></div>
       </Sidebar>
 
       <div className={"sideBarcollapse"} style={{ ...sideBarcollapseDiv }}>

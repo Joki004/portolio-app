@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState } from "react";
 import { useLocalStorageState } from "../functions/function";
 
-const ElementsColor = createContext();
+const Elements = createContext();
 
-export const ElementsColorProvider = ({ children }) => {
+export const ElementsProvider = ({ children }) => {
   const [subtitle2, setSubtitle2] = useState("var(--dark-theme-background)");
   const [mainColor, setMainColor] = useLocalStorageState(
     "mainColor",
@@ -22,8 +22,17 @@ export const ElementsColorProvider = ({ children }) => {
     "#b3c1cd"
   );
 
+  const [sideBarBackgroundMode, setSideBarBackgroundMode] = useLocalStorageState("sideBarBackground","color");
+
+  
   const [darkMode,setDarkMode] = useLocalStorageState("darkMode",false);
-  console.log(`dark mode : ${darkMode}`);
+
+  
+const updatesideBarBackground = (mode) => {
+  setSideBarBackgroundMode(mode);
+};
+
+
   const updateColor = (newColor) => {
     if (newColor === "var(--primary-color)") {
       setMainColor(newColor);
@@ -47,29 +56,31 @@ export const ElementsColorProvider = ({ children }) => {
   }
 
   return (
-    <ElementsColor.Provider
+    <Elements.Provider
       value={{
         mainColor,
         mainColor10Lighter,
         mainColor20Lighter,
         chevronBackground,
+        sideBarBackgroundMode,
         darkMode,
+        subtitle2,
         updateColor,
         updateDarkMode,
-        subtitle2,
+        updatesideBarBackground,
         updateSubtitle2,
       }}
     >
       {children}
-    </ElementsColor.Provider>
+    </Elements.Provider>
   );
 };
 
-export const useElementsColor = () => {
-  const context = useContext(ElementsColor);
+export const useElements = () => {
+  const context = useContext(Elements);
   if (context === undefined) {
     throw new Error(
-      "useElementsColor must be used within a ElementsColorProvider"
+      "useElements must be used within a ElementsProvider"
     );
   }
   return context;

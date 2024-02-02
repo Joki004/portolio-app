@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect,useCallback } from "react";
 import { Player } from "@lordicon/react";
-import { useElementsColor } from "../functions/context";
+import { useElements } from "../functions/context";
 
 //ALL IMPORTS FROM ICO JSON FILES
 const iconHome = require("../../assets/home-system-solid-41.json");
@@ -122,15 +122,15 @@ export const CustomIcon = ({
   collapsed = false,
 }) => {
  
-  const {  mainColor20Lighter } = useElementsColor();
+  const {  mainColor20Lighter } = useElements();
   const [state, setState] = useState(null);
   const playerRef = useRef(null);
 
-  const playAnimation = () => {
+  const playAnimation = useCallback(() => {
     if (state !== null) {
       playerRef.current?.play();
     }
-  };
+  }, [state]);
 
   const iconStyle = {
     ...IconStyle,
@@ -150,7 +150,7 @@ export const CustomIcon = ({
 
   useEffect(() => {
     playAnimation();
-  }, [state]);
+  }, [state,playAnimation]);
 
   return (
     <div
