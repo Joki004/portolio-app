@@ -1,13 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-import LandingPage from './pages/landingPage';
-import { ElementsColorProvider } from './utils/functions/context';
+import "./App.css";
+import SideBar from "./pages/sideBar/sideBar";
+import { ElementsProvider } from "./utils/functions/context";
 
+import "boxicons";
+import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
-    <ElementsColorProvider>
-    <LandingPage />
-    </ElementsColorProvider>
+    <ElementsProvider>
+      <SideBar />
+    </ElementsProvider>
   );
 }
 
