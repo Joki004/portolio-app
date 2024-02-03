@@ -14,6 +14,7 @@ const ImageLinks = {
 };
 
 const SideBar = () => {
+  
   const [collapsed, setCollapsed] = useLocalStorageState("collapsed",false);
   const {
     mainColor,
