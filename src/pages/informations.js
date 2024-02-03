@@ -28,9 +28,10 @@ const Informations = () => {
   const elementRef = useRef(null);
   const handleScroll = useCallback(() => {
     const newScrollTop = elementRef.current?.scrollTop || 0;
-    updateActiveTitle(DetermineActiveTitle(sections, activeTitle));
     setScrollTop(newScrollTop);
-  }, [sections, activeTitle, updateActiveTitle]);
+    updateActiveTitle(DetermineActiveTitle(sections, activeTitle,scrollTop));
+    
+  }, [sections, activeTitle, updateActiveTitle,scrollTop]);
 
   useEffect(() => {
     elementRef.current = document.getElementById("container");

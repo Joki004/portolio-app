@@ -17,7 +17,7 @@ export const useLocalStorageState = (key, initialValue) => {
   return [value, setValue];
 };
 
-export function getElementbyIdHeightPostion(id) {
+export function getElementByIdHeightPosition(id) {
   const element = document.getElementById(id);
   if (element) {
     const { top, bottom } = element.getBoundingClientRect();
@@ -42,21 +42,30 @@ export function DetermineTitleSectionColor(darkMode, shoudFill) {
   }
 }
 
-export function DetermineActiveTitle(sections, activeTile) {
-    let checkingActive ='';
+export function DetermineActiveTitle(sections, activeTile, scrollTop) {
+  let checkingActive = "";
   for (const [index, section] of sections.entries()) {
-    const position = getElementbyIdHeightPostion(section.id);
+    const position = getElementByIdHeightPosition(section.id);
 
-    
-   // console.log(`${checkingActive} ${index} ${section.id} ${position.top} ${position.bottom} ${window.innerHeight}`);
+    console.log(`${checkingActive} ${index} ${section.id} ${position.top} ${position.bottom} ${window.innerHeight} ${scrollTop}`);
 
     if (index === sections.length - 1) {
       //console.log(Math.abs(position.bottom - window.innerHeight));
       if (position.bottom <= window.innerHeight) {
         checkingActive = section.id;
       }
-      if (position.top < window.innerHeight / 2 && position.top > 0) {
+      else if (position.top < window.innerHeight / 2 && position.top > 0) {
         checkingActive = section.id;
+      }
+    } else if (index === 0) {
+      console.log("first section")
+      if ((-10 <= position.top && position.top <= 40)||scrollTop<=10) {
+        checkingActive = section.id;
+        break;
+      }
+       else if (position.top < window.innerHeight / 2 && position.top > 0) {
+        checkingActive = section.id;
+        break;
       }
     } else {
       if (position.top < window.innerHeight / 2 && position.top > 0) {
@@ -64,14 +73,14 @@ export function DetermineActiveTitle(sections, activeTile) {
       }
     }
   }
-  if (checkingActive === '') {
+  if (checkingActive === "") {
     return activeTile;
   }
   return checkingActive;
 }
 
 export function checks(id) {
-  const position = getElementbyIdHeightPostion(id);
+  const position = getElementByIdHeightPosition(id);
 
   return Math.abs(position.bottom - window.innerHeight);
 }
@@ -88,7 +97,11 @@ export function DetermineTitleWidth(shouldFill, elementWidth) {
   }
 }
 
-export const determineSidebarColor = (sideBarBackgroundMode,mainColor,darkMode) => {
+export const determineSidebarColor = (
+  sideBarBackgroundMode,
+  mainColor,
+  darkMode
+) => {
   if (sideBarBackgroundMode === "color") {
     return mainColor;
   } else if (

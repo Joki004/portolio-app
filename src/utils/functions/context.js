@@ -4,7 +4,7 @@ import { useLocalStorageState } from "../functions/function";
 const Elements = createContext();
 
 export const ElementsProvider = ({ children }) => {
-  const [activeTitle, setActiveTitle] = useState("Section 1");
+  const [activeTitle, setActiveTitle] = useState("Home");
   const [subtitle2, setSubtitle2] = useState("var(--dark-theme-background)");
   const [mainColor, setMainColor] = useLocalStorageState(
     "mainColor",
