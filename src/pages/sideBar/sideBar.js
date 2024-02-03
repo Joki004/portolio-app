@@ -6,8 +6,12 @@ import "../sideBar/sideBar.css";
 import SideBarHeader from "./sideBarHeader";
 import { Typography } from "../../utils/components/typography";
 import { SettingModal } from "../../utils/components/settingModal";
-import { useLocalStorageState } from "../../utils/functions/function";
-
+import {
+  useLocalStorageState,
+  determineSidebarColor,
+} from "../../utils/functions/function";
+import { sideBarSections } from "../../utils/functions/datas";
+import { renderMenuItem } from "../../utils/functions/renders";
 const ImageLinks = {
   image1:
     "https://images.unsplash.com/photo-1701086292958-f753f3bb5d27?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -35,20 +39,6 @@ const SideBar = () => {
     setShow(true);
   };
 
-  const determineSidebarColor = () => {
-    if (sideBarBackgroundMode === "color") {
-      return mainColor;
-    } else if (
-      sideBarBackgroundMode === "image" ||
-      sideBarBackgroundMode === "regular"
-    ) {
-      return darkMode
-        ? "var(--dark-theme-app-bar)"
-        : "var(--light-theme-app-bar)";
-    } else {
-      return "var(--light-theme-app-bar)";
-    }
-  };
   const determineSidebarColorChevron = () => {
     if (sideBarBackgroundMode === "color") {
       return chevronBackground;
@@ -100,7 +90,11 @@ const SideBar = () => {
       subIconBorder: "30px",
     },
     sideBarBackground: {
-      backgroundColor: determineSidebarColor(),
+      backgroundColor: determineSidebarColor(
+        sideBarBackgroundMode,
+        mainColor,
+        darkMode
+      ),
     },
   };
   const sideBarcollapseDiv = {
@@ -162,87 +156,6 @@ const SideBar = () => {
       chevronRight.style.display = "none";
     }
   };
-  let text = "";
-  const sideBarSections = [
-    {
-      title: "Home",
-      id: "Home",
-      content: text,
-      icon: "HomeIcon",
-      label: "Home",
-    },
-    {
-      title: "About me",
-      id: "AboutMe",
-      content: text,
-      icon: "aboutIcon",
-      label: "About",
-      subMenu: [
-        {
-          title: "About me",
-          id: "AboutMe",
-          content: text,
-          icon: "aboutIcon",
-          label: "About me",
-        },
-        {
-          title: "Education Experience",
-          id: "EducationExperience",
-          content: text,
-          icon: "educationIcon",
-          label: "Education Experience",
-        },
-      ],
-    },
-    {
-      title: "Projects",
-      id: "Projects",
-      content: text,
-      icon: "workIcon",
-      label: "Projects",
-    },
-    {
-      title: "Skills",
-      id: "Skills",
-      content: text,
-      icon: "bugIcon",
-      label: "Skills",
-    },
-    {
-      title: "Contact",
-      id: "Contact",
-      content: text,
-      icon: "emailIcon",
-      label: "Get in touch",
-    },
-  ];
-
-
-  const renderMenuItem = (item, isSubMenu = false, activeTitle) => (
-    <MenuItem
-      key={item.title}
-      style={{
-        ...menuItemStyles.MenuItem,
-        marginTop: isSubMenu ? "0" : "20px",
-      }}
-      icon={
-        <CustomIcon
-          size={parseInt(menuItemStyles.size.IconSize) + (isSubMenu ? 0 : 20)}
-          boxsize={
-            parseInt(menuItemStyles.size.IconBorder) + (isSubMenu ? 0 : 10)
-          }
-          sectionId={item.id}
-          iconName={item.icon}
-          isSectionActive={activeTitle === item.id}
-          collapsed={collapsed}
-          colorIcon={mainColor10Lighter}
-        />
-      }
-      onClick={item.onClick || (() => {})}
-    >
-      {item.label}
-    </MenuItem>
-  );
 
   return (
     <div className="SideBar" style={{ ...sideBarCss }}>
@@ -299,11 +212,25 @@ const SideBar = () => {
                   label={section.title}
                 >
                   {section.subMenu.map((subItem) =>
-                    renderMenuItem(subItem, true, activeTitle)
+                    renderMenuItem(
+                      subItem,
+                      true,
+                      activeTitle,
+                      collapsed,
+                      mainColor10Lighter,
+                      menuItemStyles
+                    )
                   )}
                 </SubMenu>
               ) : (
-                renderMenuItem(section, false, activeTitle)
+                renderMenuItem(
+                  section,
+                  false,
+                  activeTitle,
+                  collapsed,
+                  mainColor10Lighter,
+                  menuItemStyles
+                )
               )
             )}
           </div>

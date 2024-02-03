@@ -87,3 +87,18 @@ export function DetermineTitleWidth(shouldFill, elementWidth) {
     else return "80%";
   }
 }
+
+export const determineSidebarColor = (sideBarBackgroundMode,mainColor,darkMode) => {
+  if (sideBarBackgroundMode === "color") {
+    return mainColor;
+  } else if (
+    sideBarBackgroundMode === "image" ||
+    sideBarBackgroundMode === "regular"
+  ) {
+    return darkMode
+      ? "var(--dark-theme-app-bar)"
+      : "var(--light-theme-app-bar)";
+  } else {
+    return "var(--light-theme-app-bar)";
+  }
+};
