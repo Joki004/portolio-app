@@ -48,10 +48,10 @@ export function DetermineActiveTitle(sections, activeTile) {
     const position = getElementbyIdHeightPostion(section.id);
 
     
-    console.log(`${checkingActive} ${index} ${section.id} ${position.top} ${position.bottom} ${window.innerHeight}`);
+   // console.log(`${checkingActive} ${index} ${section.id} ${position.top} ${position.bottom} ${window.innerHeight}`);
 
     if (index === sections.length - 1) {
-      console.log(Math.abs(position.bottom - window.innerHeight));
+      //console.log(Math.abs(position.bottom - window.innerHeight));
       if (position.bottom <= window.innerHeight) {
         checkingActive = section.id;
       }

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect,useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Player } from "@lordicon/react";
 import { useElements } from "../functions/context";
 
@@ -87,7 +87,6 @@ const getIconType = (iconName) => {
   }
 };
 
-
 const getIconState = (iconName, currentState) => {
   if (!iconStateMap[iconName]) throw new Error("Icon not found");
   const iconState = iconStateMap[iconName];
@@ -120,24 +119,36 @@ export const CustomIcon = ({
   iconName,
   boxsize = "50px",
   collapsed = false,
+  isSectionActive = false,
 }) => {
- 
-  const {  mainColor20Lighter } = useElements();
+  const { mainColor20Lighter } = useElements();
   const [state, setState] = useState(null);
   const playerRef = useRef(null);
-
   const playAnimation = useCallback(() => {
     if (state !== null) {
       playerRef.current?.play();
     }
   }, [state]);
-
+  function determineBorder(collapsed, isSectionActive) {
+    if (collapsed) {
+      if (isSectionActive) {
+        return "solid 6px";
+      } else {
+        return "solid 3px";
+      }
+    } else {
+      if (isSectionActive) {
+        return "solid 6px";
+      }
+      return "none";
+    }
+  }
   const iconStyle = {
     ...IconStyle,
     width: parseInt(boxsize) + 10 + "px",
     height: parseInt(boxsize) + 10 + "px",
     color: mainColor20Lighter,
-    border: collapsed === false ? "none" : "solid 3px",
+    border: determineBorder(collapsed, isSectionActive),
   };
 
   const handleClicked = () => {
@@ -150,7 +161,7 @@ export const CustomIcon = ({
 
   useEffect(() => {
     playAnimation();
-  }, [state,playAnimation]);
+  }, [state, playAnimation]);
 
   return (
     <div

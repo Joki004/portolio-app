@@ -14,8 +14,7 @@ const ImageLinks = {
 };
 
 const SideBar = () => {
-  
-  const [collapsed, setCollapsed] = useLocalStorageState("collapsed",false);
+  const [collapsed, setCollapsed] = useLocalStorageState("collapsed", false);
   const {
     mainColor,
     mainColor10Lighter,
@@ -24,6 +23,7 @@ const SideBar = () => {
     chevronBackground,
     sideBarBackgroundMode,
     darkMode,
+    activeTitle,
   } = useElements();
   // const [image, setImage] = useState();
   const [show, setShow] = useState(false);
@@ -65,7 +65,6 @@ const SideBar = () => {
   useEffect(() => {}, [collapsed]);
   let sideBarstyle = {
     height: "100vh",
-    postion: "absolute",
   };
   let sideBarCss = {
     display: "flex",
@@ -93,8 +92,8 @@ const SideBar = () => {
       fontSize: "15px",
     },
     size: {
-      IconSize: collapsed ? "35px" : "30px",
-      IconBorder: collapsed ? "35px" : "30px",
+      IconSize: collapsed ? "40px" : "35px",
+      IconBorder: collapsed ? "40px" : "35px",
       logoSize: "50px",
       logoBoxsize: "50px",
       subIconSize: "30px",
@@ -163,6 +162,87 @@ const SideBar = () => {
       chevronRight.style.display = "none";
     }
   };
+  let text = "";
+  const sideBarSections = [
+    {
+      title: "Home",
+      id: "Home",
+      content: text,
+      icon: "HomeIcon",
+      label: "Home",
+    },
+    {
+      title: "About me",
+      id: "AboutMe",
+      content: text,
+      icon: "aboutIcon",
+      label: "About",
+      subMenu: [
+        {
+          title: "About me",
+          id: "AboutMe",
+          content: text,
+          icon: "aboutIcon",
+          label: "About me",
+        },
+        {
+          title: "Education Experience",
+          id: "EducationExperience",
+          content: text,
+          icon: "educationIcon",
+          label: "Education Experience",
+        },
+      ],
+    },
+    {
+      title: "Projects",
+      id: "Projects",
+      content: text,
+      icon: "workIcon",
+      label: "Projects",
+    },
+    {
+      title: "Skills",
+      id: "Skills",
+      content: text,
+      icon: "bugIcon",
+      label: "Skills",
+    },
+    {
+      title: "Contact",
+      id: "Contact",
+      content: text,
+      icon: "emailIcon",
+      label: "Get in touch",
+    },
+  ];
+
+
+  const renderMenuItem = (item, isSubMenu = false, activeTitle) => (
+    <MenuItem
+      key={item.title}
+      style={{
+        ...menuItemStyles.MenuItem,
+        marginTop: isSubMenu ? "0" : "20px",
+      }}
+      icon={
+        <CustomIcon
+          size={parseInt(menuItemStyles.size.IconSize) + (isSubMenu ? 0 : 20)}
+          boxsize={
+            parseInt(menuItemStyles.size.IconBorder) + (isSubMenu ? 0 : 10)
+          }
+          sectionId={item.id}
+          iconName={item.icon}
+          isSectionActive={activeTitle === item.id}
+          collapsed={collapsed}
+          colorIcon={mainColor10Lighter}
+        />
+      }
+      onClick={item.onClick || (() => {})}
+    >
+      {item.label}
+    </MenuItem>
+  );
 
   return (
     <div className="SideBar" style={{ ...sideBarCss }}>
@@ -199,122 +279,33 @@ const SideBar = () => {
           </div>
 
           <div className="MenuItemsClass">
-            <MenuItem
-              style={{
-                ...menuItemStyles.MenuItem,
-              }}
-              icon={
-                <CustomIcon
-                  size={menuItemStyles.size.IconSize}
-                  iconName={"HomeIcon"}
-                  boxsize={menuItemStyles.size.IconBorder}
-                  collapsed={collapsed}
-                  colorIcon={mainColor10Lighter}
-                />
-              }
-            >
-              {" "}
-              Home{" "}
-            </MenuItem>
-
-            <SubMenu
-              icon={
-                <CustomIcon
-                  size={menuItemStyles.size.IconSize}
-                  iconName={"aboutIcon"}
-                  boxsize={menuItemStyles.size.IconBorder}
-                  collapsed={collapsed}
-                  colorIcon={mainColor10Lighter}
-                />
-              }
-              style={{ ...menuItemStyles.MenuItem }}
-              label="About"
-            >
-              <MenuItem
-                icon={
-                  <CustomIcon
-                    size={menuItemStyles.size.subIconSize}
-                    iconName={"aboutIcon"}
-                    boxsize={menuItemStyles.size.subIconBorder}
-                    collapsed={collapsed}
-                    colorIcon={mainColor10Lighter}
-                  />
-                }
-                style={{ ...menuItemStyles.MenuItem }}
-              >
-                {" "}
-                About me{" "}
-              </MenuItem>
-              <MenuItem
-                icon={
-                  <CustomIcon
-                    size={menuItemStyles.size.IconSize}
-                    iconName={"educationIcon"}
-                    boxsize={menuItemStyles.size.subIconBorder}
-                    collapsed={collapsed}
-                    colorIcon={mainColor10Lighter}
-                  />
-                }
-                style={{ ...menuItemStyles.MenuItem }}
-              >
-                {" "}
-                Education Experience{" "}
-              </MenuItem>
-            </SubMenu>
-
-            <MenuItem
-              style={{
-                ...menuItemStyles.MenuItem,
-              }}
-              icon={
-                <CustomIcon
-                  size={menuItemStyles.size.IconSize}
-                  iconName={"workIcon"}
-                  boxsize={menuItemStyles.size.IconBorder}
-                  collapsed={collapsed}
-                  colorIcon={mainColor10Lighter}
-                />
-              }
-            >
-              {" "}
-              projects{" "}
-            </MenuItem>
-
-            <MenuItem
-              style={{
-                ...menuItemStyles.MenuItem,
-              }}
-              icon={
-                <CustomIcon
-                  size={menuItemStyles.size.IconSize}
-                  iconName={"bugIcon"}
-                  boxsize={menuItemStyles.size.IconBorder}
-                  collapsed={collapsed}
-                  colorIcon={mainColor10Lighter}
-                />
-              }
-            >
-              {" "}
-              Skills{" "}
-            </MenuItem>
-
-            <MenuItem
-              style={{
-                ...menuItemStyles.MenuItem,
-              }}
-              icon={
-                <CustomIcon
-                  size={menuItemStyles.size.IconSize}
-                  iconName={"emailIcon"}
-                  boxsize={menuItemStyles.size.IconBorder}
-                  collapsed={collapsed}
-                  colorIcon={mainColor10Lighter}
-                />
-              }
-            >
-              {" "}
-              Get in touch{" "}
-            </MenuItem>
+            {/**************************************************************** */}
+            {sideBarSections.map((section) =>
+              section.subMenu ? (
+                <SubMenu
+                  style={{ ...menuItemStyles.MenuItem }}
+                  key={section.title}
+                  icon={
+                    <CustomIcon
+                      size={menuItemStyles.size.IconSize}
+                      iconName={section.icon}
+                      isSectionActive={activeTitle === section.id}
+                      boxsize={menuItemStyles.size.IconBorder}
+                      collapsed={collapsed}
+                      colorIcon={mainColor10Lighter}
+                      sectionId={section.id}
+                    />
+                  }
+                  label={section.title}
+                >
+                  {section.subMenu.map((subItem) =>
+                    renderMenuItem(subItem, true, activeTitle)
+                  )}
+                </SubMenu>
+              ) : (
+                renderMenuItem(section, false, activeTitle)
+              )
+            )}
           </div>
           <div style={{ ...menuDivs.socialBox }}>
             {collapsed === false ? (
