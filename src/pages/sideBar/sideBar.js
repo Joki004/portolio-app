@@ -12,6 +12,9 @@ import {
 } from "../../utils/functions/function";
 import { sideBarSections } from "../../utils/functions/datas";
 import { renderMenuItem } from "../../utils/functions/renders";
+import SocialLinks from "../../utils/components/socialLinks";
+import SideBarSectionsMenus from "../../utils/components/sideBarSectionsMenus";
+
 const ImageLinks = {
   image1:
     "https://images.unsplash.com/photo-1701086292958-f753f3bb5d27?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -183,6 +186,7 @@ const SideBar = () => {
           >
             My portfolio
           </SideBarHeader>
+
           <div style={{ ...menuDivs.titleBox }}>
             {collapsed === false ? (
               <Typography variant="body1" fontWeight={700} color={subtitle2}>
@@ -192,95 +196,24 @@ const SideBar = () => {
           </div>
 
           <div className="MenuItemsClass">
-            {/**************************************************************** */}
-            {sideBarSections.map((section) =>
-              section.subMenu ? (
-                <SubMenu
-                  style={{ ...menuItemStyles.MenuItem }}
-                  key={section.title}
-                  icon={
-                    <CustomIcon
-                      size={menuItemStyles.size.IconSize}
-                      iconName={section.icon}
-                      isSectionActive={activeTitle === section.id}
-                      boxsize={menuItemStyles.size.IconBorder}
-                      collapsed={collapsed}
-                      colorIcon={mainColor10Lighter}
-                      sectionId={section.id}
-                    />
-                  }
-                  label={section.title}
-                >
-                  {section.subMenu.map((subItem) =>
-                    renderMenuItem(
-                      subItem,
-                      true,
-                      activeTitle,
-                      collapsed,
-                      mainColor10Lighter,
-                      menuItemStyles
-                    )
-                  )}
-                </SubMenu>
-              ) : (
-                renderMenuItem(
-                  section,
-                  false,
-                  activeTitle,
-                  collapsed,
-                  mainColor10Lighter,
-                  menuItemStyles
-                )
-              )
-            )}
+           
+            <SideBarSectionsMenus
+              sideBarSections={sideBarSections}
+              activeTitle={activeTitle}
+              collapsed={collapsed}
+              mainColor10Lighter={mainColor10Lighter}
+              menuItemStyles={menuItemStyles}
+            />
           </div>
+
           <div style={{ ...menuDivs.socialBox }}>
             {collapsed === false ? (
               <div style={{ ...menuDivs.socials }}>
                 <Typography variant="body1" fontWeight={700} color={subtitle2}>
                   Socials
                 </Typography>
-                <div style={{ ...menuDivs.socialsLinksBox }}>
-                  <a
-                    style={{
-                      ...menuDivs.socialsLinks,
-                      backgroundColor: "#0a66c2",
-                      borderColor: "#0a66c2",
-                    }}
-                    href="https://www.linkedin.com/in/joki-8b40a7244/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <box-icon
-                      type="logo"
-                      size={"30px"}
-                      name="linkedin"
-                      color="#fff"
-                    ></box-icon>
-                  </a>
-                  <a
-                    style={{ ...menuDivs.socialsLinks }}
-                    href="https://github.com/Joki004"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {" "}
-                    <box-icon
-                      name="github"
-                      size={"30px"}
-                      type="logo"
-                    ></box-icon>
-                  </a>
-                  <a
-                    style={{ ...menuDivs.socialsLinks }}
-                    href="mailto:jorammumb15.jm@gmail.com"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {" "}
-                    <box-icon name="envelope" size={"30px"}></box-icon>
-                  </a>
-                </div>
+
+                <SocialLinks />
               </div>
             ) : null}
           </div>
@@ -313,6 +246,7 @@ const SideBar = () => {
             {" "}
             Setings{" "}
           </MenuItem>
+
           <SettingModal
             show={show}
             handleClose={() => handleClose()}

@@ -47,23 +47,19 @@ export function DetermineActiveTitle(sections, activeTile, scrollTop) {
   for (const [index, section] of sections.entries()) {
     const position = getElementByIdHeightPosition(section.id);
 
-    console.log(`${checkingActive} ${index} ${section.id} ${position.top} ${position.bottom} ${window.innerHeight} ${scrollTop}`);
+    //console.log(`${checkingActive} ${index} ${section.id} ${position.top} ${position.bottom} ${window.innerHeight} ${scrollTop}`);
 
     if (index === sections.length - 1) {
-      //console.log(Math.abs(position.bottom - window.innerHeight));
       if (position.bottom <= window.innerHeight) {
         checkingActive = section.id;
-      }
-      else if (position.top < window.innerHeight / 2 && position.top > 0) {
+      } else if (position.top < window.innerHeight / 2 && position.top > 0) {
         checkingActive = section.id;
       }
     } else if (index === 0) {
-      console.log("first section")
-      if ((-10 <= position.top && position.top <= 40)||scrollTop<=10) {
+      if ((-10 <= position.top && position.top <= 40) || scrollTop <= 10) {
         checkingActive = section.id;
         break;
-      }
-       else if (position.top < window.innerHeight / 2 && position.top > 0) {
+      } else if (position.top < window.innerHeight / 2 && position.top > 0) {
         checkingActive = section.id;
         break;
       }

@@ -52,3 +52,29 @@ export  const sideBarSections = [
     label: "Get in touch",
   },
 ];
+
+export const socialLinks = [
+  {
+    type: 'link', // 'link' or 'email
+    href: 'https://www.linkedin.com/in/joki-8b40a7244/',
+    icon: 'linkedin',
+    backgroundColor: '#0a66c2',
+    borderColor: '#0a66c2',
+    color: '#ffffff',
+    typeIcon: 'logo',
+  },
+  {
+    type:'link', // 'link' or 'email
+    href: 'https://github.com/Joki004',
+    icon: 'github',
+    color: '#000000',
+    typeIcon: 'logo',
+  },
+  {
+    type: 'email',
+    href: 'jorammumb15.jm@gmail.com',
+    icon: 'envelope',
+    color: '#000000',
+    typeIcon: null,
+  },
+];
