@@ -4,6 +4,7 @@ import { useLocalStorageState } from "../functions/function";
 const Elements = createContext();
 
 export const ElementsProvider = ({ children }) => {
+  const [activeTitle, setActiveTitle] = useState("Section 1");
   const [subtitle2, setSubtitle2] = useState("var(--dark-theme-background)");
   const [mainColor, setMainColor] = useLocalStorageState(
     "mainColor",
@@ -54,6 +55,9 @@ const updatesideBarBackground = (mode) => {
   const updateDarkMode = ()=>{
     setDarkMode(!darkMode);
   }
+  const updateActiveTitle = (title) => {
+    setActiveTitle(title);
+  };
 
   return (
     <Elements.Provider
@@ -65,10 +69,12 @@ const updatesideBarBackground = (mode) => {
         sideBarBackgroundMode,
         darkMode,
         subtitle2,
+        activeTitle,
         updateColor,
         updateDarkMode,
         updatesideBarBackground,
         updateSubtitle2,
+        updateActiveTitle
       }}
     >
       {children}
