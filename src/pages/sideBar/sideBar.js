@@ -6,6 +6,7 @@ import "../sideBar/sideBar.css";
 import SideBarHeader from "./sideBarHeader";
 import { Typography } from "../../utils/components/typography";
 import { SettingModal } from "../../utils/components/settingModal";
+import { useLocalStorageState } from "../../utils/functions/function";
 
 const ImageLinks = {
   image1:
@@ -13,7 +14,7 @@ const ImageLinks = {
 };
 
 const SideBar = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useLocalStorageState("collapsed",false);
   const {
     mainColor,
     mainColor10Lighter,
@@ -148,7 +149,6 @@ const SideBar = () => {
   const handleCollapsed = () => {
     setCollapsed(!collapsed);
     HandleChevronDisplay();
-    console.log(collapsed);
   };
 
   const HandleChevronDisplay = () => {

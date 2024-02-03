@@ -9,6 +9,7 @@ export function SettingModal({ show, handleClose, handleShow }) {
     darkMode,
     updateDarkMode,
     mainColor10Lighter,
+    mainColor,
     updateColor,
     updatesideBarBackground,
   } = useElements();
@@ -102,7 +103,7 @@ export function SettingModal({ show, handleClose, handleShow }) {
   };
 
   useEffect(() => {
-    console.log(`dark mode : ${darkMode}`);
+  
   }, [darkMode]);
 
   return (
@@ -240,8 +241,8 @@ export function SettingModal({ show, handleClose, handleShow }) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+          <Button variant="primary" onClick={handleClose} style={{backgroundColor:mainColor}}>
+            Ok
           </Button>
         </Modal.Footer>
       </Modal>

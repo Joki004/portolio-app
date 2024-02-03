@@ -4,6 +4,7 @@ import {
   getElementbyIdHeightPostion,
   DetermineTitleSectionColor,
   DetermineTitleWidth,
+  checks,
 } from "../functions/function";
 import { useElements } from "../functions/context";
 
@@ -12,7 +13,7 @@ const Section = ({ title, id, scrollTop, content }) => {
   const [BottomPostion, setBottomPosition] = useState(0);
   const [shouldFill, setShouldFill] = useState(false);
   const controls = useAnimation();
-  const { darKMode, mainColor } = useElements();
+  const { darKMode, mainColor, activeTitle } = useElements();
 
   const sectionRef = useRef(null);
   const [elementWidth, setElementWidth] = useState(0);
@@ -40,10 +41,7 @@ const Section = ({ title, id, scrollTop, content }) => {
       setBottomPosition(bottom);
       setTopPosition(top);
     }
-    if (
-      (TopPostion < window.innerHeight / 2 && TopPostion > 0) ||
-      BottomPostion === window.innerHeight
-    ) {
+    if (id === activeTitle) {
       setShouldFill(true);
     } else setShouldFill(false);
     const widthStyle = DetermineTitleWidth(shouldFill, elementWidth);
@@ -54,8 +52,6 @@ const Section = ({ title, id, scrollTop, content }) => {
       backgroundColor: shouldFill ? mainColor : "rgba(255, 255, 255, 0)",
       transition: { duration: shouldFill ? 1 : 0.3 },
     });
-
-
 
     return () => {
       observer.disconnect();
@@ -69,6 +65,7 @@ const Section = ({ title, id, scrollTop, content }) => {
     id,
     mainColor,
     controls,
+    activeTitle,
   ]);
 
   const SectionStyle = {
@@ -108,7 +105,8 @@ const Section = ({ title, id, scrollTop, content }) => {
           ...SectionStyle.content,
         }}
       >
-        {content}
+        {checks(id)}
+        {` ${activeTitle} ${BottomPostion} ${window.innerHeight}`} {content}
       </motion.div>
     </div>
   );

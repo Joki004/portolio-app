@@ -17,6 +17,7 @@ const Body = () => {
     container: {
      
       maxWidth: "100vw",
+      
       height: "100vh",
       overflow: "auto",
       scrollbar: {

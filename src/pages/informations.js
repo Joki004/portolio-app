@@ -28,7 +28,6 @@ const Informations = () => {
   const elementRef = useRef(null);
   const handleScroll = useCallback(() => {
     const newScrollTop = elementRef.current?.scrollTop || 0;
-    console.log(DetermineActiveTitle(sections, activeTitle));
     updateActiveTitle(DetermineActiveTitle(sections, activeTitle));
     setScrollTop(newScrollTop);
   }, [sections, activeTitle, updateActiveTitle]);
