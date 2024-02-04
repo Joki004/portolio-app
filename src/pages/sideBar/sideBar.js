@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem} from "react-pro-sidebar";
 import { useElements } from "../../utils/functions/context";
 import { CustomIcon } from "../../utils/components/icons";
 import "../sideBar/sideBar.css";
@@ -11,9 +11,10 @@ import {
   determineSidebarColor,
 } from "../../utils/functions/function";
 import { sideBarSections } from "../../utils/functions/datas";
-import { renderMenuItem } from "../../utils/functions/renders";
+
 import SocialLinks from "../../utils/components/socialLinks";
 import SideBarSectionsMenus from "../../utils/components/sideBarSectionsMenus";
+
 
 const ImageLinks = {
   image1:
@@ -258,11 +259,12 @@ const SideBar = () => {
       </Sidebar>
 
       <div className={"sideBarcollapse"} style={{ ...sideBarcollapseDiv }}>
-        <div
+        {collapsed?( <div
           className="chevronLeft .chevron"
           onClick={handleCollapsed}
           style={{ height: "50px", width: "90%" }}
         >
+        
           <box-icon
             type="solid"
             name="chevron-left"
@@ -270,8 +272,7 @@ const SideBar = () => {
             color={mainColor20Lighter}
             animation={"fade-left-hover"}
           ></box-icon>
-        </div>
-        <div
+        </div>):(<div
           className="chevronRight .chevron"
           onClick={handleCollapsed}
           style={{ height: "50px", width: "90%" }}
@@ -283,7 +284,9 @@ const SideBar = () => {
             color={mainColor20Lighter}
             animation={"fade-right-hover"}
           ></box-icon>
-        </div>
+        </div>)}
+       
+        
       </div>
     </div>
   );

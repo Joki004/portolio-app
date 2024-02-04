@@ -1,5 +1,6 @@
 import React from "react";
 import { socialLinks } from "../functions/datas";
+import { AnimatePresence,motion,useAnimation } from "framer-motion";
 
 const socialsLinksStyle = {
   socials: {
@@ -40,8 +41,19 @@ function determineHeref(link){
 }
 const SocialLinks = ({size='30px'}) => {
   return (
+    <AnimatePresence>
     <div style={{ ...socialsLinksStyle.socialsLinksBox }}>
+
       {socialLinks.map((link, index) => (
+        <motion.div
+        key={index}
+        whileHover={{ scale: 1.2, rotate: 10 }}
+        whileTap={{
+          scale: 0.8,
+          rotate: -20,
+          borderRadius: "100%"
+        }}
+      >
         <a
           key={index}
           style={{
@@ -60,8 +72,10 @@ const SocialLinks = ({size='30px'}) => {
             color={link.color}
           ></box-icon>
         </a>
+        </motion.div>
       ))}
     </div>
+    </AnimatePresence>
   );
 };
 
