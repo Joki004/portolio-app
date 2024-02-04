@@ -4,7 +4,6 @@ import {
   getElementByIdHeightPosition,
   DetermineTitleSectionColor,
   DetermineTitleWidth,
-  checks,
 } from "../functions/function";
 import { useElements } from "../functions/context";
 

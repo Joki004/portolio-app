@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Sidebar, Menu, MenuItem} from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { useElements } from "../../utils/functions/context";
 import { CustomIcon } from "../../utils/components/icons";
 import "../sideBar/sideBar.css";
@@ -14,8 +14,8 @@ import { sideBarSections } from "../../utils/functions/datas";
 
 import SocialLinks from "../../utils/components/socialLinks";
 import SideBarSectionsMenus from "../../utils/components/sideBarSectionsMenus";
-
-
+/*import chevronLeft from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/solid/bxs-chevron-left.svg";
+import chevronRight from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/solid/bxs-chevron-right.svg";*/
 const ImageLinks = {
   image1:
     "https://images.unsplash.com/photo-1701086292958-f753f3bb5d27?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -146,19 +146,7 @@ const SideBar = () => {
 
   const handleCollapsed = () => {
     setCollapsed(!collapsed);
-    HandleChevronDisplay();
-  };
-
-  const HandleChevronDisplay = () => {
-    let chevronLeft = document.querySelector(".chevronLeft");
-    let chevronRight = document.querySelector(".chevronRight");
-    if (!collapsed) {
-      chevronLeft.style.display = "none";
-      chevronRight.style.display = "flex";
-    } else {
-      chevronLeft.style.display = "flex";
-      chevronRight.style.display = "none";
-    }
+    //HandleChevronDisplay();
   };
 
   return (
@@ -197,7 +185,6 @@ const SideBar = () => {
           </div>
 
           <div className="MenuItemsClass">
-           
             <SideBarSectionsMenus
               sideBarSections={sideBarSections}
               activeTitle={activeTitle}
@@ -257,36 +244,37 @@ const SideBar = () => {
 
         <div style={{ color: mainColor10Lighter }}></div>
       </Sidebar>
+      <div className="sideBarcollapse" style={{ ...sideBarcollapseDiv }}>
+        {collapsed ? (
+          <div
+            style={{ height: "50px", width: "90%" }}
+            onClick={handleCollapsed}
+          >
+            {/* <img src={chevronRight} alt="chevronRight" /> */}
+            <box-icon
+              type="solid"
+              name="chevron-right"
+              size="50px"
+              color={mainColor20Lighter}
+              animation={"fade-right-hover"}
+            ></box-icon>
+          </div>
+        ) : (
+          <div
+            style={{ height: "50px", width: "90%" }}
+            onClick={handleCollapsed}
+          >
+            {/* <img src={chevronLeft} alt="chevronLeft" />*/}
 
-      <div className={"sideBarcollapse"} style={{ ...sideBarcollapseDiv }}>
-        {collapsed?( <div
-          className="chevronLeft .chevron"
-          onClick={handleCollapsed}
-          style={{ height: "50px", width: "90%" }}
-        >
-        
-          <box-icon
-            type="solid"
-            name="chevron-left"
-            size="50px"
-            color={mainColor20Lighter}
-            animation={"fade-left-hover"}
-          ></box-icon>
-        </div>):(<div
-          className="chevronRight .chevron"
-          onClick={handleCollapsed}
-          style={{ height: "50px", width: "90%" }}
-        >
-          <box-icon
-            type="solid"
-            name="chevron-right"
-            size="50px"
-            color={mainColor20Lighter}
-            animation={"fade-right-hover"}
-          ></box-icon>
-        </div>)}
-       
-        
+            <box-icon
+              type="solid"
+              name="chevron-left"
+              size="50px"
+              color={mainColor20Lighter}
+              animation={"fade-left-hover"}
+            ></box-icon>
+          </div>
+        )}
       </div>
     </div>
   );
