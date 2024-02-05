@@ -111,3 +111,4 @@ export const determineSidebarColor = (
     return "var(--light-theme-app-bar)";
   }
 };
+

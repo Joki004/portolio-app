@@ -2,9 +2,9 @@ import { MenuItem } from "react-pro-sidebar";
 
 import { CustomIcon } from "../components/icons";
 
-export const renderMenuItem = (item, isSubMenu = false, activeTitle, collapsed, mainColor10Lighter, menuItemStyles) => {
+export const RenderMenuItem = (item, isSubMenu = false, activeTitle, collapsed, mainColor10Lighter, menuItemStyles) => {
   
-
+ 
   return (
     <MenuItem
       key={item.title}

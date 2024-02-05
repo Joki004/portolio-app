@@ -23,16 +23,14 @@ export const ElementsProvider = ({ children }) => {
     "#b3c1cd"
   );
 
-  const [sideBarBackgroundMode, setSideBarBackgroundMode] = useLocalStorageState("sideBarBackground","color");
+  const [sideBarBackgroundMode, setSideBarBackgroundMode] =
+    useLocalStorageState("sideBarBackground", "color");
 
-  
-  const [darkMode,setDarkMode] = useLocalStorageState("darkMode",false);
+  const [darkMode, setDarkMode] = useLocalStorageState("darkMode", false);
 
-  
-const updatesideBarBackground = (mode) => {
-  setSideBarBackgroundMode(mode);
-};
-
+  const updatesideBarBackground = (mode) => {
+    setSideBarBackgroundMode(mode);
+  };
 
   const updateColor = (newColor) => {
     if (newColor === "var(--primary-color)") {
@@ -52,9 +50,9 @@ const updatesideBarBackground = (mode) => {
     setSubtitle2(newColor);
   };
 
-  const updateDarkMode = ()=>{
+  const updateDarkMode = () => {
     setDarkMode(!darkMode);
-  }
+  };
   const updateActiveTitle = (title) => {
     setActiveTitle(title);
   };
@@ -74,7 +72,7 @@ const updatesideBarBackground = (mode) => {
         updateDarkMode,
         updatesideBarBackground,
         updateSubtitle2,
-        updateActiveTitle
+        updateActiveTitle,
       }}
     >
       {children}
@@ -85,9 +83,7 @@ const updatesideBarBackground = (mode) => {
 export const useElements = () => {
   const context = useContext(Elements);
   if (context === undefined) {
-    throw new Error(
-      "useElements must be used within a ElementsProvider"
-    );
+    throw new Error("useElements must be used within a ElementsProvider");
   }
   return context;
 };

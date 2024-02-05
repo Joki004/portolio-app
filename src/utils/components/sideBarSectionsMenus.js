@@ -1,7 +1,8 @@
 import { SubMenu } from "react-pro-sidebar";
 import { CustomIcon } from "./icons";
-import { renderMenuItem } from "../functions/renders";
+import { RenderMenuItem } from "../functions/renders";
 
+export let refs;
 const SideBarSectionsMenus = ({
   sideBarSections,
   activeTitle,
@@ -9,11 +10,14 @@ const SideBarSectionsMenus = ({
   mainColor10Lighter,
   menuItemStyles,
 }) => {
+
+
   return sideBarSections.map((section) =>
     section.subMenu ? (
       <SubMenu
         style={{ ...menuItemStyles.MenuItem }}
         key={section.title}
+   
         icon={
           <CustomIcon
             size={menuItemStyles.size.IconSize}
@@ -28,7 +32,7 @@ const SideBarSectionsMenus = ({
         label={section.title}
       >
         {section.subMenu.map((subItem) =>
-          renderMenuItem(
+          RenderMenuItem(
             subItem,
             true,
             activeTitle,
@@ -39,7 +43,7 @@ const SideBarSectionsMenus = ({
         )}
       </SubMenu>
     ) : (
-      renderMenuItem(
+      RenderMenuItem(
         section,
         false,
         activeTitle,

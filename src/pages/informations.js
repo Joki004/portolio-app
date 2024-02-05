@@ -8,7 +8,7 @@ const Informations = () => {
   const { activeTitle, updateActiveTitle } = useElements();
   const [scrollTop, setScrollTop] = useState(0);
   const elementRef = useRef(null);
-
+  
   const handleScroll = useCallback(() => {
     const newScrollTop = elementRef.current?.scrollTop || 0;
     setScrollTop(newScrollTop);
@@ -18,7 +18,6 @@ const Informations = () => {
   }, [activeTitle, updateActiveTitle, scrollTop]);
 
   useEffect(() => {
-  
     elementRef.current = document.getElementById("container");
 
     window.addEventListener("scroll", handleScroll);
@@ -35,6 +34,7 @@ const Informations = () => {
     >
       {sideBarSections.map((section) => (
         <Section
+         
           key={section.id}
           title={section.title}
           id={section.id}
