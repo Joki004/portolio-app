@@ -119,3 +119,13 @@ export const handleClickScroll = (sectionID) => {
     element.scrollIntoView({ behavior: 'smooth' });
   }
 };
+export const getLastId = (sideBarSections) => {
+  const lastItem = sideBarSections[sideBarSections.length - 1];
+  return lastItem ? lastItem.id : null;
+};
+
+export const getFirstId = (sideBarSections) => {
+  const firstItem = sideBarSections[0];
+  return firstItem ? firstItem.id : null;
+};
+

@@ -11,6 +11,7 @@ const iconWork = require("../../assets/work-system-solid-178.json");
 const iconBug = require("../../assets/bug-system-solid-21.json");
 const iconEmail = require("../../assets/email-system-solid-59.json");
 const iconSettings = require("../../assets/rest-api-wired-lineal-1330.json");
+const iconArrowUp = require("../../assets/arrow-up-system-solid-11.json");
 //ALL STATES FOR EACH ICON
 
 const iconStateMap = {
@@ -52,6 +53,11 @@ const iconStateMap = {
     hover1: "hover-machine",
     hover2: "hover-pinch",
   },
+  arrowUpIcon: {
+    clicked: "in-arrow-up",
+    hover1: "hover-arrow-up-1",
+    hover2: "hover-arrow-up-2",
+  },
 };
 const IconStyle = {
   border: "solid 3px",
@@ -82,6 +88,8 @@ const getIconType = (iconName) => {
       return iconEmail;
     case "settingsIcon":
       return iconSettings;
+    case "arrowUpIcon":
+      return iconArrowUp;
     default:
       return null;
   }
@@ -107,6 +115,8 @@ const getIconState = (iconName, currentState) => {
     case "emailIcon":
       return currentState === "enter" ? iconState.hover1 : null;
     case "settingsIcon":
+      return currentState === "enter" ? iconState.hover1 : null;
+    case "arrowUpIcon":
       return currentState === "enter" ? iconState.hover1 : null;
     default:
       return null;
