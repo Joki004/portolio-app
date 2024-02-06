@@ -3,7 +3,7 @@ import Section from "../utils/components/sections";
 import { useElements } from "../utils/functions/context";
 import { DetermineActiveTitle } from "../utils/functions/function";
 import { sideBarSections } from "../utils/functions/datas";
-
+import SectionDisplay from "../utils/components/sectionsDisplay";
 const Informations = () => {
   const { activeTitle, updateActiveTitle } = useElements();
   const [scrollTop, setScrollTop] = useState(0);
@@ -32,16 +32,7 @@ const Informations = () => {
       onScroll={handleScroll}
       id="container"
     >
-      {sideBarSections.map((section) => (
-        <Section
-         
-          key={section.id}
-          title={section.title}
-          id={section.id}
-          scrollTop={scrollTop}
-          content={section.content}
-        />
-      ))}
+     <SectionDisplay  />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { SubMenu } from "react-pro-sidebar";
 import { CustomIcon } from "./icons";
 import { RenderMenuItem } from "../functions/renders";
-
+import { handleClickScroll } from "../functions/function";
 export let refs;
 const SideBarSectionsMenus = ({
   sideBarSections,
@@ -17,7 +17,7 @@ const SideBarSectionsMenus = ({
       <SubMenu
         style={{ ...menuItemStyles.MenuItem }}
         key={section.title}
-   
+        onClick={() => handleClickScroll(section.id)}
         icon={
           <CustomIcon
             size={menuItemStyles.size.IconSize}

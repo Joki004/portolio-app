@@ -112,3 +112,10 @@ export const determineSidebarColor = (
   }
 };
 
+export const handleClickScroll = (sectionID) => {
+  const element = document.getElementById(sectionID);
+  if (element) {
+   console.log(`scrolling to ${sectionID}`)
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
