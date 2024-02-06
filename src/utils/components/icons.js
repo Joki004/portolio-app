@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect,useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Player } from "@lordicon/react";
 import { useElements } from "../functions/context";
 
@@ -11,6 +11,7 @@ const iconWork = require("../../assets/work-system-solid-178.json");
 const iconBug = require("../../assets/bug-system-solid-21.json");
 const iconEmail = require("../../assets/email-system-solid-59.json");
 const iconSettings = require("../../assets/rest-api-wired-lineal-1330.json");
+const iconArrowUp = require("../../assets/arrow-up-system-solid-11.json");
 //ALL STATES FOR EACH ICON
 
 const iconStateMap = {
@@ -52,6 +53,11 @@ const iconStateMap = {
     hover1: "hover-machine",
     hover2: "hover-pinch",
   },
+  arrowUpIcon: {
+    clicked: "in-arrow-up",
+    hover1: "hover-arrow-up-1",
+    hover2: "hover-arrow-up-2",
+  },
 };
 const IconStyle = {
   border: "solid 3px",
@@ -82,11 +88,12 @@ const getIconType = (iconName) => {
       return iconEmail;
     case "settingsIcon":
       return iconSettings;
+    case "arrowUpIcon":
+      return iconArrowUp;
     default:
       return null;
   }
 };
-
 
 const getIconState = (iconName, currentState) => {
   if (!iconStateMap[iconName]) throw new Error("Icon not found");
@@ -109,6 +116,8 @@ const getIconState = (iconName, currentState) => {
       return currentState === "enter" ? iconState.hover1 : null;
     case "settingsIcon":
       return currentState === "enter" ? iconState.hover1 : null;
+    case "arrowUpIcon":
+      return currentState === "enter" ? iconState.hover1 : null;
     default:
       return null;
   }
@@ -120,24 +129,36 @@ export const CustomIcon = ({
   iconName,
   boxsize = "50px",
   collapsed = false,
+  isSectionActive = false,
 }) => {
- 
-  const {  mainColor20Lighter } = useElements();
+  const { mainColor20Lighter } = useElements();
   const [state, setState] = useState(null);
   const playerRef = useRef(null);
-
   const playAnimation = useCallback(() => {
     if (state !== null) {
       playerRef.current?.play();
     }
   }, [state]);
-
+  function determineBorder(collapsed, isSectionActive) {
+    if (collapsed) {
+      if (isSectionActive) {
+        return "solid 6px";
+      } else {
+        return "solid 3px";
+      }
+    } else {
+      if (isSectionActive) {
+        return "solid 6px";
+      }
+      return "none";
+    }
+  }
   const iconStyle = {
     ...IconStyle,
     width: parseInt(boxsize) + 10 + "px",
     height: parseInt(boxsize) + 10 + "px",
     color: mainColor20Lighter,
-    border: collapsed === false ? "none" : "solid 3px",
+    border: determineBorder(collapsed, isSectionActive),
   };
 
   const handleClicked = () => {
@@ -150,7 +171,7 @@ export const CustomIcon = ({
 
   useEffect(() => {
     playAnimation();
-  }, [state,playAnimation]);
+  }, [state, playAnimation]);
 
   return (
     <div

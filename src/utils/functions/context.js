@@ -4,7 +4,7 @@ import { useLocalStorageState } from "../functions/function";
 const Elements = createContext();
 
 export const ElementsProvider = ({ children }) => {
-  const [activeTitle, setActiveTitle] = useState("Section 1");
+  const [activeTitle, setActiveTitle] = useState("Home");
   const [subtitle2, setSubtitle2] = useState("var(--dark-theme-background)");
   const [mainColor, setMainColor] = useLocalStorageState(
     "mainColor",
@@ -23,16 +23,14 @@ export const ElementsProvider = ({ children }) => {
     "#b3c1cd"
   );
 
-  const [sideBarBackgroundMode, setSideBarBackgroundMode] = useLocalStorageState("sideBarBackground","color");
+  const [sideBarBackgroundMode, setSideBarBackgroundMode] =
+    useLocalStorageState("sideBarBackground", "color");
 
-  
-  const [darkMode,setDarkMode] = useLocalStorageState("darkMode",false);
+  const [darkMode, setDarkMode] = useLocalStorageState("darkMode", false);
 
-  
-const updatesideBarBackground = (mode) => {
-  setSideBarBackgroundMode(mode);
-};
-
+  const updatesideBarBackground = (mode) => {
+    setSideBarBackgroundMode(mode);
+  };
 
   const updateColor = (newColor) => {
     if (newColor === "var(--primary-color)") {
@@ -52,9 +50,9 @@ const updatesideBarBackground = (mode) => {
     setSubtitle2(newColor);
   };
 
-  const updateDarkMode = ()=>{
+  const updateDarkMode = () => {
     setDarkMode(!darkMode);
-  }
+  };
   const updateActiveTitle = (title) => {
     setActiveTitle(title);
   };
@@ -74,7 +72,7 @@ const updatesideBarBackground = (mode) => {
         updateDarkMode,
         updatesideBarBackground,
         updateSubtitle2,
-        updateActiveTitle
+        updateActiveTitle,
       }}
     >
       {children}
@@ -85,9 +83,7 @@ const updatesideBarBackground = (mode) => {
 export const useElements = () => {
   const context = useContext(Elements);
   if (context === undefined) {
-    throw new Error(
-      "useElements must be used within a ElementsProvider"
-    );
+    throw new Error("useElements must be used within a ElementsProvider");
   }
   return context;
 };

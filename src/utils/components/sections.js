@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
+
 import { motion, useAnimation } from "framer-motion";
 import {
-  getElementbyIdHeightPostion,
+  getElementByIdHeightPosition,
   DetermineTitleSectionColor,
   DetermineTitleWidth,
-  checks,
 } from "../functions/function";
 import { useElements } from "../functions/context";
 
-const Section = ({ title, id, scrollTop, content }) => {
+const Section = ({ title, id, content }) => {
   const [TopPostion, setTopPosition] = useState(0);
   const [BottomPostion, setBottomPosition] = useState(0);
   const [shouldFill, setShouldFill] = useState(false);
@@ -37,7 +37,7 @@ const Section = ({ title, id, scrollTop, content }) => {
     updateElementWidth();
     const element = document.getElementById(id);
     if (element) {
-      const { top, bottom } = getElementbyIdHeightPostion(id);
+      const { top, bottom } = getElementByIdHeightPosition(id);
       setBottomPosition(bottom);
       setTopPosition(top);
     }
@@ -59,7 +59,7 @@ const Section = ({ title, id, scrollTop, content }) => {
   }, [
     TopPostion,
     BottomPostion,
-    scrollTop,
+    
     shouldFill,
     elementWidth,
     id,
@@ -105,8 +105,7 @@ const Section = ({ title, id, scrollTop, content }) => {
           ...SectionStyle.content,
         }}
       >
-        {checks(id)}
-        {` ${activeTitle} ${BottomPostion} ${window.innerHeight}`} {content}
+        {` ${TopPostion}`} {content}
       </motion.div>
     </div>
   );
