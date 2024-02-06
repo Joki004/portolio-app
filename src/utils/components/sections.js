@@ -59,7 +59,7 @@ const Section = ({ title, id, content }) => {
   }, [
     TopPostion,
     BottomPostion,
-    
+
     shouldFill,
     elementWidth,
     id,

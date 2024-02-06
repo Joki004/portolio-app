@@ -1,7 +1,7 @@
 import React from "react";
 import { socialLinks } from "../functions/datas";
 import { AnimatePresence,motion } from "framer-motion";
-
+import {useElements} from "../functions/context";
 const socialsLinksStyle = {
   socials: {
     display: "flex",
@@ -40,6 +40,9 @@ function determineHeref(link){
   return link.href;
 }
 const SocialLinks = ({size='30px'}) => {
+  const {mainColor20lighter} = useElements();
+  socialsLinksStyle.socialsLinks.height = parseInt(size)+10;
+  socialsLinksStyle.socialsLinks.width =  parseInt(size)+10;
   return (
     <AnimatePresence>
     <div style={{ ...socialsLinksStyle.socialsLinksBox }}>
@@ -59,7 +62,7 @@ const SocialLinks = ({size='30px'}) => {
           style={{
             ...socialsLinksStyle.socialsLinks,
             backgroundColor: link.backgroundColor || "",
-            borderColor: link.borderColor || "black",
+            borderColor: link.borderColor || mainColor20lighter,
           }}
           href={determineHeref(link)}
           target="_blank"
