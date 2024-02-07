@@ -10,30 +10,18 @@ const person = {
 
 let HelloText = "Frontend developper";
 
-let aboutmeText1 = `I find it challenging to sum up my passions because 
-there's just so much I'm enthusiastic about. But if I had to choose 
-one word, it would be "DISCOVERING." I absolutely love the thrill 
-of uncovering new things, whether it's ideas, concepts, or solutions. 
-Like a Swiss Army Knife, I thrive on simplifying complex concepts into 
-clear and profound expressions.`;
+let aboutmeText1 = `Talking about myself is challenging because I'm enthusiastic about so many things. But if I had to pick one word, it would be "DISCOVERING." I love uncovering new domains,ideas, concepts, or solutions, much like a Swiss Army Knife simplifying complexity into clarity.`;
 
-let abotmeText2 =`As a third-year student in computer science, I'm
- eager to constantly grow and deeply passionate about programming. 
- With strong communication skills, I'm not just limited to computer 
- science; I'm open to exploring various fields. Proficient in web 
- applications, I actively seek out new technologies to contribute 
- innovative solutions across different domains. My ultimate goal 
- is to become a versatile professional, much like a 'Swiss Army Knife,'
-  excelling in multiple areas while retaining expertise as a highly 
-  skilled programmer.` 
+let aboutmeText2 =`As a third-year computer science student, I'm deeply passionate about programming and eager to grow. I'm open to exploring various fields, including those not directly related to my studies. Proficient in web applications, I actively seek out new technologies to contribute innovative solutions across domains. My ultimate goal is to become a versatile professional, excelling in multiple areas while retaining expertise in programming to become a full-stack developer.` 
 
-  let abotmeText3 = `Outside of work, I'm a sports enthusiast, 
-  culinary aficionado, and music lover. I derive immense joy from 
-  exploring these diverse interests, which enrich both my personal
-   and professional life. Continuously sharpening my software
-    development skills, I also dedicate time to personal 
-    development, ensuring I'm a well-rounded individual 
-    prepared to tackle any challenge head-on.`
+  let aboutmeText3 = `Outside of academia, I enjoy sports, cuisine, and music, enriching both my personal and professional life. Continuously sharpening my software development skills, I also dedicate time to personal growth, ensuring I'm well-prepared to tackle any challenge.`
+  
+  const aboutMeText={
+    aboutmeText1,
+    aboutmeText2,
+    aboutmeText3
+  }
+  
 export const sideBarSections = [
   {
     title: "Home",
@@ -45,7 +33,7 @@ export const sideBarSections = [
   {
     title: "About me",
     id: "AboutMe",
-    content: <AboutMe person={person} />,
+    content: <AboutMe person={person} aboutMeText={aboutMeText} />,
     icon: "aboutIcon",
     label: "About",
     subMenu: [
