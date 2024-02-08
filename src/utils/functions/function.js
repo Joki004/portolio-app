@@ -32,18 +32,22 @@ export function DetermineTexColor(darkMode) {
   } else return "var(--dark-theme-surface)";
 }
 
-export function DetermineTitleSectionColor(darkMode, shoudFill, background) {
+export function DetermineTitleSectionColor(darkMode, shouldFill, background) {
   if (background.toLowerCase() === "regular") {
-    if (shoudFill) {
-      if (darkMode || !darkMode) {
+    if (darkMode) {
+      if (shouldFill || !shouldFill) {
         return "var(--light-theme-surface)";
       }
-    } else {
-      if (darkMode) {
-        return "var(--dark-theme-surface)";
-      } else return "var(--light-theme-surface)";
+    } else if (!darkMode) {
+      if (!shouldFill) {
+        return "var(--dark-theme-status-bar)";
+      } else if (shouldFill) {
+        return "var(--light-theme-surface)";
+      }
     }
-  } else return "var(--light-theme-surface)";
+  } else {
+    return "var(--light-theme-surface)";
+  }
 }
 
 export function DetermineActiveTitle(sections, activeTile, scrollTop) {
@@ -187,7 +191,10 @@ export function getTextColor(darkMode, background) {
   if (background.toLowerCase() === "regular") {
     if (darkMode) {
       return "var(--light-theme-surface)";
-    } else return "var(-dark-theme-status-bar)";
+    } 
+    else if(!darkMode){
+      return "var(--dark-theme-status-bar)";
+    }
   }
   return "var(--light-theme-surface)";
 }

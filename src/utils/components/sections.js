@@ -13,16 +13,16 @@ const Section = ({ title, id, content }) => {
   const [BottomPostion, setBottomPosition] = useState(0);
   const [shouldFill, setShouldFill] = useState(false);
   const controls = useAnimation();
-  const { darKMode, mainColor, activeTitle, backgroundColorBody } = useElements();
+  const { darkMode, mainColor, activeTitle, backgroundColorBody } = useElements();
   const [textColor, setTextColor] = useState(
-    DetermineTitleSectionColor(darKMode, shouldFill, backgroundColorBody)
+    DetermineTitleSectionColor(darkMode, shouldFill, backgroundColorBody)
   );
   const sectionRef = useRef(null);
   const [elementWidth, setElementWidth] = useState(0);
-
+  console.log(`DarkMode :  ${darkMode}`)
   useEffect(() => {
   
-    setTextColor(DetermineTitleSectionColor(darKMode, shouldFill, backgroundColorBody));
+    setTextColor(DetermineTitleSectionColor(darkMode, shouldFill, backgroundColorBody));
     const observer = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const newWidth = entry.contentRect.width;
@@ -70,7 +70,7 @@ const Section = ({ title, id, content }) => {
     mainColor,
     controls,
     activeTitle,
-    darKMode,
+    darkMode,
     backgroundColorBody,
   ]);
 

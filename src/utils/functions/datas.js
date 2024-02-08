@@ -23,11 +23,11 @@ const aboutMeText = {
 };
 
 const languageData = [
-  { language: "French", proficiency: 100 },
-  { language: "Shwahili", proficiency: 100 },
-  { language: "English", proficiency: 95 },
-  { language: "Polish", proficiency: 85 },
-  { language: "Spanish", proficiency: 50 },
+  { language: "French", proficiency: 100,level:"Native" },
+  { language: "Shwahili", proficiency: 100 , level:"Native" },
+  { language: "English", proficiency: 95, level:"Fluent"},
+  { language: "Polish", proficiency: 85, level:"Fluent"},
+  { language: "Spanish", proficiency: 50, level:"Intermediate"},
  
   
 ];

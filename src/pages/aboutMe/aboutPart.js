@@ -5,6 +5,7 @@ import {
 } from "../../utils/functions/function";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
+import './aboutMe.css'
 const AboutMeSectionStyle = {
     box: {
       flex: 1,
@@ -125,9 +126,9 @@ const AboutMeSectionStyle = {
     const { mainColor, mainColor10Lighter, windowWidth } = useElements();
   
     AboutMeSectionStyle.sectionTitle.color = mainColor;
-    AboutMeSectionStyle.box.flexDirection = windowWidth > 900 ? "row" : "column";
-    AboutMeSectionStyle.leftBox.width = windowWidth > 900 ? "50%" : "100%";
-    AboutMeSectionStyle.rightBox.width = windowWidth > 900 ? "50%" : "100%";
+    AboutMeSectionStyle.box.flexDirection = windowWidth > 950 ? "row" : "column";
+    AboutMeSectionStyle.leftBox.width = windowWidth > 950 ? "50%" : "100%";
+    AboutMeSectionStyle.rightBox.width = windowWidth > 950 ? "50%" : "100%";
     AboutMeSectionStyle.title.fontSize = getFontSizeHeader("h1");
     AboutMeSectionStyle.body.fontSize = getFontsizeContent("body1");
     AboutMeSectionStyle.p.fontSize = getFontsizeContent("body1");
@@ -168,7 +169,8 @@ const AboutMeSectionStyle = {
                   <ProgressBar
                     style={{ ...AboutMeSectionStyle.ProgressBar }}
                     now={language.proficiency}
-                    label={`${language.proficiency} %`}
+                    label={`${language.level}`}
+                    variant="ProgressColor"
                   />
                 </div>
               </span>

@@ -1,0 +1,4 @@
+.ProgressColor{
+    background-color: var(--primary-color);
+    height: 50px;
+}
