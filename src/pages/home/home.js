@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import SocialLinks from "../../utils/components/socialLinks";
 import { useElements } from "../../utils/functions/context";
-import { getFontSizeHeader,getFontsizeContent } from "../../utils/functions/function";
+import {
+  getFontSizeHeader,
+  getFontsizeContent,
+  getTextColor
+} from "../../utils/functions/function";
 const HomeStyle = {
   HomeBox: {
     flex: 1,
@@ -11,6 +15,7 @@ const HomeStyle = {
     justifyContent: "center",
     display: "flex",
     flexDirection: "column",
+    color: "black",
   },
   image: {
     width: window.innerWidth > 1000 ? "15%" : "30%",
@@ -27,12 +32,12 @@ const HomeStyle = {
     width: window.innerWidth > 500 ? "50%" : "80%",
     textAlign: "center",
     whiteSpace: "nowrap",
-    color: "white",
     border: "1px solid",
     padding: "2px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    color: "white",
   },
   social: {
     borderRadius: "20px",
@@ -51,37 +56,45 @@ const HomeStyle = {
     justifyContent: "center",
   },
   extra: {
-    color: "var(--dark-theme-surface)",
     fontSize: "20px",
   },
 };
 
 const Home = ({ imageURL, person, text }) => {
-  const { mainColor, mainColor10Lighter,windowWidth,updateWindowWidth } = useElements();
- 
+  const {
+    mainColor,
+    mainColor10Lighter,
+    windowWidth,
+    updateWindowWidth,
+    darkMode,
+    backgroundColorBody,
+  } = useElements();
+
   const elementRef = useRef(null);
+  const [textColor, setTextColor] = useState(
+    getTextColor(darkMode, backgroundColorBody)
+  );
 
   HomeStyle.description.backgroundColor = mainColor;
   HomeStyle.social.borderColor = mainColor10Lighter;
   HomeStyle.image.backgroundColor = mainColor;
  
+
   useEffect(() => {
+    setTextColor(getTextColor(darkMode, backgroundColorBody));
+    HomeStyle.HomeBox.color = textColor;
     window.addEventListener("resize", updateWindowWidth);
-    console.log("windowWidth", windowWidth);
-    
     return () => {
       window.removeEventListener("resize", updateWindowWidth);
     };
-  }, [windowWidth]);
+  }, [windowWidth, darkMode, backgroundColorBody,textColor,updateWindowWidth]);
 
   HomeStyle.image.width = windowWidth > 1000 ? "18%" : "50%";
   HomeStyle.description.width = windowWidth > 1000 ? "15em" : "80%";
-  HomeStyle.description.fontSize = getFontSizeHeader('h3');
-  HomeStyle.person.fontSize = getFontSizeHeader('h2');
-  HomeStyle.extra.fontSize = getFontsizeContent('body2');
- 
+  HomeStyle.description.fontSize = getFontSizeHeader("h3");
+  HomeStyle.person.fontSize = getFontSizeHeader("h2");
+  HomeStyle.extra.fontSize = getFontsizeContent("body2");
 
- 
   return (
     <div ref={elementRef} style={{ ...HomeStyle.HomeBox }}>
       <img

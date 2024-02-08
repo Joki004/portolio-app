@@ -12,6 +12,8 @@ export function SettingModal({ show, handleClose, handleShow }) {
     mainColor,
     updateColor,
     updatesideBarBackground,
+    backgroundColorBody,
+    updateBackgroundColor,
   } = useElements();
 
   const Modalstyle = {
@@ -103,8 +105,8 @@ export function SettingModal({ show, handleClose, handleShow }) {
   };
 
   useEffect(() => {
-  
-  }, [darkMode]);
+    
+  }, [darkMode,backgroundColorBody]);
 
   return (
     <>
@@ -200,6 +202,7 @@ export function SettingModal({ show, handleClose, handleShow }) {
                       ? "var(--light-theme-surface)"
                       : "var(--dark-theme-status-bar)",
                   }}
+                  onClick={() => updateBackgroundColor("regular")}
                 >
                   Regular
                 </button>
@@ -209,6 +212,7 @@ export function SettingModal({ show, handleClose, handleShow }) {
                     backgroundColor: mainColor10Lighter,
                     borderColor: "none",
                   }}
+                  onClick={() => updateBackgroundColor("paralax")}
                 >
                   Paralax
                 </button>

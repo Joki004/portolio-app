@@ -27,6 +27,12 @@ export const ElementsProvider = ({ children }) => {
     useLocalStorageState("sideBarBackground", "color");
 
   const [darkMode, setDarkMode] = useLocalStorageState("darkMode", false);
+  const [backgroundColorBody, setBackgroundColorBody] = useLocalStorageState('backgroundColor', 'regular');
+
+  const updateBackgroundColor = (mode) => {
+    setBackgroundColorBody(mode);
+  };
+  
 
   const updatesideBarBackground = (mode) => {
     setSideBarBackgroundMode(mode);
@@ -72,6 +78,8 @@ export const ElementsProvider = ({ children }) => {
         subtitle2,
         activeTitle,
         windowWidth,
+        backgroundColorBody,
+        updateBackgroundColor,
         updateColor,
         updateWindowWidth,
         updateDarkMode,

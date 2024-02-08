@@ -8,6 +8,7 @@ const SectionDisplay = () => {
       title={section.title}
       id={section.id}
       content={section.content}
+     
     />
   ));
 };
