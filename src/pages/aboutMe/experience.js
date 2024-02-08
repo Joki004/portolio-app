@@ -14,18 +14,16 @@ const Experience = ({ timeline, title }) => {
   const [isCollapsed, setIsCollapsed] = useState(
     new Array(timeline.length).fill(false)
   );
-  console.log("isCollapsed", isCollapsed);
-  // Create an array of state variables for hover styling
   const [hoverStates, setHoverStates] = useState(
     new Array(timeline.length).fill(false)
   );
   useEffect(() => {}, [hoverStates, isCollapsed]);
+
   const handleMouseEnter = (index) => {
     const updatedHoverStates = [...hoverStates];
     updatedHoverStates[index] = true;
     setHoverStates(updatedHoverStates);
   };
-
   const handleMouseLeave = (index) => {
     const updatedHoverStates = [...hoverStates];
     updatedHoverStates[index] = false;
@@ -79,7 +77,6 @@ const Experience = ({ timeline, title }) => {
       height: "40px",
       whiteSpace: "nowrap",
       fontSize: getFontsizeContent("body2"),
-      // Apply hover styling based on hover state
       backgroundColor: mainColor10Lighter,
     },
     organization: {
@@ -127,13 +124,24 @@ const Experience = ({ timeline, title }) => {
     <div>
       <h1 style={{ ...styles.h1 }}>{title}</h1>
       {timeline.map((data, index) => (
-        <div key={index} style={{ ...styles.body }}>
-          <div style={{ ...styles.header }}>
+        <div
+          key={index}
+          style={{ ...styles.body }}
+          
+        >
+          <div
+            style={{ ...styles.header }}
+            onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={() => handleMouseLeave(index)}
+          >
             <div style={styles.circle}></div>
             <div
-              style={{ ...styles.date }} // Pass index to access correct hover state
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={() => handleMouseLeave(index)}
+              style={{
+                ...styles.date,
+                backgroundColor: hoverStates[index]
+                  ? mainColor
+                  : mainColor20Lighter,
+              }} 
             >
               {data.date}
             </div>
@@ -172,7 +180,7 @@ const Experience = ({ timeline, title }) => {
                   style={{
                     height: isCollapsed[index] ? "auto" : "0", // Set fixed height when not expanded
                     overflow: "hidden",
-                    transition: "height 1s",
+                    transition: "height 0.5s",
 
                     width: "100%",
                   }}
