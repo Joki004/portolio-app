@@ -42,7 +42,7 @@ const AboutMeSectionStyle = {
       textAlign: "center",
       whiteSpace: "nowrap",
       color: "white",
-  
+      textDecoration: "underline",
       padding: "2px",
       display: "flex",
       alignItems: "center",

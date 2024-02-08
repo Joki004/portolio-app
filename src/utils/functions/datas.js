@@ -32,6 +32,19 @@ const languageData = [
   
 ];
 
+const zfDescription=`"I've been an essential contributor to the 'Innovation' project at Lodz University of Technology, where we partnered with industry leaders to tackle real-world challenges. My focus revolved around developing a platform leveraging MySQL, Ansible, HTML, and PHP to automate software installations and configurations on virtual machines within the ZF network. From enabling seamless machine selection to facilitating the installation process, my role was instrumental in optimizing our workflow and enhancing efficiency."`
+const freeLance = `During 2018-2019, I freelanced as a small business manager, overseeing operations for a taxi service. My responsibilities included tracking entries and expenses meticulously using Excel sheets. Additionally, I collaborated with companies specializing in data sales for online platforms, ensuring accurate record-keeping and efficient management of our business operations.`
+
+const SSSDescription = `I've been part of a groundbreaking project named 'Innovation.' Here, at Lodz University of Technology, we collaborated with leading companies, tackling real-world tasks throughout the semester. I took charge of developing the frontend interface using React Native, enhancing user experience and pushing boundaries!" 🚀`
+const universityDescription = `I am currently pursuing a Bachelor's degree in Computer Science at Lodz University of Technology, where I've been honing my skills in software development, data structures, and algorithms.`
+ const timelineData=[
+    {date:'11-2023 - 02-2024', organization: 'Soft Smart Solution', position: 'Internship',description:SSSDescription},
+    {date:'04-2023 - 09-2023', organization: 'ZF friedrichshafen', position: 'Internship',description:zfDescription},
+    {date:"2021 - present", organization:'Politechnika Łódzka', position:'Bachelor Degree in Computer Science', description: universityDescription},
+    {date:"2018 - 2019", organization:'Free lance', position:'management of a small business',description:freeLance},   
+
+];
+
 export const sideBarSections = [
   {
     title: "Home",
@@ -48,6 +61,7 @@ export const sideBarSections = [
         person={person}
         aboutMeText={aboutMeText}
         languageData={languageData}
+        timelineData={timelineData}
       />
     ),
     icon: "aboutIcon",
@@ -117,3 +131,5 @@ export const socialLinks = [
     typeIcon: null,
   },
 ];
+
+

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-
+import Experience from "./experience";
 import AboutMeSection from "./aboutPart";
+
 const aboutMeStyle = {
   box: {
     padding: "10px",
@@ -14,7 +15,8 @@ const aboutMeStyle = {
   },
 };
 
-const AboutMe = ({ person, aboutMeText, languageData }) => {
+const AboutMe = ({ person, aboutMeText, languageData,  timelineData
+}) => {
   return (
     <div style={{ ...aboutMeStyle.box }}>
       <AboutMeSection
@@ -22,6 +24,7 @@ const AboutMe = ({ person, aboutMeText, languageData }) => {
         texts={aboutMeText}
         languageData={languageData}
       />
+      <Experience timeline={timelineData} title={'Education &Experience'} />
     </div>
   );
 };

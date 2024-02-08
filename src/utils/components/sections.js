@@ -19,7 +19,7 @@ const Section = ({ title, id, content }) => {
   );
   const sectionRef = useRef(null);
   const [elementWidth, setElementWidth] = useState(0);
-  console.log(`DarkMode :  ${darkMode}`)
+ 
   useEffect(() => {
   
     setTextColor(DetermineTitleSectionColor(darkMode, shouldFill, backgroundColorBody));
