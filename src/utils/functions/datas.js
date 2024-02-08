@@ -8,32 +8,48 @@ const person = {
   lastName: "Mumb Mulaj Kambaj",
 };
 
-let HelloText = "Frontend developper";
+const jobTitle = "Frontend developper";
 
-let aboutmeText1 = `Talking about myself is challenging because I'm enthusiastic about so many things. But if I had to pick one word, it would be "DISCOVERING." I love uncovering new domains,ideas, concepts, or solutions, much like a Swiss Army Knife simplifying complexity into clarity.`;
+let aboutmeText1 = `Talking about myself is challenging because I'm enthusiastic about so many things. But if I had to pick one word, it would be "DISCOVERING." I love uncovering new domains, ideas, concepts, or solutions, much like a Swiss Army Knife simplifying complexity into clarity.`;
 
-let aboutmeText2 =`As a third-year computer science student, I'm deeply passionate about programming and eager to grow. I'm open to exploring various fields, including those not directly related to my studies. Proficient in web applications, I actively seek out new technologies to contribute innovative solutions across domains. My ultimate goal is to become a versatile professional, excelling in multiple areas while retaining expertise in programming to become a full-stack developer.` 
+let aboutmeText2 = `As a third-year computer science student, I'm deeply passionate about programming and eager to grow. I'm open to exploring various fields, including those not directly related to my studies. Proficient in web applications, I actively seek out new technologies to contribute innovative solutions across domains. My ultimate goal is to become a versatile professional, excelling in multiple areas while retaining expertise in programming to become a full-stack developer.`;
 
-  let aboutmeText3 = `Outside of academia, I enjoy sports, cuisine, and music, enriching both my personal and professional life. Continuously sharpening my software development skills, I also dedicate time to personal growth, ensuring I'm well-prepared to tackle any challenge.`
+let aboutmeText3 = `Outside of academia, I enjoy sports, cuisine, and music, enriching both my personal and professional life. Continuously sharpening my software development skills, I also dedicate time to personal growth, ensuring I'm well-prepared to tackle any challenge.`;
+
+const aboutMeText = {
+  aboutmeText1,
+  aboutmeText2,
+  aboutmeText3,
+};
+
+const languageData = [
+  { language: "French", proficiency: 100 },
+  { language: "Shwahili", proficiency: 100 },
+  { language: "English", proficiency: 95 },
+  { language: "Polish", proficiency: 85 },
+  { language: "Spanish", proficiency: 50 },
+ 
   
-  const aboutMeText={
-    aboutmeText1,
-    aboutmeText2,
-    aboutmeText3
-  }
-  
+];
+
 export const sideBarSections = [
   {
     title: "Home",
     id: "Home",
-    content: <Home imageURL={imageURL} person={person} text={HelloText} />,
+    content: <Home imageURL={imageURL} person={person} text={jobTitle} />,
     icon: "HomeIcon",
     label: "Home",
   },
   {
     title: "About me",
     id: "AboutMe",
-    content: <AboutMe person={person} aboutMeText={aboutMeText} />,
+    content: (
+      <AboutMe
+        person={person}
+        aboutMeText={aboutMeText}
+        languageData={languageData}
+      />
+    ),
     icon: "aboutIcon",
     label: "About",
     subMenu: [

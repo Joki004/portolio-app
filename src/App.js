@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <ElementsProvider>
-        <Body />
+        <Body className={'App'}/>
       </ElementsProvider>
     </Router>
   );

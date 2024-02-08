@@ -115,8 +115,8 @@ export const determineSidebarColor = (
 export const handleClickScroll = (sectionID) => {
   const element = document.getElementById(sectionID);
   if (element) {
-   console.log(`scrolling to ${sectionID}`)
-    element.scrollIntoView({ behavior: 'smooth' });
+    console.log(`scrolling to ${sectionID}`);
+    element.scrollIntoView({ behavior: "smooth" });
   }
 };
 export const getLastId = (sideBarSections) => {
@@ -129,3 +129,33 @@ export const getFirstId = (sideBarSections) => {
   return firstItem ? firstItem.id : null;
 };
 
+
+export function getFontsizeTitle(screenWidth) {
+  if (screenWidth <= 768) {
+    return "var(--mobile-title-font)";
+  } else if (screenWidth > 768 && screenWidth < 1024) {
+    return "var(--tablet-title-font)";
+  } else if (screenWidth >= 1024) {
+    return "var(--desktop-title-font)";
+  }
+}
+
+export function getFontSizeHeader(type) {
+  switch(type){
+    case 'h1': return "var(--header-h1-font)";
+    case 'h2': return "var(--header-h2-font)";
+    case 'h3': return "var(--header-h3-font)";
+    case 'h4': return "var(--header-h4-font)";
+    case 'h5': return "var(--header-h5-font)";
+    case 'h6': return "var(--header-h6-font)";
+    default: return "var(--header-h1-font)";
+  }
+}
+
+export function getFontsizeContent(type) {
+ switch(type){
+  case 'body1': return 'var(--body-1-font)';
+  case 'body2': return 'var(--body-2-font)';
+  default: return 'var(--body-1-font)';
+ }
+}

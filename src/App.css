@@ -27,10 +27,31 @@
   --warning: #f89406;
   --info: #2f96b4;
   --notification-background: #2f96b4;
+
+  --mobile-font: 16px; /* 16px -21px */
+  --tablet-font: 20px; /* 20px -25px */
+  --desktop-font: 21px;/* 21px - 27px */
+
+  --body-1-font: calc(16px + 1vmin);
+  --body-2-font: calc(16px + 0vmin);
+
+  --header-h1-font: calc(15px + 4vmin);
+  --header-h2-font: calc(15px + 3vmin);
+  --header-h3-font: calc(15px + 2vmin);
+  --header-h4-font: calc(15px + 1vmin);
+  --header-h5-font: calc(15px + 0vmin);
+  --header-h6-font: calc(15px - 1vmin);
+
+  --mobile-title-font: 24px; /* 24px -36px */
+  --tablet-title-font: 28px; /* 28px -40px */
+  --desktop-title-font: 32px; /* 32px -48px */
+
+
 }
 
 .App {
   text-align: center;
+  font-size: calc(16px + 1vmin);
 }
 
 .App-logo {

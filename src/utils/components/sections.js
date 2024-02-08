@@ -105,7 +105,7 @@ const Section = ({ title, id, content }) => {
           ...SectionStyle.content,
         }}
       >
-        {` ${TopPostion}`} {content}
+        {content}
       </motion.div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import SocialLinks from "../../utils/components/socialLinks";
 import { useElements } from "../../utils/functions/context";
-
+import { getFontSizeHeader,getFontsizeContent } from "../../utils/functions/function";
 const HomeStyle = {
   HomeBox: {
     flex: 1,
@@ -18,7 +18,7 @@ const HomeStyle = {
     borderRadius: "50%",
     border: "2px solid",
   },
-  title: {
+  description: {
     fontSize: "30px",
     fontWeight: "bold",
     borderRadius: "20px",
@@ -52,34 +52,36 @@ const HomeStyle = {
   },
   extra: {
     color: "var(--dark-theme-surface)",
+    fontSize: "20px",
   },
 };
 
 const Home = ({ imageURL, person, text }) => {
-  const { mainColor, mainColor10Lighter } = useElements();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const { mainColor, mainColor10Lighter,windowWidth,updateWindowWidth } = useElements();
+ 
   const elementRef = useRef(null);
 
-  HomeStyle.title.backgroundColor = mainColor;
+  HomeStyle.description.backgroundColor = mainColor;
   HomeStyle.social.borderColor = mainColor10Lighter;
   HomeStyle.image.backgroundColor = mainColor;
-  const updateWindowWidth = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
+ 
   useEffect(() => {
     window.addEventListener("resize", updateWindowWidth);
-    console.log(windowWidth);
+    console.log("windowWidth", windowWidth);
+    
     return () => {
       window.removeEventListener("resize", updateWindowWidth);
     };
   }, [windowWidth]);
 
   HomeStyle.image.width = windowWidth > 1000 ? "18%" : "50%";
-  HomeStyle.title.width = windowWidth > 1000 ? "15em" : "80%";
-  HomeStyle.title.fontSize = windowWidth > 1000 ? "30px" : "20px";
-  HomeStyle.person.fontSize = windowWidth > 1000 ? "50px" : "40px";
-  HomeStyle.person.fontSize = windowWidth < 550 ? "30px" : "40px";
+  HomeStyle.description.width = windowWidth > 1000 ? "15em" : "80%";
+  HomeStyle.description.fontSize = getFontSizeHeader('h3');
+  HomeStyle.person.fontSize = getFontSizeHeader('h2');
+  HomeStyle.extra.fontSize = getFontsizeContent('body2');
+ 
+
+ 
   return (
     <div ref={elementRef} style={{ ...HomeStyle.HomeBox }}>
       <img
@@ -90,7 +92,7 @@ const Home = ({ imageURL, person, text }) => {
       <h1 style={{ ...HomeStyle.person }}>
         {person.firstName} {person.lastName}
       </h1>
-      <p style={{ ...HomeStyle.title }}>{text}</p>
+      <p style={{ ...HomeStyle.description }}>{text}</p>
       <div style={{ ...HomeStyle.social }}>
         {" "}
         <SocialLinks size={"18px"} />
