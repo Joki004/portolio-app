@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useElements } from "../../utils/functions/context";
 import {
   getFontsizeContent,
   getFontSizeHeader,
 } from "../../utils/functions/function";
 import { CustomIcon } from "../../utils/components/icons";
-import Accordion from "react-bootstrap/Accordion";
+import { motion, AnimatePresence } from "framer-motion";
 import "./aboutMe.css";
 
 const Experience = ({ timeline, title }) => {
@@ -17,7 +17,6 @@ const Experience = ({ timeline, title }) => {
   const [hoverStates, setHoverStates] = useState(
     new Array(timeline.length).fill(false)
   );
-  useEffect(() => {}, [hoverStates, isCollapsed]);
 
   const handleMouseEnter = (index) => {
     const updatedHoverStates = [...hoverStates];
@@ -71,7 +70,6 @@ const Experience = ({ timeline, title }) => {
       justifyContent: "center",
       alignItems: "center",
       width: "10em",
-      backgroundColor: mainColor10Lighter,
       color: "white",
       borderRadius: "20px",
       height: "40px",
@@ -120,79 +118,92 @@ const Experience = ({ timeline, title }) => {
     updatedIsCollapsed[index] = !updatedIsCollapsed[index];
     setIsCollapsed(updatedIsCollapsed);
   };
-  return (
-    <div>
-      <h1 style={{ ...styles.h1 }}>{title}</h1>
-      {timeline.map((data, index) => (
-        <div
-          key={index}
-          style={{ ...styles.body }}
-          
-        >
-          <div
-            style={{ ...styles.header }}
-            onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={() => handleMouseLeave(index)}
-          >
-            <div style={styles.circle}></div>
-            <div
-              style={{
-                ...styles.date,
-                backgroundColor: hoverStates[index]
-                  ? mainColor
-                  : mainColor20Lighter,
-              }} 
-            >
-              {data.date}
-            </div>
-            <div style={{ ...styles.infos }}>
-              <div style={{ ...styles.organization }}>{data.organization}</div>
-              <div style={{ ...styles.position }}>{data.position}</div>
-            </div>
-          </div>
-          <div>
-            {data.description && (
-              <div style={{ width: windowWidth > 1000 ? "50%" : "90%" }}>
-                <div
-                  style={{ ...styles.description }}
-                  onClick={() => {
-                    updateCollapsed(index);
-                  }}
-                >
-                  <p style={{ ...styles.descriptionText }}>Read more</p>
-                  <span style={{ ...styles.descriptionText }}>
-                    {!isCollapsed[index] ? (
-                      <CustomIcon
-                        iconName="arrowDownIcon"
-                        boxsize="50px"
-                        color={mainColor20Lighter}
-                      />
-                    ) : (
-                      <CustomIcon
-                        iconName="arrowUpIcon"
-                        boxsize="50px"
-                        color={mainColor20Lighter}
-                      />
-                    )}
-                  </span>
-                </div>
-                <div
-                  style={{
-                    height: isCollapsed[index] ? "auto" : "0", // Set fixed height when not expanded
-                    overflow: "hidden",
-                    transition: "height 0.5s",
 
-                    width: "100%",
-                  }}
-                >
-                  {data.description}
-                </div>
+  const getDescriptionAnimation = (index) => {
+    return {
+      animate: isCollapsed[index] ? "open" : "closed",
+      variants: {
+        open: {
+          height: "auto",
+          border: "1px solid",
+          padding: "10px",
+          borderRadius: "8px",
+        },
+        closed: { height: "0px" },
+      },
+      transition: { duration: 0.5 },
+      style: {
+        overflow: "hidden",
+        width: "100%",
+      },
+    };
+  };
+
+  return (
+    <AnimatePresence>
+      <div>
+        <h1 style={{ ...styles.h1 }}>{title}</h1>
+        {timeline.map((data, index) => (
+          <div key={index} style={{ ...styles.body }}>
+            <div
+              style={{ ...styles.header }}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={() => handleMouseLeave(index)}
+            >
+              <div style={styles.circle}></div>
+              <div
+                style={{
+                  ...styles.date,
+                  backgroundColor: hoverStates[index]
+                    ? mainColor
+                    : mainColor20Lighter,
+                }}
+              >
+                {data.date}
               </div>
-            )}
+              <div style={{ ...styles.infos }}>
+                <div style={{ ...styles.organization }}>
+                  {data.organization}
+                </div>
+                <div style={{ ...styles.position }}>{data.position}</div>
+              </div>
+            </div>
+            <div>
+              {data.description && (
+                <div style={{ width: windowWidth > 1000 ? "50%" : "90%" }}>
+                  <div
+                    style={{ ...styles.description }}
+                    onClick={() => {
+                      updateCollapsed(index);
+                    }}
+                  >
+                    <p style={{ ...styles.descriptionText }}>Read more</p>
+                    <span style={{ ...styles.descriptionText }}>
+                      {!isCollapsed[index] ? (
+                        <CustomIcon
+                          iconName="arrowDownIcon"
+                          boxsize="50px"
+                          colorIcon={mainColor20Lighter}
+                        />
+                      ) : (
+                        <CustomIcon
+                          iconName="arrowUpIcon"
+                          boxsize="50px"
+                          colorIcon={mainColor20Lighter}
+                        />
+                      )}
+                    </span>
+                  </div>
+                  <motion.div {...getDescriptionAnimation(index)}>
+                    {data.description}
+                  </motion.div>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </AnimatePresence>
   );
 };
 
