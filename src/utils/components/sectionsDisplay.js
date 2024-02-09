@@ -1,6 +1,6 @@
 import React from "react";
 import Section from "./sections";
-import { sideBarSections } from "../functions/datas";
+import { sideBarSections } from "../datas";
 const SectionDisplay = () => {
   return sideBarSections.map((section) => (
     <Section

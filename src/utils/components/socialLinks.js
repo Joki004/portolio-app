@@ -1,5 +1,5 @@
 import React from "react";
-import { socialLinks } from "../functions/datas";
+import { socialLinks } from "../datas";
 import { AnimatePresence,motion } from "framer-motion";
 import {useElements} from "../functions/context";
 const socialsLinksStyle = {

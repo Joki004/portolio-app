@@ -10,7 +10,7 @@ import {
   useLocalStorageState,
   determineSidebarColor,
 } from "../../utils/functions/function";
-import { sideBarSections } from "../../utils/functions/datas";
+import { sideBarSections } from "../../utils/datas";
 
 import SocialLinks from "../../utils/components/socialLinks";
 import SideBarSectionsMenus from "../../utils/components/sideBarSectionsMenus";

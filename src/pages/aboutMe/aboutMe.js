@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Experience from "./experience";
 import AboutMeSection from "./aboutPart";
 
@@ -24,7 +24,7 @@ const AboutMe = ({ person, aboutMeText, languageData,  timelineData
         texts={aboutMeText}
         languageData={languageData}
       />
-      <Experience timeline={timelineData} title={'Education &Experience'} />
+      <Experience timeline={timelineData} title={'Education & Experience'} />
     </div>
   );
 };
