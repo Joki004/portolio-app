@@ -22,14 +22,23 @@ export const ElementsProvider = ({ children }) => {
     "chevronBackground",
     "#b3c1cd"
   );
-
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [sideBarBackgroundMode, setSideBarBackgroundMode] =
     useLocalStorageState("sideBarBackground", "color");
 
   const [darkMode, setDarkMode] = useLocalStorageState("darkMode", false);
+  const [backgroundColorBody, setBackgroundColorBody] = useLocalStorageState('backgroundColor', 'regular');
+
+  const updateBackgroundColor = (mode) => {
+    setBackgroundColorBody(mode);
+  };
+  
 
   const updatesideBarBackground = (mode) => {
     setSideBarBackgroundMode(mode);
+  };
+  const updateWindowWidth = () => {
+    setWindowWidth(window.innerWidth);
   };
 
   const updateColor = (newColor) => {
@@ -68,7 +77,11 @@ export const ElementsProvider = ({ children }) => {
         darkMode,
         subtitle2,
         activeTitle,
+        windowWidth,
+        backgroundColorBody,
+        updateBackgroundColor,
         updateColor,
+        updateWindowWidth,
         updateDarkMode,
         updatesideBarBackground,
         updateSubtitle2,

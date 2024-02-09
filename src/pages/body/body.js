@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SideBar from "../sideBar/sideBar";
 import Informations from "../informations";
 import { AnimatePresence } from "framer-motion";
-
+import { useElements } from "../../utils/functions/context";
+import { getBackground, getTextColor } from "../../utils/functions/function";
 const Body = () => {
+  const { darkMode, backgroundColorBody } = useElements();
+  const [textColor, setTextColor] = useState(
+    getTextColor(darkMode, backgroundColorBody)
+  );
+  useEffect(() => {
+    setTextColor(getTextColor(darkMode, backgroundColorBody));
+  }, [backgroundColorBody, darkMode]);
   const BodyStyle = {
     body: {
       display: "flex",
@@ -15,26 +23,23 @@ const Body = () => {
       backgroundColor: "white",
     },
     container: {
-     
+      backgroundColor: getBackground(darkMode, backgroundColorBody),
+      color: textColor,
       maxWidth: "100vw",
-      
       height: "100vh",
       overflow: "auto",
       scrollbar: {
-        width: "5px", 
+        width: "5px",
       },
       scrollbarThumb: {
-        backgroundColor: "#888", 
-        borderRadius: "4px", 
+        backgroundColor: "#888",
+        borderRadius: "4px",
       },
       scrollbarTrack: {
-        backgroundColor: "#f1f1f1", 
+        backgroundColor: "#f1f1f1",
       },
     },
   };
-
-  
-
 
   return (
     <AnimatePresence>

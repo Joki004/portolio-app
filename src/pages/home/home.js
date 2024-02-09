@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import SocialLinks from "../../utils/components/socialLinks";
 import { useElements } from "../../utils/functions/context";
-
+import {
+  getFontSizeHeader,
+  getFontsizeContent,
+  getTextColor
+} from "../../utils/functions/function";
 const HomeStyle = {
   HomeBox: {
     flex: 1,
@@ -11,6 +15,7 @@ const HomeStyle = {
     justifyContent: "center",
     display: "flex",
     flexDirection: "column",
+    color: "black",
   },
   image: {
     width: window.innerWidth > 1000 ? "15%" : "30%",
@@ -18,7 +23,7 @@ const HomeStyle = {
     borderRadius: "50%",
     border: "2px solid",
   },
-  title: {
+  description: {
     fontSize: "30px",
     fontWeight: "bold",
     borderRadius: "20px",
@@ -27,12 +32,12 @@ const HomeStyle = {
     width: window.innerWidth > 500 ? "50%" : "80%",
     textAlign: "center",
     whiteSpace: "nowrap",
-    color: "white",
     border: "1px solid",
     padding: "2px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    color: "white",
   },
   social: {
     borderRadius: "20px",
@@ -51,35 +56,45 @@ const HomeStyle = {
     justifyContent: "center",
   },
   extra: {
-    color: "var(--dark-theme-surface)",
+    fontSize: "20px",
   },
 };
 
 const Home = ({ imageURL, person, text }) => {
-  const { mainColor, mainColor10Lighter } = useElements();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const elementRef = useRef(null);
+  const {
+    mainColor,
+    mainColor10Lighter,
+    windowWidth,
+    updateWindowWidth,
+    darkMode,
+    backgroundColorBody,
+  } = useElements();
 
-  HomeStyle.title.backgroundColor = mainColor;
+  const elementRef = useRef(null);
+  const [textColor, setTextColor] = useState(
+    getTextColor(darkMode, backgroundColorBody)
+  );
+
+  HomeStyle.description.backgroundColor = mainColor;
   HomeStyle.social.borderColor = mainColor10Lighter;
   HomeStyle.image.backgroundColor = mainColor;
-  const updateWindowWidth = () => {
-    setWindowWidth(window.innerWidth);
-  };
+ 
 
   useEffect(() => {
+    setTextColor(getTextColor(darkMode, backgroundColorBody));
+    HomeStyle.HomeBox.color = textColor;
     window.addEventListener("resize", updateWindowWidth);
-    console.log(windowWidth);
     return () => {
       window.removeEventListener("resize", updateWindowWidth);
     };
-  }, [windowWidth]);
+  }, [windowWidth, darkMode, backgroundColorBody,textColor,updateWindowWidth]);
 
   HomeStyle.image.width = windowWidth > 1000 ? "18%" : "50%";
-  HomeStyle.title.width = windowWidth > 1000 ? "15em" : "80%";
-  HomeStyle.title.fontSize = windowWidth > 1000 ? "30px" : "20px";
-  HomeStyle.person.fontSize = windowWidth > 1000 ? "50px" : "40px";
-  HomeStyle.person.fontSize = windowWidth < 550 ? "30px" : "40px";
+  HomeStyle.description.width = windowWidth > 1000 ? "15em" : "80%";
+  HomeStyle.description.fontSize = getFontSizeHeader("h3");
+  HomeStyle.person.fontSize = getFontSizeHeader("h2");
+  HomeStyle.extra.fontSize = getFontsizeContent("body2");
+
   return (
     <div ref={elementRef} style={{ ...HomeStyle.HomeBox }}>
       <img
@@ -90,7 +105,7 @@ const Home = ({ imageURL, person, text }) => {
       <h1 style={{ ...HomeStyle.person }}>
         {person.firstName} {person.lastName}
       </h1>
-      <p style={{ ...HomeStyle.title }}>{text}</p>
+      <p style={{ ...HomeStyle.description }}>{text}</p>
       <div style={{ ...HomeStyle.social }}>
         {" "}
         <SocialLinks size={"18px"} />

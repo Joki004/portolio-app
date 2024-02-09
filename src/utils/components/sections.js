@@ -13,12 +13,16 @@ const Section = ({ title, id, content }) => {
   const [BottomPostion, setBottomPosition] = useState(0);
   const [shouldFill, setShouldFill] = useState(false);
   const controls = useAnimation();
-  const { darKMode, mainColor, activeTitle } = useElements();
-
+  const { darkMode, mainColor, activeTitle, backgroundColorBody } = useElements();
+  const [textColor, setTextColor] = useState(
+    DetermineTitleSectionColor(darkMode, shouldFill, backgroundColorBody)
+  );
   const sectionRef = useRef(null);
   const [elementWidth, setElementWidth] = useState(0);
-
+ 
   useEffect(() => {
+  
+    setTextColor(DetermineTitleSectionColor(darkMode, shouldFill, backgroundColorBody));
     const observer = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const newWidth = entry.contentRect.width;
@@ -59,13 +63,15 @@ const Section = ({ title, id, content }) => {
   }, [
     TopPostion,
     BottomPostion,
-
+  
     shouldFill,
     elementWidth,
     id,
     mainColor,
     controls,
     activeTitle,
+    darkMode,
+    backgroundColorBody,
   ]);
 
   const SectionStyle = {
@@ -82,13 +88,14 @@ const Section = ({ title, id, content }) => {
       alignItems: "center",
       fontSize: "2rem",
       fontWeight: "bold",
-      color: DetermineTitleSectionColor(darKMode, shouldFill),
+      color: textColor,
       transition: "all",
     },
     content: {
       padding: "10px",
     },
   };
+
   return (
     <div id={id} ref={sectionRef}>
       <motion.div
@@ -97,7 +104,6 @@ const Section = ({ title, id, content }) => {
           ...SectionStyle.title,
         }}
       >
-        {<p>{shouldFill}</p>}
         {title}
       </motion.div>
       <motion.div
@@ -105,7 +111,7 @@ const Section = ({ title, id, content }) => {
           ...SectionStyle.content,
         }}
       >
-        {` ${TopPostion}`} {content}
+        {content}
       </motion.div>
     </div>
   );

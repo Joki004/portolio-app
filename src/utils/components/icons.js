@@ -12,6 +12,7 @@ const iconBug = require("../../assets/bug-system-solid-21.json");
 const iconEmail = require("../../assets/email-system-solid-59.json");
 const iconSettings = require("../../assets/rest-api-wired-lineal-1330.json");
 const iconArrowUp = require("../../assets/arrow-up-system-solid-11.json");
+const iconArrowDown = require("../../assets/arrow-down-system-solid-10.json");
 //ALL STATES FOR EACH ICON
 
 const iconStateMap = {
@@ -58,6 +59,11 @@ const iconStateMap = {
     hover1: "hover-arrow-up-1",
     hover2: "hover-arrow-up-2",
   },
+  arrowDownIcon: {
+    clicked: "in-arrow-down",
+    hover1: "hover-arrow-down-1",
+    hover2: "hover-arrow-down-2",
+  },
 };
 const IconStyle = {
   border: "solid 3px",
@@ -90,6 +96,8 @@ const getIconType = (iconName) => {
       return iconSettings;
     case "arrowUpIcon":
       return iconArrowUp;
+    case "arrowDownIcon":
+      return iconArrowDown;
     default:
       return null;
   }
@@ -118,6 +126,8 @@ const getIconState = (iconName, currentState) => {
       return currentState === "enter" ? iconState.hover1 : null;
     case "arrowUpIcon":
       return currentState === "enter" ? iconState.hover1 : null;
+    case "arrowDownIcon":
+      return currentState === "enter" ? iconState.hover1 : null;
     default:
       return null;
   }
@@ -125,7 +135,7 @@ const getIconState = (iconName, currentState) => {
 
 export const CustomIcon = ({
   colorIcon = "#3c3c3c",
-  size = "250px",
+  size = "50px",
   iconName,
   boxsize = "50px",
   collapsed = false,
