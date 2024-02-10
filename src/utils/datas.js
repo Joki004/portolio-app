@@ -183,7 +183,7 @@ const logos = {
   },
   spring: {
     name: "Spring",
-    nameBoxIcon: "spring",
+    nameBoxIcon: "spring-boot",
     typeBoxIcon: "logo",
   },
   bootstrap: {
