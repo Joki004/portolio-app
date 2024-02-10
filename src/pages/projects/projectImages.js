@@ -1,7 +1,7 @@
 import { useElements } from "../../utils/functions/context";    
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import  { useState } from "react";
+
 const ProjectImages = (images) => {
     const { mainColor10Lighter,darkMode } = useElements();
     const projectImagesStyles = {
@@ -38,10 +38,10 @@ const ProjectImages = (images) => {
         
       },
     };
-    const [autoplay, setAutoplay] = useState(true);
+    /*const [autoplay, setAutoplay] = useState(true);
     const toggleAutoplay = () => {
       setAutoplay(!autoplay);
-    };
+    };*/
     const { images: imageArray } = images;
   
     return (
@@ -51,7 +51,7 @@ const ProjectImages = (images) => {
           showStatus={true}
           showArrows={true}
           showIndicators={false}
-          autoPlay={autoplay}
+          autoPlay={true}
           interval={6000}
           infiniteLoop
           stopOnHover

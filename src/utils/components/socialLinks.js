@@ -40,7 +40,7 @@ function determineHeref(link){
   return link.href;
 }
 const SocialLinks = ({size='30px'}) => {
-  const {mainColor20lighter} = useElements();
+  const {mainColor20Lighter} = useElements();
   socialsLinksStyle.socialsLinks.height = parseInt(size)+10;
   socialsLinksStyle.socialsLinks.width =  parseInt(size)+10;
   return (
@@ -61,8 +61,8 @@ const SocialLinks = ({size='30px'}) => {
           key={index}
           style={{
             ...socialsLinksStyle.socialsLinks,
-            backgroundColor: link.backgroundColor || "",
-            borderColor: link.borderColor || mainColor20lighter,
+            //backgroundColor: link.backgroundColor || "",
+            borderColor:  mainColor20Lighter,
           }}
           href={determineHeref(link)}
           target="_blank"
