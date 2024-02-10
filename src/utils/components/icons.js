@@ -15,6 +15,7 @@ const iconArrowUp = require("../../assets/arrow-up-system-solid-11.json");
 const iconArrowDown = require("../../assets/arrow-down-system-solid-10.json");
 const iconPause = require("../../assets/pause-system-regular-77.json");
 const iconPlay = require("../../assets/play-system-regular-26.json");
+
 //ALL STATES FOR EACH ICON
 
 const iconStateMap = {

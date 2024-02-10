@@ -3,7 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import  { useState } from "react";
 const ProjectImages = (images) => {
-    const { mainColor10Lighter } = useElements();
+    const { mainColor10Lighter,darkMode } = useElements();
     const projectImagesStyles = {
       box: {
         display: "flex",
@@ -17,7 +17,7 @@ const ProjectImages = (images) => {
       },
       carrousel: {
         width: "100%",
-        height: "500px",
+        height: "400px",
   
         display: "flex",
         flexDirection: "row",
@@ -34,6 +34,8 @@ const ProjectImages = (images) => {
         border: "3px solid",
         borderColor: mainColor10Lighter,
         borderRadius: "10px",
+        backgroundColor: darkMode?'var(--dark-theme-surface)': 'var(--light-theme-surface)',
+        
       },
     };
     const [autoplay, setAutoplay] = useState(true);

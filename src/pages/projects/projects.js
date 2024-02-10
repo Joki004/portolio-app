@@ -4,7 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useElements } from "../../utils/functions/context";
 import ProjectImages from "./projectImages";
 import ProjectDetails from "./projectDetails";
-import { CustomIcon, customIcon } from "../../utils/components/icons";
+import { CustomIcon } from "../../utils/components/icons";
 
 const Projects = ({ projectsData }) => {
   const { windowWidth, mainColor10Lighter } = useElements();
@@ -91,7 +91,6 @@ const Projects = ({ projectsData }) => {
       <div
         style={{
           flex: 1,
-         
           width: "100%",
           display: "flex",
           justifyContent: "center",

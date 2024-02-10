@@ -59,6 +59,7 @@ const ProjectDetails = ({ project, color }) => {
   return (
     <div style={{ ...styles.box }}>
       <h2 style={{ ...styles.title }}>{project.name}</h2>
+      <p>{`Status : ${project.state}`}</p>
       <p style={{ ...styles.content }}>{project.description}</p>
       <div>
         <Technologies Technologies={project.technologies} />
