@@ -13,6 +13,9 @@ const iconEmail = require("../../assets/email-system-solid-59.json");
 const iconSettings = require("../../assets/rest-api-wired-lineal-1330.json");
 const iconArrowUp = require("../../assets/arrow-up-system-solid-11.json");
 const iconArrowDown = require("../../assets/arrow-down-system-solid-10.json");
+const iconPause = require("../../assets/pause-system-regular-77.json");
+const iconPlay = require("../../assets/play-system-regular-26.json");
+
 //ALL STATES FOR EACH ICON
 
 const iconStateMap = {
@@ -64,6 +67,14 @@ const iconStateMap = {
     hover1: "hover-arrow-down-1",
     hover2: "hover-arrow-down-2",
   },
+  pauseIcon: {
+    clicked: "in-pause",
+    hover1: "hover-pause",
+  },
+  playIcon: {
+    clicked: "in-play",
+    hover1: "hover-play",
+  },
 };
 const IconStyle = {
   border: "solid 3px",
@@ -98,6 +109,10 @@ const getIconType = (iconName) => {
       return iconArrowUp;
     case "arrowDownIcon":
       return iconArrowDown;
+    case "pauseIcon":
+      return iconPause;
+    case "playIcon":
+      return iconPlay;
     default:
       return null;
   }
@@ -109,28 +124,23 @@ const getIconState = (iconName, currentState) => {
 
   switch (iconName) {
     case "HomeIcon":
-      return currentState === "enter" ? iconState.hover1 : null;
     case "qrCodeIcon":
-      return currentState === "enter" ? iconState.hover1 : null;
     case "aboutIcon":
-      return currentState === "enter" ? iconState.hover1 : null;
     case "educationIcon":
-      return currentState === "enter" ? iconState.hover1 : null;
     case "workIcon":
+    case "emailIcon":
+    case "settingsIcon":
+    case "arrowUpIcon":
+    case "arrowDownIcon":
+    case "pauseIcon":
+    case "playIcon":
       return currentState === "enter" ? iconState.hover1 : null;
     case "bugIcon":
       return currentState === "enter" ? iconState.hover2 : null;
-    case "emailIcon":
-      return currentState === "enter" ? iconState.hover1 : null;
-    case "settingsIcon":
-      return currentState === "enter" ? iconState.hover1 : null;
-    case "arrowUpIcon":
-      return currentState === "enter" ? iconState.hover1 : null;
-    case "arrowDownIcon":
-      return currentState === "enter" ? iconState.hover1 : null;
     default:
       return null;
   }
+  
 };
 
 export const CustomIcon = ({

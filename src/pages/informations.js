@@ -6,7 +6,7 @@ import {
   handleClickScroll,
   getFirstId,
 } from "../utils/functions/function";
-import { sideBarSections } from "../utils/functions/datas";
+import { sideBarSections } from "../utils/datas";
 import SectionDisplay from "../utils/components/sectionsDisplay";
 import { CustomIcon } from "../utils/components/icons";
 const Informations = () => {
