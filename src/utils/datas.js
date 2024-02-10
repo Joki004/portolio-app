@@ -63,10 +63,8 @@ const timelineData = [
   },
 ];
 
-const projectImage =
-  "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-const projectImage2 =
-  "https://images.unsplash.com/photo-1575540325855-4b5d285a3845?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGFuaW1lfGVufDB8fDB8fHwy";
+const projectImage = require("../assets/images/example.png");
+const projectImage2 = require("../assets/images/example2.png");
 const arrayOfImages = [projectImage, projectImage2];
 const projectsData = [
   {
