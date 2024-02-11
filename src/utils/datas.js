@@ -224,6 +224,7 @@ const skillsData = [
       logos.cpp,
       logos.python,
       logos.java,
+  
     ],
   },
   {

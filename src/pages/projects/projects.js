@@ -50,6 +50,19 @@ const Projects = ({ projectsData }) => {
 
   return (
     <div>
+      <button
+        onClick={toggleAutoplay}
+        style={{
+          borderRadius: "8px",
+          padding: "5px",
+          border: "2px solid #ccc",
+          cursor: "pointer",
+        }}
+      >
+        {autoplay
+          ? `you can pause the carousel by clicking here.`
+          : `you can play the carousel by clicking here.`}
+      </button>
       <Carousel
         showThumbs={false}
         showStatus={true}
