@@ -1,6 +1,7 @@
 import Home from "../pages/home/home";
 import AboutMe from "../pages/aboutMe/aboutMe";
 import Projects from "../pages/projects/projects";
+import Skills from "../pages/skills/skills";
 let text =
   "Section 1Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin condimentum odio, et interdum est fringilla eget. Praesent risus dui, dapibus vel elementum sed, volutpat id sem. In fermentum, arcLorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin condimentum odio, et interdum est fringilla eget. Praesent risus dui, dapibus vel elementum sed, volutpat id sem. In fermentum, arcu vitae pharetra malesuada, massa urna interdum erat, vel interdum felis mi quis lacus. Nunc nec erat faucibus, feugiat mauris facilisis, sagittis dolor. Donec pellentesque quam et ipsum faucibus tempus. Praesent lacinia quam leo, et vehicula dui maximus sed. In augue eros, elementum nec accumsan nec, pretium ac turpis. Donec tristique nec orci id rhoncus. Proin eu sem nec nulla dictum fermentum eu vitae nunc. Proin in elit metus. Aenean vel nulla augue. Vivamus ante odio, dictum et dignissim eu, fringilla quis tellus. Quisque lectus enim, vulputate vitae orci quis, pellentesque tempor justo. Cras at fermentum magna. Nulla bibendum turpis vel rutrum aliquam. Ut lacus est, dignissim ut ante eget, interdum auctor metus. Vestibulum aliquam ipsum rutrum tellus imperdiet, fermentum pellentesque ligula mattis. Nullam blandit augue sit amet dictum sagittis. Curabitur pretium gravida lacus. Sed ullamcorper mi sed condimentum viverra. Duis sed libero metus. In lobortis metus egestas, euismod mi sit amet, volutpat enim. Aenean bibendum justo vitae nibh facilisis rutrum. Praesent fringilla felis sit amet rhoncus finibus. Vivamus et lacus quis lacus ullamcorper tristique eu a sem. Maecenas eu condimentum neque. Fusce hendrerit nunc sit amet magna iaculis, nec tincidunt massa rutrum. Fusce mi elit, molestie ac dapibus quis, ultricies eget est. Aliquam tincidunt augue id sollicitudin auctor. Nullam interdum eget risus in pharetra. In interdum nisi erat, sed posuere mi viverra in. Nullam sed tortor in arcu aliquet feugiat eu sed augue. Ut tincidunt at elit in dapibus. Morbi vitae posuere massa, quis dignissim odio. In rutrum libero odio, vel tristique mauris ultrices vel. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.";
 const imageURL = require("../../src/assets/images/PictureOfMe.jpg");
@@ -123,6 +124,123 @@ const projectsData = [
   },
 ];
 
+const logos = {
+  cpp: {
+    name: "C++",
+    nameBoxIcon: "c-plus-plus",
+    typeBoxIcon: "logo",
+  },
+  typescript: {
+    name: "TypeScript",
+    nameBoxIcon: "typescript",
+    typeBoxIcon: "logo",
+  },
+  css: {
+    name: "CSS",
+    nameBoxIcon: "css3",
+    typeBoxIcon: "logo",
+  },
+  html: {
+    name: "HTML",
+    nameBoxIcon: "html5",
+    typeBoxIcon: "logo",
+  },
+  react: {
+    name: "React",
+    nameBoxIcon: "react",
+    typeBoxIcon: "logo",
+  },
+  javascript: {
+    name: "JavaScript",
+    nameBoxIcon: "javascript",
+    typeBoxIcon: "logo",
+  },
+  blender: {
+    name: "Blender",
+    nameBoxIcon: "blender",
+    typeBoxIcon: "logo",
+  },
+  python: {
+    name: "Python",
+    nameBoxIcon: "python",
+    typeBoxIcon: "logo",
+  },
+
+  java: {
+    name: "Java",
+    nameBoxIcon: "java",
+    typeBoxIcon: "logo",
+  },
+  c: {
+    name: "C",
+    nameBoxIcon: "c",
+    typeBoxIcon: "logo",
+  },
+  nodejs: {
+    name: "NodeJs",
+    nameBoxIcon: "nodejs",
+    typeBoxIcon: "logo",
+  },
+  spring: {
+    name: "Spring",
+    nameBoxIcon: "spring-boot",
+    typeBoxIcon: "logo",
+  },
+  bootstrap: {
+    name: "Bootstrap",
+    nameBoxIcon: "bootstrap",
+    typeBoxIcon: "logo",
+  },
+  angular: {
+    name: "Angular",
+    nameBoxIcon: "angular",
+    typeBoxIcon: "logo",
+  },
+  github: {
+    name: "Github",
+    nameBoxIcon: "github",
+    typeBoxIcon: "logo",
+  },
+  git: {
+    name: "Git",
+    nameBoxIcon: "git",
+    typeBoxIcon: "logo",
+  },
+  unity: {
+    name: "Unity",
+    nameBoxIcon: "unity",
+    typeBoxIcon: "logo",
+  },
+};
+
+const skillsData = [
+  {
+    type: "Languages",
+    skills: [
+      logos.typescript,
+      logos.javascript,
+      logos.html,
+      logos.css,
+      logos.cpp,
+      logos.python,
+      logos.java,
+  
+    ],
+  },
+  {
+    type: "frameworks & libraries",
+    skills: [
+      logos.react,
+      logos.angular,
+      logos.bootstrap,
+      logos.nodejs,
+      logos.spring,
+    ],
+  },
+  { type: "tools", skills: [logos.github, logos.git] },
+  { type: "design", skills: [logos.blender, logos.unity] },
+];
+
 export const sideBarSections = [
   {
     title: "Home",
@@ -171,7 +289,7 @@ export const sideBarSections = [
   {
     title: "Skills",
     id: "Skills",
-    content: text,
+    content: <Skills skillsData={skillsData} />,
     icon: "bugIcon",
     label: "Skills",
   },
@@ -191,7 +309,7 @@ export const socialLinks = [
     icon: "linkedin",
     backgroundColor: "#0a66c2",
     borderColor: "#0a66c2",
-    color: "#ffffff",
+    color: "#000000",
     typeIcon: "logo",
   },
   {

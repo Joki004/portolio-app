@@ -12,7 +12,7 @@ const Body = () => {
   useEffect(() => {
     setTextColor(getTextColor(darkMode, backgroundColorBody));
   }, [backgroundColorBody, darkMode]);
-  const img = require('../../assets/images/logos/c-plus-plus-logo-24.png')
+ 
   const BodyStyle = {
     body: {
       display: "flex",
