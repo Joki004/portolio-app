@@ -71,7 +71,7 @@ const arrayOfImages = [projectImage, projectImage2];
 const projectsData = [
   {
     name: "Project 1",
-    description: "This is a project description",
+    description: zfDescription,
     state: "In progress",
     githublink: " ",
     weblink: " ",
@@ -80,7 +80,7 @@ const projectsData = [
   },
   {
     name: "Project 2",
-    description: "This is a project description",
+    description: zfDescription,
     state: "In progress",
     githublink: " ",
     weblink: " ",

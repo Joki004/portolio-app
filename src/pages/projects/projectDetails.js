@@ -18,17 +18,31 @@ const Technologies = ({ Technologies }) => {
   );
 };
 
-const ProjectDetails = ({ project, color }) => {
+const ProjectDetails = ({ project, color,isEvenIndex }) => {
   const styles = {
     box: {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      alignItems: "flex-start",
+      alignItems: isEvenIndex ? "flex-start" : "flex-end",
       gap: "10px",
       width: "100%",
       height: "100%",
       padding: "10px",
+      
+
+    },
+    box2: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: 'flex-start',
+      gap: "10px",
+     
+      height: "100%",
+      padding: "10px",
+      
+
     },
     title: {
       with: "100%",
@@ -58,6 +72,7 @@ const ProjectDetails = ({ project, color }) => {
   };
   return (
     <div style={{ ...styles.box }}>
+      <div  style={{ ...styles.box2 }}>
       <h2 style={{ ...styles.title }}>{project.name}</h2>
       <p>{`Status : ${project.state}`}</p>
       <p style={{ ...styles.content }}>{project.description}</p>
@@ -74,6 +89,8 @@ const ProjectDetails = ({ project, color }) => {
           Github Link
         </a>
       </div>
+      </div>
+
     </div>
   );
 };

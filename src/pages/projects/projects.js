@@ -7,7 +7,7 @@ import ProjectDetails from "./projectDetails";
 import { CustomIcon } from "../../utils/components/icons";
 
 const Projects = ({ projectsData }) => {
-  const { windowWidth, mainColor10Lighter } = useElements();
+  const { windowWidth, mainColor10Lighter,darkMode } = useElements();
   const [isScreenSmall, setIsScreenSmall] = useState(false);
   const [autoplay, setAutoplay] = useState(true);
 
@@ -38,32 +38,39 @@ const Projects = ({ projectsData }) => {
           flexDirection: isEvenIndex ? "row" : "row-reverse",
         }}
       >
-        <div style={{ flex: 1 }}>
-          <ProjectDetails project={project} color={mainColor10Lighter} />
+        <div
+          style={{
+            width: "60%",
+          }}
+        >
+          <ProjectDetails
+            project={project}
+            color={mainColor10Lighter}
+            isEvenIndex={isEvenIndex}
+          />
         </div>
-        <div style={{ flex: 1 }}>
+        <div style={{ width: "40%" }}>
           <ProjectImages images={project.images[0]} />
         </div>
       </div>
     );
   };
 
+  useEffect(() => {
+
+    const arrows = document.getElementsByClassName('control-arrow');
+  
+   
+    for (let arrow of arrows) {
+      arrow.style.background = 'rgba(0, 0, 0, 0.5)';
+      arrow.style.borderRadius = '8px';
+    }
+  }, [darkMode]);
+
   return (
     <div>
-      <button
-        onClick={toggleAutoplay}
-        style={{
-          borderRadius: "8px",
-          padding: "5px",
-          border: "2px solid #ccc",
-          cursor: "pointer",
-        }}
-      >
-        {autoplay
-          ? `you can pause the carousel by clicking here.`
-          : `you can play the carousel by clicking here.`}
-      </button>
       <Carousel
+        className="main-carousel carousel-slider"
         showThumbs={false}
         showStatus={true}
         showArrows={true}
