@@ -87,7 +87,7 @@ const projectsData = [
     state: "In progress",
     githublink: "https://github.com/Verionn/MoneyMinder",
     weblink: " ",
-    technologies: ["Java Sping Boot", "Postgrss", "React.js"],
+    technologies: ["Java Sping Boot", "Postgresql", "React.js"],
     images: [moneyMinderImages],
   },
   {
