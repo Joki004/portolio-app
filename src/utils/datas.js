@@ -4,7 +4,6 @@ import Projects from "../pages/projects/projects";
 import Skills from "../pages/skills/skills";
 import ContactForm from "../pages/contacts/contact";
 
-
 const imageURL = require("../../src/assets/images/PictureOfMe.jpg");
 const person = {
   firstName: "Joram",
@@ -68,15 +67,28 @@ const timelineData = [
 const projectImage = require("../assets/images/example.png");
 const projectImage2 = require("../assets/images/example2.png");
 const arrayOfImages = [projectImage, projectImage2];
+
+const moneyMinder1 = require("../assets/images/moneyMinde1.png");
+const moneyMinder2 = require("../assets/images/moneyMinde2.png");
+const moneyMinder3 = require("../assets/images/moneyMinde3.png");
+const moneyMinder4 = require("../assets/images/moneyMinde4.png");
+
+const moneyMinderImages = [
+  moneyMinder1,
+  moneyMinder2,
+  moneyMinder3,
+  moneyMinder4,
+];
 const projectsData = [
   {
-    name: "Project 1",
-    description: zfDescription,
+    name: "MoneyMinder",
+    description: `MoneyMinder is a user-friendly shopping list and budget management appDeveloped using a robust technology stack including Java, Spring Boot for the backend, PostgreSQL as the database, and React.js for the frontend. 
+    This project is a full-stack solution for personal finance management.. It offers secure user authentication, real-time tracking of shopping tasks, and budget monitoring to help users manage their spending efficiently. With features like multi-list management, item categorization, and a responsive design for cross-device compatibility, MoneyMinder simplifies personal finance. It also includes dark mode for comfort and interactive progress indicators for an enhanced user experience. Whether on desktop or mobile, MoneyMinder is an essential tool for smart shopping and budget control.`,
     state: "In progress",
-    githublink: " ",
+    githublink: "https://github.com/Verionn/MoneyMinder",
     weblink: " ",
-    technologies: ["React", "Node", "Express", "MongoDB"],
-    images: [arrayOfImages],
+    technologies: ["Java Sping Boot", "Postgrss", "React.js"],
+    images: [moneyMinderImages],
   },
   {
     name: "Project 2",
@@ -225,7 +237,6 @@ const skillsData = [
       logos.cpp,
       logos.python,
       logos.java,
-  
     ],
   },
   {
@@ -267,14 +278,14 @@ export const sideBarSections = [
       {
         title: "About me",
         id: "AboutMe",
-        content: '',
+        content: "",
         icon: "aboutIcon",
         label: "About me",
       },
       {
         title: "Education Experience",
         id: "EducationExperience",
-        content: '',
+        content: "",
         icon: "educationIcon",
         label: "Education Experience",
       },
