@@ -7,13 +7,7 @@ import { getFontSizeHeader } from "../../utils/functions/function";
 const Skills = ({ skillsData }) => {
   const [hoveredCategoryIndex, setHoveredCategoryIndex] = useState(null);
   const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null);
-  const {
-   
-    mainColor10Lighter,
-    mainColor20Lighter,
-    darkMode,
-   
-  } = useElements();
+  const { mainColor10Lighter, mainColor20Lighter, darkMode } = useElements();
   const handleCategoryHover = (index) => {
     setHoveredCategoryIndex(index);
   };
@@ -85,12 +79,11 @@ const Skills = ({ skillsData }) => {
                   >
                     <li>
                       {skill.logo}
-                      <box-icon
-                        name={skill.nameBoxIcon}
-                        type={skill.typeBoxIcon}
-                        color={darkMode ? "white" : "black"}
-                        size={"50px"}
-                      />
+                      {skill.SvgComponent && (
+                        <skill.SvgComponent
+                          style={{ width: "50px", height: "50px" }}
+                        />
+                      )}
                     </li>
                     <li>{skill.name}</li>
                   </motion.div>
@@ -104,7 +97,7 @@ const Skills = ({ skillsData }) => {
       <div className="category-flex-container">
         {skillsData.slice(1).map((category, index) => (
           <div
-            key={index + 1} 
+            key={index + 1}
             className="category"
             onMouseEnter={() => handleCategoryHover(index + 1)}
             onMouseLeave={handleCategoryLeave}
@@ -124,12 +117,11 @@ const Skills = ({ skillsData }) => {
                 >
                   <li>
                     {skill.logo}
-                    <box-icon
-                      name={skill.nameBoxIcon}
-                      type={skill.typeBoxIcon}
-                      color={darkMode ? "white" : "black"}
-                      size={"50px"}
-                    />
+                    {skill.SvgComponent && (
+                      <skill.SvgComponent
+                        style={{ width: "50px", height: "50px" }}
+                      />
+                    )}
                   </li>
                   <li>{skill.name}</li>
                 </motion.div>

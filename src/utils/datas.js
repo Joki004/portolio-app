@@ -3,6 +3,22 @@ import AboutMe from "../pages/aboutMe/aboutMe";
 import Projects from "../pages/projects/projects";
 import Skills from "../pages/skills/skills";
 import ContactForm from "../pages/contacts/contact";
+import { ReactComponent as CppIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-c-plus-plus.svg";
+import { ReactComponent as TypeScriptIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-typescript.svg";
+import { ReactComponent as CssIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-css3.svg";
+import { ReactComponent as HtmlIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-html5.svg";
+import { ReactComponent as ReactIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-react.svg";
+import { ReactComponent as AngularIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-angular.svg";
+import { ReactComponent as JavaIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-java.svg";
+import { ReactComponent as PythonIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-python.svg";
+import { ReactComponent as NodejsIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-nodejs.svg";
+import { ReactComponent as SpringIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-spring-boot.svg";
+import { ReactComponent as BootstrapIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-bootstrap.svg";
+import { ReactComponent as GithubIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-github.svg";
+import { ReactComponent as GitIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-git.svg";
+import { ReactComponent as BlenderIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-blender.svg";
+import { ReactComponent as UnityIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-unity.svg";
+import { ReactComponent as JavascriptIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-javascript.svg";
 
 const imageURL = require("../../src/assets/images/PictureOfMe.jpg");
 const person = {
@@ -142,87 +158,105 @@ const logos = {
     name: "C++",
     nameBoxIcon: "c-plus-plus",
     typeBoxIcon: "logo",
+    SvgComponent: CppIcon ,
   },
   typescript: {
     name: "TypeScript",
     nameBoxIcon: "typescript",
     typeBoxIcon: "logo",
+    SvgComponent: TypeScriptIcon,
   },
   css: {
     name: "CSS",
     nameBoxIcon: "css3",
     typeBoxIcon: "logo",
+    SvgComponent: CssIcon,
   },
   html: {
     name: "HTML",
     nameBoxIcon: "html5",
     typeBoxIcon: "logo",
+    SvgComponent: HtmlIcon,
   },
   react: {
     name: "React",
     nameBoxIcon: "react",
     typeBoxIcon: "logo",
+    SvgComponent: ReactIcon,
   },
   javascript: {
     name: "JavaScript",
     nameBoxIcon: "javascript",
     typeBoxIcon: "logo",
+    SvgComponent: JavascriptIcon,
+
   },
   blender: {
     name: "Blender",
     nameBoxIcon: "blender",
     typeBoxIcon: "logo",
+    SvgComponent: BlenderIcon,
   },
   python: {
     name: "Python",
     nameBoxIcon: "python",
     typeBoxIcon: "logo",
+    SvgComponent: PythonIcon,
   },
 
   java: {
     name: "Java",
     nameBoxIcon: "java",
     typeBoxIcon: "logo",
+    SvgComponent: JavaIcon,
   },
   c: {
     name: "C",
     nameBoxIcon: "c",
     typeBoxIcon: "logo",
+   
   },
   nodejs: {
     name: "NodeJs",
     nameBoxIcon: "nodejs",
     typeBoxIcon: "logo",
+    SvgComponent: NodejsIcon,
   },
   spring: {
     name: "Spring",
     nameBoxIcon: "spring-boot",
     typeBoxIcon: "logo",
+    SvgComponent: SpringIcon,
   },
   bootstrap: {
     name: "Bootstrap",
     nameBoxIcon: "bootstrap",
     typeBoxIcon: "logo",
+    SvgComponent: BootstrapIcon,
   },
   angular: {
     name: "Angular",
     nameBoxIcon: "angular",
     typeBoxIcon: "logo",
+    SvgComponent: AngularIcon,
   },
   github: {
     name: "Github",
     nameBoxIcon: "github",
     typeBoxIcon: "logo",
+    SvgComponent: GithubIcon,
   },
   git: {
     name: "Git",
     nameBoxIcon: "git",
     typeBoxIcon: "logo",
+    SvgComponent: GitIcon,
   },
   unity: {
     name: "Unity",
     nameBoxIcon: "unity",
     typeBoxIcon: "logo",
+    SvgComponent: UnityIcon,
   },
 };
 
