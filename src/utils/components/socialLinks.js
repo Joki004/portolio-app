@@ -40,9 +40,16 @@ function determineHeref(link) {
   return link.href;
 }
 const SocialLinks = ({ size = "30px", backgroundColorBox = "transparent" }) => {
-  const { mainColor20Lighter, darkMode } = useElements();
+  const { mainColor20Lighter, darkMode,backgroundColorBody } = useElements();
   socialsLinksStyle.socialsLinks.height = parseInt(size) + 10;
   socialsLinksStyle.socialsLinks.width = parseInt(size) + 10;
+
+  function determineIconColor(){
+    if(darkMode || backgroundColorBody === "paralax"){
+      return "white";
+    }
+    return "black";
+  }
   return (
     <AnimatePresence>
       <div style={{ ...socialsLinksStyle.socialsLinksBox }}>
@@ -72,7 +79,7 @@ const SocialLinks = ({ size = "30px", backgroundColorBox = "transparent" }) => {
                   style={{
                     width: size,
                     height: size,
-                    fill: darkMode ? "white" : "black",
+                    fill: determineIconColor(),
                   }}
                 />
               )}

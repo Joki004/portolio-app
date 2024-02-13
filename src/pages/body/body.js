@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import { useElements } from "../../utils/functions/context";
 import { getBackground, getTextColor } from "../../utils/functions/function";
 import { ReactComponent as MenuIcon } from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-menu.svg";
+
 const Body = () => {
   const { darkMode, backgroundColorBody, windowWidth } = useElements();
   const [textColor, setTextColor] = useState(
@@ -110,6 +111,7 @@ const Body = () => {
           }
         `}
         </style>
+
         <div
           id="sidebar-toggle"
           onClick={toggleSidebar}

@@ -54,9 +54,6 @@ export function DetermineActiveTitle(sections, activeTile, scrollTop) {
   let checkingActive = "";
   for (const [index, section] of sections.entries()) {
     const position = getElementByIdHeightPosition(section.id);
-
-    //console.log(`${checkingActive} ${index} ${section.id} ${position.top} ${position.bottom} ${window.innerHeight} ${scrollTop}`);
-
     if (index === sections.length - 1) {
       if (position.bottom <= window.innerHeight) {
         checkingActive = section.id;
@@ -186,7 +183,7 @@ export function getBackground(darkMode, background) {
       return "var(--dark-theme-background)";
     } else return "var(--light-theme-background)";
   }
-  return "var(--light-theme-background)";
+  return "var(--dark-theme-background)";
 }
 
 export function getTextColor(darkMode, background) {

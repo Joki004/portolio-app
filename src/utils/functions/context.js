@@ -28,9 +28,12 @@ export const ElementsProvider = ({ children }) => {
 
   const [darkMode, setDarkMode] = useLocalStorageState("darkMode", false);
   const [backgroundColorBody, setBackgroundColorBody] = useLocalStorageState('backgroundColor', 'regular');
-
+  const updateDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
   const updateBackgroundColor = (mode) => {
     setBackgroundColorBody(mode);
+    setDarkMode(mode === "paralax" ? true : false);
   };
   
 
@@ -59,9 +62,7 @@ export const ElementsProvider = ({ children }) => {
     setSubtitle2(newColor);
   };
 
-  const updateDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+ 
   const updateActiveTitle = (title) => {
     setActiveTitle(title);
   };
