@@ -14,8 +14,9 @@ import { sideBarSections } from "../../utils/datas";
 
 import SocialLinks from "../../utils/components/socialLinks";
 import SideBarSectionsMenus from "../../utils/components/sideBarSectionsMenus";
-/*import chevronLeft from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/solid/bxs-chevron-left.svg";
-import chevronRight from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/solid/bxs-chevron-right.svg";*/
+
+import Chevron from "./chevron";
+
 const ImageLinks = {
   image1:
     "https://images.unsplash.com/photo-1701086292958-f753f3bb5d27?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -26,7 +27,6 @@ const SideBar = () => {
   const {
     mainColor,
     mainColor10Lighter,
-    mainColor20Lighter,
     subtitle2,
     chevronBackground,
     sideBarBackgroundMode,
@@ -72,8 +72,6 @@ const SideBar = () => {
       fontWeight: 400,
     },
     button: {
-      // the active class will be added automatically by react router
-      // so we can use it to style the active menu item
       [`&.active`]: {
         backgroundColor: "#13395e",
         color: "#b6c8d9",
@@ -201,7 +199,13 @@ const SideBar = () => {
                   Socials
                 </Typography>
 
-                <SocialLinks />
+                <SocialLinks
+                  backgroundColorBox={
+                    sideBarBackgroundMode === "regular"
+                      ? "black"
+                      : "transparent"
+                  }
+                />
               </div>
             ) : null}
           </div>
@@ -245,36 +249,7 @@ const SideBar = () => {
         <div style={{ color: mainColor10Lighter }}></div>
       </Sidebar>
       <div className="sideBarcollapse" style={{ ...sideBarcollapseDiv }}>
-        {collapsed ? (
-          <div
-            style={{ height: "50px", width: "90%" }}
-            onClick={handleCollapsed}
-          >
-            {/* <img src={chevronRight} alt="chevronRight" /> */}
-            <box-icon
-              type="solid"
-              name="chevron-right"
-              size="50px"
-              color={mainColor20Lighter}
-              animation={"fade-right-hover"}
-            ></box-icon>
-          </div>
-        ) : (
-          <div
-            style={{ height: "50px", width: "90%" }}
-            onClick={handleCollapsed}
-          >
-            {/* <img src={chevronLeft} alt="chevronLeft" />*/}
-
-            <box-icon
-              type="solid"
-              name="chevron-left"
-              size="50px"
-              color={mainColor20Lighter}
-              animation={"fade-left-hover"}
-            ></box-icon>
-          </div>
-        )}
+        <Chevron handleCollapsed={handleCollapsed} collapsed={collapsed} />
       </div>
     </div>
   );

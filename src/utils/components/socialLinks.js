@@ -39,8 +39,8 @@ function determineHeref(link){
   }
   return link.href;
 }
-const SocialLinks = ({size='30px'}) => {
-  const {mainColor20Lighter} = useElements();
+const SocialLinks = ({size='30px',backgroundColorBox='transparent'}) => {
+  const {mainColor20Lighter,darkMode} = useElements();
   socialsLinksStyle.socialsLinks.height = parseInt(size)+10;
   socialsLinksStyle.socialsLinks.width =  parseInt(size)+10;
   return (
@@ -61,7 +61,7 @@ const SocialLinks = ({size='30px'}) => {
           key={index}
           style={{
             ...socialsLinksStyle.socialsLinks,
-            //backgroundColor: link.backgroundColor || "",
+            backgroundColor: backgroundColorBox,
             borderColor:  mainColor20Lighter,
           }}
           href={determineHeref(link)}
@@ -72,7 +72,7 @@ const SocialLinks = ({size='30px'}) => {
             type={link.typeIcon}
             size={size}
             name={link.icon}
-            color={link.color}
+            color={darkMode ? "white" : "black"}
           ></box-icon>
         </a>
         </motion.div>

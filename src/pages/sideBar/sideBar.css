@@ -1,13 +1,58 @@
-.chevron{
-    transition: all 0.3s ease-in-out;
-    
-  
-}
-.chevronRight{
-    display: none;
+.chevronRight {
+  display: none;
 }
 
-.MenuItemsClass{
-    margin-top: 20px;
-    margin-bottom: 20px;
+.MenuItemsClass {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
+
+.chevron-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.vertical-line,
+.chevron {
+  transition: opacity 0.3s ease;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chevron {
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.chevron-container:hover .chevron {
+  opacity: 1;
+}
+
+.chevron-container:hover .vertical-line {
+  opacity: 0;
+}
+.tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -10px;
+    left: 270%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .chevron-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }

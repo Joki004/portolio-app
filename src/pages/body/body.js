@@ -5,14 +5,58 @@ import { AnimatePresence } from "framer-motion";
 import { useElements } from "../../utils/functions/context";
 import { getBackground, getTextColor } from "../../utils/functions/function";
 const Body = () => {
-  const { darkMode, backgroundColorBody } = useElements();
+  const { darkMode, backgroundColorBody, windowWidth } = useElements();
   const [textColor, setTextColor] = useState(
     getTextColor(darkMode, backgroundColorBody)
   );
+  const [showSidebar, setShowSidebar] = useState(windowWidth >= 700);
   useEffect(() => {
     setTextColor(getTextColor(darkMode, backgroundColorBody));
+
+    const handleResize = () => setShowSidebar(window.innerWidth >= 700);
+
+  
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+
+    return () => window.removeEventListener("resize", handleResize);
   }, [backgroundColorBody, darkMode]);
- 
+
+  const toggleSidebar = (event) => {
+    event.stopPropagation(); 
+    setShowSidebar(!showSidebar);
+  };
+
+  const handlePageClick = (e) => {
+    if (e.target.id !== "sidebar-toggle" && windowWidth < 700) {
+      setShowSidebar(false);
+    }
+  };
+
+  function getsidebarStyles() {
+   
+    if(windowWidth < 700){
+      return{
+        position: "fixed", 
+        height: "100%", 
+        width: "250px", 
+        left: showSidebar ? "0" : "-250px", 
+        top: "0",
+        transition: "left 0.5s ease-in-out", 
+        display: "flex",
+        flexDirection: "column",
+        zIndex: "99",
+      }
+    }
+    else{
+      return null;
+    }
+  }
+  const sidebarStyles = getsidebarStyles();
+
+
   const BodyStyle = {
     body: {
       display: "flex",
@@ -40,6 +84,15 @@ const Body = () => {
         backgroundColor: "#f1f1f1",
       },
     },
+    sidebarButton: {
+      position: "fixed",
+      top: "15px",
+      left:  "15px",
+  
+      zIndex: "100",
+      cursor: "pointer",
+      display: windowWidth < 700 ? "block" : "none", // Only display the button on smaller screens
+    },
   };
 
   return (
@@ -61,11 +114,17 @@ const Body = () => {
           }
         `}
         </style>
-        <SideBar />
-        <div style={{ ...BodyStyle.container }}>
-       
+        <div
+          id="sidebar-toggle"
+          onClick={toggleSidebar}
+          style={BodyStyle.sidebarButton}
+        >
+          <box-icon name="menu"></box-icon>
+        </div>
+        <div style={{...sidebarStyles}}>{showSidebar && <SideBar />}</div>
+
+        <div style={{ ...BodyStyle.container }} onClick={handlePageClick}>
           <Informations />
-         
         </div>
       </div>
     </AnimatePresence>
