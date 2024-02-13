@@ -91,12 +91,12 @@ export function checks(id) {
 
 export function DetermineTitleWidth(shouldFill, elementWidth) {
   if (shouldFill) {
-    if (elementWidth > 244 && elementWidth <= 1000) return "60%";
-    else if (elementWidth > 1000) return "20%";
+    if (elementWidth > 244 && elementWidth <= 1000) return "62%";
+    else if (elementWidth > 1000) return "22%";
     else return "90%";
   } else {
-    if (elementWidth > 244 && elementWidth <= 1000) return "50%";
-    else if (elementWidth > 1000) return "15%";
+    if (elementWidth > 244 && elementWidth <= 1000) return "52%";
+    else if (elementWidth > 1000) return "17%";
     else return "80%";
   }
 }
@@ -138,13 +138,16 @@ export const getFirstId = (sideBarSections) => {
   return firstItem ? firstItem.id : null;
 };
 
-export function getFontsizeTitle(screenWidth) {
-  if (screenWidth <= 768) {
-    return "var(--mobile-title-font)";
-  } else if (screenWidth > 768 && screenWidth < 1024) {
-    return "var(--tablet-title-font)";
-  } else if (screenWidth >= 1024) {
-    return "var(--desktop-title-font)";
+export function getFontsizeTitle(type) {
+  switch(type){
+    case 't1':
+      return 'var(--title-t1-font)';
+    case 't2':  
+      return 'var(--title-t2-font)';
+    case 't3':  
+      return 'var(--title-t3-font)';
+    default:
+      return 'var(--title-t1-font)';
   }
 }
 

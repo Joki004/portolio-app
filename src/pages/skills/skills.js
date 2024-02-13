@@ -81,7 +81,7 @@ const Skills = ({ skillsData }) => {
                       {skill.logo}
                       {skill.SvgComponent && (
                         <skill.SvgComponent
-                          style={{ width: "50px", height: "50px" }}
+                          style={{ width: "50px", height: "50px", fill: darkMode ? "white" : "black" }}
                         />
                       )}
                     </li>
@@ -119,7 +119,7 @@ const Skills = ({ skillsData }) => {
                     {skill.logo}
                     {skill.SvgComponent && (
                       <skill.SvgComponent
-                        style={{ width: "50px", height: "50px" }}
+                        style={{ width: "50px", height: "50px", fill: darkMode ? "white" : "black"}}
                       />
                     )}
                   </li>

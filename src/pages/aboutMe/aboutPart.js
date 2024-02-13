@@ -34,19 +34,19 @@ const AboutMeSectionStyle = {
     fontSize: "20px",
   },
   sectionTitle: {
-    fontSize: "40px",
+    fontSize: getFontSizeHeader('h1'),
     fontWeight: "bold",
     borderRadius: "20px",
     height: "55px",
     width: "50%",
-    textAlign: "center",
+    textAlign: "flex-start",
     whiteSpace: "nowrap",
-    color: "white",
     textDecoration: "underline",
     padding: "2px",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
+   
   },
   leftBox: {
     flex: 1,
@@ -120,7 +120,7 @@ const AboutMeSectionStyle = {
 const AboutMeSection = ({ name, texts, languageData }) => {
   const { mainColor, mainColor10Lighter, windowWidth } = useElements();
 
-  AboutMeSectionStyle.sectionTitle.color = mainColor;
+  
   AboutMeSectionStyle.box.flexDirection = windowWidth > 950 ? "row" : "column";
   AboutMeSectionStyle.leftBox.width = windowWidth > 950 ? "50%" : "100%";
   AboutMeSectionStyle.rightBox.width = windowWidth > 950 ? "50%" : "100%";

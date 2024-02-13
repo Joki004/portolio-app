@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Experience from "./experience";
 import AboutMeSection from "./aboutPart";
+import { useElements } from "../../utils/functions/context";
 
 const aboutMeStyle = {
   box: {
@@ -17,6 +18,11 @@ const aboutMeStyle = {
 
 const AboutMe = ({ person, aboutMeText, languageData,  timelineData
 }) => {
+
+  const {darkMode}=useElements();
+  useEffect(() => {
+
+  }, [darkMode]);
   return (
     <div style={{ ...aboutMeStyle.box }}>
       <AboutMeSection

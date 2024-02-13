@@ -3,7 +3,8 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useElements } from "../functions/context";
 import backgroundImage from "../../assets/sam-quek-0qHN3cX1M0U-unsplash.jpg";
-
+import { ReactComponent as ToggleRight } from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-toggle-right.svg";
+import { ReactComponent as ToggleLeft } from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-toggle-left.svg";
 export function SettingModal({ show, handleClose, handleShow }) {
   const {
     darkMode,
@@ -104,9 +105,7 @@ export function SettingModal({ show, handleClose, handleShow }) {
     updateDarkMode();
   };
 
-  useEffect(() => {
-    
-  }, [darkMode,backgroundColorBody]);
+  useEffect(() => {}, [darkMode, backgroundColorBody]);
 
   return (
     <>
@@ -124,24 +123,26 @@ export function SettingModal({ show, handleClose, handleShow }) {
                     style={{ ...Modalstyle.darkModeButton }}
                     onClick={handleDrakModeClick}
                   >
-                    <box-icon
-                      name="toggle-right"
-                      size="70px"
-                      type="solid"
-                      color={mainColor10Lighter}
-                    ></box-icon>
+                    <ToggleRight
+                      style={{
+                        fill: mainColor10Lighter,
+                        width: "70px",
+                        height: "70px",
+                      }}
+                    />
                   </div>
                 ) : (
                   <div
                     style={{ ...Modalstyle.darkModeButton }}
                     onClick={handleDrakModeClick}
                   >
-                    <box-icon
-                      name="toggle-left"
-                      size="70px"
-                      type="solid"
-                      color={mainColor10Lighter}
-                    ></box-icon>
+                  <ToggleLeft
+                      style={{
+                        fill: mainColor10Lighter,
+                        width: "70px",
+                        height: "70px",
+                      }}
+                    />
                   </div>
                 )}
               </div>
@@ -245,7 +246,11 @@ export function SettingModal({ show, handleClose, handleShow }) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose} style={{backgroundColor:mainColor}}>
+          <Button
+            variant="primary"
+            onClick={handleClose}
+            style={{ backgroundColor: mainColor }}
+          >
             Ok
           </Button>
         </Modal.Footer>

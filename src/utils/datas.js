@@ -3,23 +3,24 @@ import AboutMe from "../pages/aboutMe/aboutMe";
 import Projects from "../pages/projects/projects";
 import Skills from "../pages/skills/skills";
 import ContactForm from "../pages/contacts/contact";
-import { ReactComponent as CppIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-c-plus-plus.svg";
-import { ReactComponent as TypeScriptIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-typescript.svg";
-import { ReactComponent as CssIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-css3.svg";
-import { ReactComponent as HtmlIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-html5.svg";
-import { ReactComponent as ReactIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-react.svg";
-import { ReactComponent as AngularIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-angular.svg";
-import { ReactComponent as JavaIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-java.svg";
-import { ReactComponent as PythonIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-python.svg";
-import { ReactComponent as NodejsIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-nodejs.svg";
-import { ReactComponent as SpringIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-spring-boot.svg";
-import { ReactComponent as BootstrapIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-bootstrap.svg";
-import { ReactComponent as GithubIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-github.svg";
-import { ReactComponent as GitIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-git.svg";
-import { ReactComponent as BlenderIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-blender.svg";
-import { ReactComponent as UnityIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-unity.svg";
-import { ReactComponent as JavascriptIcon  } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-javascript.svg";
-
+import { ReactComponent as CppIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-c-plus-plus.svg";
+import { ReactComponent as TypeScriptIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-typescript.svg";
+import { ReactComponent as CssIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-css3.svg";
+import { ReactComponent as HtmlIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-html5.svg";
+import { ReactComponent as ReactIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-react.svg";
+import { ReactComponent as AngularIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-angular.svg";
+import { ReactComponent as JavaIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-java.svg";
+import { ReactComponent as PythonIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-python.svg";
+import { ReactComponent as NodejsIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-nodejs.svg";
+import { ReactComponent as SpringIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-spring-boot.svg";
+import { ReactComponent as BootstrapIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-bootstrap.svg";
+import { ReactComponent as GithubIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-github.svg";
+import { ReactComponent as GitIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-git.svg";
+import { ReactComponent as BlenderIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-blender.svg";
+import { ReactComponent as UnityIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-unity.svg";
+import { ReactComponent as JavascriptIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-javascript.svg";
+import { ReactComponent as linkedinIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-linkedin.svg";
+import { ReactComponent as envelopeIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-envelope.svg";
 const imageURL = require("../../src/assets/images/PictureOfMe.jpg");
 const person = {
   firstName: "Joram",
@@ -52,7 +53,12 @@ const zfDescription = `I've been an essential contributor to the 'Innovation' pr
 const freeLance = `During 2018-2019, I freelanced as a small business manager, overseeing operations for a taxi service. My responsibilities included tracking entries and expenses meticulously using Excel sheets. Additionally, I collaborated with companies specializing in data sales for online platforms, ensuring accurate record-keeping and efficient management of our business operations.`;
 
 const SSSDescription = `I've been part of a groundbreaking project named 'Innovation.' Here, at Lodz University of Technology, we collaborated with leading companies, tackling real-world tasks throughout the semester. I took charge of developing the frontend interface using React Native, enhancing user experience and pushing boundaries!" 🚀`;
-const universityDescription = `I am currently pursuing a Bachelor's degree in Computer Science at Lodz University of Technology, where I've been honing my skills in software development, data structures, and algorithms.`;
+const universityDescription = `I am currently pursuing a Bachelor's degree in Computer 
+Science at Lodz University of Technology, specializing in Exploration, Analysis, and Database. This program is allowing me to deepen 
+my understanding and enhance my expertise in software development, data structures, and algorithms, alongside gaining specialized 
+knowledge in data exploration, analysis techniques, and database management systems.`;
+
+const LanguageCourse = `I embarked on an enriching journey at the Language Center for Foreigners at the University of Łódź (UŁ), where I completed a one-year intensive course designed to prepare students for studies in Polish. This rigorous program not only deepened my understanding of the Polish language but also equipped me with the cultural insights necessary to navigate academic and everyday life in Poland. I am proud to have achieved a B2 Level certification in Polish, a testament to my dedication and the high-quality education provided by the Language Center at UŁ.`;
 const timelineData = [
   {
     date: "11-2023 - 02-2024",
@@ -73,8 +79,14 @@ const timelineData = [
     description: universityDescription,
   },
   {
+    date: "09-2020 - 06-2021",
+    organization: "University of Lodz",
+    position: "Language Center for Foreigners",
+    description: LanguageCourse,
+  },
+  {
     date: "2018 - 2019",
-    organization: "Free lance",
+    organization: "Free lancer",
     position: "management of a small business",
     description: freeLance,
   },
@@ -158,7 +170,7 @@ const logos = {
     name: "C++",
     nameBoxIcon: "c-plus-plus",
     typeBoxIcon: "logo",
-    SvgComponent: CppIcon ,
+    SvgComponent: CppIcon,
   },
   typescript: {
     name: "TypeScript",
@@ -189,7 +201,6 @@ const logos = {
     nameBoxIcon: "javascript",
     typeBoxIcon: "logo",
     SvgComponent: JavascriptIcon,
-
   },
   blender: {
     name: "Blender",
@@ -214,7 +225,6 @@ const logos = {
     name: "C",
     nameBoxIcon: "c",
     typeBoxIcon: "logo",
-   
   },
   nodejs: {
     name: "NodeJs",
@@ -357,6 +367,7 @@ export const socialLinks = [
     borderColor: "#0a66c2",
     color: "#000000",
     typeIcon: "logo",
+    SvgComponent: linkedinIcon,
   },
   {
     type: "link", // 'link' or 'email
@@ -364,6 +375,7 @@ export const socialLinks = [
     icon: "github",
     color: "#000000",
     typeIcon: "logo",
+    SvgComponent: GithubIcon,
   },
   {
     type: "email",
@@ -371,5 +383,6 @@ export const socialLinks = [
     icon: "envelope",
     color: "#000000",
     typeIcon: null,
+    SvgComponent: envelopeIcon,
   },
 ];
