@@ -32,13 +32,16 @@ const SideBarSectionsMenus = ({
         label={section.title}
       >
         {section.subMenu.map((subItem) =>
+       
           RenderMenuItem(
+            
             subItem,
             true,
             activeTitle,
             collapsed,
             mainColor10Lighter,
             menuItemStyles
+
           )
         )}
       </SubMenu>

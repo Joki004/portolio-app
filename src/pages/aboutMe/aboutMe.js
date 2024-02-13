@@ -16,21 +16,22 @@ const aboutMeStyle = {
   },
 };
 
-const AboutMe = ({ person, aboutMeText, languageData,  timelineData
-}) => {
-
-  const {darkMode}=useElements();
-  useEffect(() => {
-
-  }, [darkMode]);
+const AboutMe = ({ person, aboutMeText, languageData, timelineData }) => {
+  const { darkMode } = useElements();
+  useEffect(() => {}, [darkMode]);
   return (
     <div style={{ ...aboutMeStyle.box }}>
       <AboutMeSection
+        id="AboutMe"
         name={person.firstName}
         texts={aboutMeText}
         languageData={languageData}
       />
-      <Experience timeline={timelineData} title={'Education & Experience'} />
+      <Experience
+        id="EducationExperience"
+        timeline={timelineData}
+        title={"Education & Experience"}
+      />
     </div>
   );
 };
