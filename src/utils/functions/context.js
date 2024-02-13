@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { useLocalStorageState } from "../functions/function";
-
+import { colorConfig  } from '../datas'
 const Elements = createContext();
 
 export const ElementsProvider = ({ children }) => {
@@ -28,9 +28,12 @@ export const ElementsProvider = ({ children }) => {
 
   const [darkMode, setDarkMode] = useLocalStorageState("darkMode", false);
   const [backgroundColorBody, setBackgroundColorBody] = useLocalStorageState('backgroundColor', 'regular');
-
+  const updateDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
   const updateBackgroundColor = (mode) => {
     setBackgroundColorBody(mode);
+    setDarkMode(mode === "paralax" ? true : false);
   };
   
 
@@ -42,26 +45,21 @@ export const ElementsProvider = ({ children }) => {
   };
 
   const updateColor = (newColor) => {
-    if (newColor === "var(--primary-color)") {
+    const colorSetting = colorConfig[newColor];
+    if (colorSetting) {
       setMainColor(newColor);
-      setmainColor10Lighter("var(--primary-color-10-lighter)");
-      setmainColor20Lighter("var(--primary-color-20-lighter)");
-      setChevronBackground("#b3c1cd");
-    } else if (newColor === "var(--secondary-color)") {
-      setMainColor(newColor);
-      setmainColor10Lighter("var(--secondary-color-30-lighter)");
-      setmainColor20Lighter("var( --secondary-color-60-lighter)");
-      setChevronBackground("#b1e1d4");
+      setmainColor10Lighter(colorSetting.mainColor10Lighter);
+      setmainColor20Lighter(colorSetting.mainColor20Lighter);
+      setChevronBackground(colorSetting.chevronBackground);
     }
+    
   };
 
   const updateSubtitle2 = (newColor) => {
     setSubtitle2(newColor);
   };
 
-  const updateDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+ 
   const updateActiveTitle = (title) => {
     setActiveTitle(title);
   };

@@ -31,7 +31,7 @@ const Experience = ({ timeline, title }) => {
 
   const styles = {
     h1: {
-      color: mainColor,
+    
       fontSize: getFontSizeHeader("h1"),
       fontWeight: "bold",
       textDecoration: "underline",

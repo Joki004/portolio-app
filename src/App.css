@@ -1,14 +1,20 @@
 :root{
 
-  --primary-color: #0d3b66;
-  --primary-color-10-lighter: #254f75; /* 10% lighter */
-  --primary-color-20-lighter: #3d6285; /* 20% lighter */
+  --primary-color: #1833a1;
+  --primary-color-10-lighter: #2f47aa; /* 10% lighter */
+  --primary-color-20-lighter: #465cb4; /* 20% lighter */
   --secondary-color: #06a77d;
   --secondary-color-30-lighter: #51c1a4; /* 30% lighter */
   --secondary-color-60-lighter: #9bdccb; /* 60% lighter */
   --tertiary-color: #06a77d;
-  --quaternary-color: #d5c67a;
+  --quaternary-color: #cb248b;
+  --quaternary-color-10-lighter: #d03a97; /* 10% lighter */
+  --quaternary-color-20-lighter: #d550a2; /* 20% lighter */
+
   --quinary-color: #f1a208;
+  --quinary-color-10-lighter: #f2ab21; /* 10% lighter */
+  --quinary-color-20-lighter: #f5be52; /* 20% lighter */
+
   
   --light-theme-status-bar: #e0e0e0;
   --light-theme-app-bar: #f5f5f5;
@@ -46,6 +52,10 @@
   --tablet-title-font: 28px; /* 28px -40px */
   --desktop-title-font: 32px; /* 32px -48px */
 
+  
+  --title-t1-font: calc(15px + 7vmin);
+  --title-t2-font: calc(15px + 6vmin);
+  --title-t3-font: calc(15px + 5vmin);
 
 }
 

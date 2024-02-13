@@ -5,6 +5,7 @@ import {
   getElementByIdHeightPosition,
   DetermineTitleSectionColor,
   DetermineTitleWidth,
+  getFontsizeTitle
 } from "../functions/function";
 import { useElements } from "../functions/context";
 
@@ -54,7 +55,7 @@ const Section = ({ title, id, content }) => {
       x: shouldFill ? 0 : -10,
       width: widthStyle,
       backgroundColor: shouldFill ? mainColor : "rgba(255, 255, 255, 0)",
-      transition: { duration: shouldFill ? 1 : 0.3 },
+      transition: { duration: shouldFill ? 0.5 : 0.3 },
     });
 
     return () => {
@@ -76,9 +77,9 @@ const Section = ({ title, id, content }) => {
 
   const SectionStyle = {
     title: {
-      height: "60px",
+      height: "100px",
       marginTop: "50px",
-      marginBottom: "20px",
+      marginBottom: "40px",
       border: "1px solid",
       borderColor: mainColor,
       backgroundColor: "white",
@@ -86,10 +87,11 @@ const Section = ({ title, id, content }) => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      fontSize: "2rem",
+      fontSize: getFontsizeTitle('t3'),
+      textAlign: "center",
       fontWeight: "bold",
       color: textColor,
-      transition: "all",
+     
     },
     content: {
       padding: "10px",

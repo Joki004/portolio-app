@@ -3,7 +3,8 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useElements } from "../functions/context";
 import backgroundImage from "../../assets/sam-quek-0qHN3cX1M0U-unsplash.jpg";
-
+import { ReactComponent as ToggleRight } from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-toggle-right.svg";
+import { ReactComponent as ToggleLeft } from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-toggle-left.svg";
 export function SettingModal({ show, handleClose, handleShow }) {
   const {
     darkMode,
@@ -104,9 +105,14 @@ export function SettingModal({ show, handleClose, handleShow }) {
     updateDarkMode();
   };
 
-  useEffect(() => {
-    
-  }, [darkMode,backgroundColorBody]);
+  useEffect(() => {}, [darkMode, backgroundColorBody]);
+
+  const colorButtons = [
+    { backgroundColorVariable: "var(--primary-color)", colorName: "primary" },
+    { backgroundColorVariable: "var(--secondary-color)", colorName: "secondary" },
+    { backgroundColorVariable: "var(--quaternary-color)", colorName: "quaternary" },
+    { backgroundColorVariable: "var(--quinary-color)", colorName: "quinary" },
+  ];
 
   return (
     <>
@@ -124,24 +130,26 @@ export function SettingModal({ show, handleClose, handleShow }) {
                     style={{ ...Modalstyle.darkModeButton }}
                     onClick={handleDrakModeClick}
                   >
-                    <box-icon
-                      name="toggle-right"
-                      size="70px"
-                      type="solid"
-                      color={mainColor10Lighter}
-                    ></box-icon>
+                    <ToggleRight
+                      style={{
+                        fill: mainColor10Lighter,
+                        width: "70px",
+                        height: "70px",
+                      }}
+                    />
                   </div>
                 ) : (
                   <div
                     style={{ ...Modalstyle.darkModeButton }}
                     onClick={handleDrakModeClick}
                   >
-                    <box-icon
-                      name="toggle-left"
-                      size="70px"
-                      type="solid"
-                      color={mainColor10Lighter}
-                    ></box-icon>
+                  <ToggleLeft
+                      style={{
+                        fill: mainColor10Lighter,
+                        width: "70px",
+                        height: "70px",
+                      }}
+                    />
                   </div>
                 )}
               </div>
@@ -222,21 +230,16 @@ export function SettingModal({ show, handleClose, handleShow }) {
             <div style={{ ...Modalstyle.sideBarBackground }}>
               <div>Colors :</div>
               <span style={{ ...Modalstyle.outlinesBox }}>
-                {" "}
-                <button
-                  style={{
-                    ...Modalstyle.outlines,
-                    backgroundColor: "var(--primary-color)",
-                  }}
-                  onClick={() => updateColor("var(--primary-color)")}
-                ></button>
-                <button
-                  style={{
-                    ...Modalstyle.outlines,
-                    backgroundColor: "var(--secondary-color)",
-                  }}
-                  onClick={() => updateColor("var(--secondary-color)")}
-                ></button>
+                {colorButtons.map(({ backgroundColorVariable, colorName }) => (
+                  <button
+                    key={colorName} // Unique key for each button
+                    style={{
+                      ...Modalstyle.outlines,
+                      backgroundColor: backgroundColorVariable,
+                    }}
+                    onClick={() => updateColor(backgroundColorVariable)}
+                  ></button>
+                ))}
               </span>
             </div>
           </div>
@@ -245,7 +248,11 @@ export function SettingModal({ show, handleClose, handleShow }) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose} style={{backgroundColor:mainColor}}>
+          <Button
+            variant="primary"
+            onClick={handleClose}
+            style={{ backgroundColor: mainColor }}
+          >
             Ok
           </Button>
         </Modal.Footer>

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Experience from "./experience";
 import AboutMeSection from "./aboutPart";
+import { useElements } from "../../utils/functions/context";
 
 const aboutMeStyle = {
   box: {
@@ -15,16 +16,22 @@ const aboutMeStyle = {
   },
 };
 
-const AboutMe = ({ person, aboutMeText, languageData,  timelineData
-}) => {
+const AboutMe = ({ person, aboutMeText, languageData, timelineData }) => {
+  const { darkMode } = useElements();
+  useEffect(() => {}, [darkMode]);
   return (
     <div style={{ ...aboutMeStyle.box }}>
       <AboutMeSection
+        id="AboutMe"
         name={person.firstName}
         texts={aboutMeText}
         languageData={languageData}
       />
-      <Experience timeline={timelineData} title={'Education & Experience'} />
+      <Experience
+        id="EducationExperience"
+        timeline={timelineData}
+        title={"Education & Experience"}
+      />
     </div>
   );
 };

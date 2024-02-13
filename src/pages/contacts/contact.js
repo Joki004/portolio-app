@@ -19,8 +19,8 @@ const ContactForm = () => {
 
   const styles = {
     contactForm: {
-      width: windowWidth < 768 ? "100%" : "",
-      borderRadius: windowWidth < 768 ? "20px" : "",
+      width: windowWidth < 900 ? "100%" : "",
+      borderRadius: windowWidth < 900 ? "20px" : "",
     },
     button: {
       backgroundColor: mainColor10Lighter,
