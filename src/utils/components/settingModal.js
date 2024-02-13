@@ -107,6 +107,13 @@ export function SettingModal({ show, handleClose, handleShow }) {
 
   useEffect(() => {}, [darkMode, backgroundColorBody]);
 
+  const colorButtons = [
+    { backgroundColorVariable: "var(--primary-color)", colorName: "primary" },
+    { backgroundColorVariable: "var(--secondary-color)", colorName: "secondary" },
+    { backgroundColorVariable: "var(--quaternary-color)", colorName: "quaternary" },
+    { backgroundColorVariable: "var(--quinary-color)", colorName: "quinary" },
+  ];
+
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -223,21 +230,16 @@ export function SettingModal({ show, handleClose, handleShow }) {
             <div style={{ ...Modalstyle.sideBarBackground }}>
               <div>Colors :</div>
               <span style={{ ...Modalstyle.outlinesBox }}>
-                {" "}
-                <button
-                  style={{
-                    ...Modalstyle.outlines,
-                    backgroundColor: "var(--primary-color)",
-                  }}
-                  onClick={() => updateColor("var(--primary-color)")}
-                ></button>
-                <button
-                  style={{
-                    ...Modalstyle.outlines,
-                    backgroundColor: "var(--secondary-color)",
-                  }}
-                  onClick={() => updateColor("var(--secondary-color)")}
-                ></button>
+                {colorButtons.map(({ backgroundColorVariable, colorName }) => (
+                  <button
+                    key={colorName} // Unique key for each button
+                    style={{
+                      ...Modalstyle.outlines,
+                      backgroundColor: backgroundColorVariable,
+                    }}
+                    onClick={() => updateColor(backgroundColorVariable)}
+                  ></button>
+                ))}
               </span>
             </div>
           </div>

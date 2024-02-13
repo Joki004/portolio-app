@@ -386,3 +386,26 @@ export const socialLinks = [
     SvgComponent: envelopeIcon,
   },
 ];
+
+export const colorConfig = {
+  "var(--primary-color)": {
+    mainColor10Lighter: "var(--primary-color-10-lighter)",
+    mainColor20Lighter: "var(--primary-color-20-lighter)",
+    chevronBackground: "#b3c1cd",
+  },
+  "var(--secondary-color)": {
+    mainColor10Lighter: "var(--secondary-color-30-lighter)",
+    mainColor20Lighter: "var(--secondary-color-60-lighter)",
+    chevronBackground: "#b1e1d4",
+  },
+  "var(--quaternary-color)": {
+    mainColor10Lighter: "var(--quaternary-color-10-lighter)",
+    mainColor20Lighter: "var(--quaternary-color-20-lighter)",
+    chevronBackground: "#b1e1d4",
+  },
+  "var(--quinary-color)": {
+    mainColor10Lighter: "var(--quinary-color-10-lighter)",
+    mainColor20Lighter: "var(--quinary-color-20-lighter)",
+    chevronBackground: "#b1e1d4",
+  },
+};
