@@ -1,3 +1,4 @@
+import { useElements } from "../../utils/functions/context";
 import {
   getFontSizeHeader,
   getFontsizeContent,
@@ -5,7 +6,10 @@ import {
 
 const Technologies = ({ Technologies }) => {
   return (
-    <div style={{ display: "flex", gap: "10px" }}>
+    <div style={{ display: "flex",
+      flexWrap: "wrap", // Allow the tags to wrap
+      gap: "10px",
+      justifyContent: "center", }}>
       {Technologies.map((technology, idx) => (
         <p
           key={idx}
@@ -19,16 +23,23 @@ const Technologies = ({ Technologies }) => {
 };
 
 const ProjectDetails = ({ project, color,isEvenIndex }) => {
+  const {windowWidth} = useElements();
+  const baseStyle = {
+    boxSizing: 'border-box',
+  };
+
   const styles = {
     box: {
+      ...baseStyle,
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: isEvenIndex ? "flex-start" : "flex-end",
       gap: "10px",
-      width: "100%",
+      maxWidth: "100%",
       height: "100%",
       padding: "10px",
+      
       
 
     },
@@ -45,15 +56,16 @@ const ProjectDetails = ({ project, color,isEvenIndex }) => {
 
     },
     title: {
+      ...baseStyle,
       with: "100%",
-      textAlign: "flex-start",
+      textAlign: "left",
       border: "1px solid",
       fontSize: getFontSizeHeader("h1"),
       padding: "10px",
       borderRadius: "8px",
     },
     content: {
-      
+      wordWrap: "break-word",
       borderLeft: "3px solid",
       borderColor: color,
       textAlign: "justify",
@@ -70,12 +82,26 @@ const ProjectDetails = ({ project, color,isEvenIndex }) => {
       cursor: "pointer",
     },
   };
+  const mobileStyles = windowWidth < 768 ? {
+    box: {
+      flexDirection: "column", 
+      alignItems: "center",
+      padding:'10px' 
+    },
+    title: {
+      fontSize: getFontSizeHeader("h3"),
+    },
+    content: {
+      padding: "5px", 
+    },
+
+  } : {};
   return (
-    <div style={{ ...styles.box }}>
+    <div style={{ ...styles.box,...mobileStyles.box }}>
       <div  style={{ ...styles.box2 }}>
-      <h2 style={{ ...styles.title }}>{project.name}</h2>
+      <h2 style={{ ...styles.title,...mobileStyles.title  }}>{project.name}</h2>
       <p>{`Status : ${project.state}`}</p>
-      <p style={{ ...styles.content }}>{project.description}</p>
+      <p style={{ ...styles.content , ...mobileStyles.content}}>{project.description}</p>
       <div>
         <Technologies Technologies={project.technologies} />
       </div>

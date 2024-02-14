@@ -15,6 +15,7 @@ const Projects = ({ projectsData }) => {
   useEffect(() => {
     setIsScreenSmall(windowWidth < 1000);
     setIsMobile(windowWidth < 768);
+   
   }, [windowWidth]);
 
   const toggleAutoplay = () => {
@@ -68,7 +69,17 @@ const Projects = ({ projectsData }) => {
   }, [darkMode]);
 
   return (
-    <div>
+    <div
+      style={{
+        maxWidth: isMobile ? "100%" : "80%",
+        margin: "0 auto",
+        padding: "10px",
+        display: "flex",
+        flexDirection: "column",
+
+        gap: "10px",
+      }}
+    >
       <button
         onClick={toggleAutoplay}
         style={{
@@ -94,6 +105,7 @@ const Projects = ({ projectsData }) => {
         stopOnHover
         swipeable={isMobile}
         swipeScrollTolerance={5}
+        width={"100%"}
       >
         {chunkedProjects.map((group, groupIndex) => (
           <div key={groupIndex}>
@@ -107,10 +119,11 @@ const Projects = ({ projectsData }) => {
               {group.map((project, projectIndex) => (
                 <div key={projectIndex} style={{ margin: "0 10px" }}>
                   {isScreenSmall ? (
-                    <div>
+                    <div style={{maxWidth:'100%'}}>
                       <ProjectDetails
                         project={project}
                         color={mainColor10Lighter}
+                        isEvenIndex={false}
                       />
                       <ProjectImages images={project.images[0]} />
                     </div>
