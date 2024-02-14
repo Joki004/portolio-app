@@ -19,19 +19,17 @@ const Experience = ({ timeline, title }) => {
   );
 
   const handleMouseEnter = (index) => {
-    const updatedHoverStates = [...hoverStates];
-    updatedHoverStates[index] = true;
-    setHoverStates(updatedHoverStates);
+    setHoverStates(hoverStates.map((state, i) => (i === index ? true : state)));
   };
+
   const handleMouseLeave = (index) => {
-    const updatedHoverStates = [...hoverStates];
-    updatedHoverStates[index] = false;
-    setHoverStates(updatedHoverStates);
+    setHoverStates(
+      hoverStates.map((state, i) => (i === index ? false : state))
+    );
   };
 
   const styles = {
     h1: {
-    
       fontSize: getFontSizeHeader("h1"),
       fontWeight: "bold",
       textDecoration: "underline",
@@ -46,10 +44,11 @@ const Experience = ({ timeline, title }) => {
       borderColor: mainColor,
       width: windowWidth > 1000 ? "100%" : "100%",
       position: "relative",
+      cursor: "pointer",
     },
     circle: {
       position: "absolute",
-      top: "23%",
+      top: windowWidth > 768 ? "23%" : "18%",
       left: "-10px", // Adjust as needed
       transform: "translateY(-50%)",
       width: "20px",
@@ -59,7 +58,7 @@ const Experience = ({ timeline, title }) => {
     },
     header: {
       display: "flex",
-      flexDirection: "row",
+      flexDirection: windowWidth > 768 ? "row" : "column",
       justifyContent: "flex-start",
       width: "100%",
       gap: "20px",
@@ -91,7 +90,7 @@ const Experience = ({ timeline, title }) => {
     position: {
       fontSize: getFontsizeContent("body2"),
       fontStyle: "oblique",
-      whiteSpace: "nowrap",
+      whiteSpace: windowWidth > 768 ? "nowrap" : "wrap",
     },
     description: {
       display: "flex",
@@ -111,6 +110,21 @@ const Experience = ({ timeline, title }) => {
       alignItems: "center",
       gap: "10px",
       height: "70px",
+    },
+    readMoreButton: {
+      cursor: "pointer",
+      fontSize: getFontsizeContent("body1"), // Adjust this to make it larger if necessary
+      fontWeight: "bold", // Make the text bold
+      color: mainColor, // Use the main color for better visibility
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "5px", // Add some space between text and icon
+      padding: "10px 20px", // Add some padding for better clickability
+
+      backgroundColor: "transparent", // Default background
+      textDecoration: "none", // No underline by default
+      transition: "all 0.3s ease",
     },
   };
   const updateCollapsed = (index) => {
@@ -141,10 +155,16 @@ const Experience = ({ timeline, title }) => {
 
   return (
     <AnimatePresence>
-      <div>
+      <div style={{ width: "100%" }}>
         <h1 style={{ ...styles.h1 }}>{title}</h1>
         {timeline.map((data, index) => (
-          <div key={index} style={{ ...styles.body }}>
+          <div
+            key={index}
+            style={{ ...styles.body }}
+            onClick={() => {
+              updateCollapsed(index);
+            }}
+          >
             <div
               style={{ ...styles.header }}
               onMouseEnter={() => handleMouseEnter(index)}
@@ -171,27 +191,28 @@ const Experience = ({ timeline, title }) => {
             <div>
               {data.description && (
                 <div style={{ width: windowWidth > 1000 ? "50%" : "90%" }}>
-                  <div
-                    style={{ ...styles.description }}
-                    onClick={() => {
-                      updateCollapsed(index);
-                    }}
-                  >
-                    <p style={{ ...styles.descriptionText }}>Read more</p>
+                  <div style={{ ...styles.description }}>
+                    <p
+                      style={{
+                        ...styles.readMoreButton,
+                        fontSize: hoverStates[index]
+                          ? getFontsizeContent("body1")
+                          : getFontsizeContent("body2"),
+                        textDecoration: hoverStates[index]
+                          ? "underline"
+                          : "none",
+                      }}
+                    >
+                      Read more
+                    </p>
                     <span style={{ ...styles.descriptionText }}>
-                      {!isCollapsed[index] ? (
-                        <CustomIcon
-                          iconName="arrowDownIcon"
-                          boxsize="50px"
-                          colorIcon={mainColor20Lighter}
-                        />
-                      ) : (
-                        <CustomIcon
-                          iconName="arrowUpIcon"
-                          boxsize="50px"
-                          colorIcon={mainColor20Lighter}
-                        />
-                      )}
+                      <CustomIcon
+                        iconName={
+                          isCollapsed[index] ? "arrowUpIcon" : "arrowDownIcon"
+                        }
+                        boxsize="30px" // Adjust icon size as necessary
+                        colorIcon={mainColor}
+                      />
                     </span>
                   </div>
                   <motion.div {...getDescriptionAnimation(index)}>
