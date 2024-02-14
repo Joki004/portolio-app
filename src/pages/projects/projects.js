@@ -10,9 +10,11 @@ const Projects = ({ projectsData }) => {
   const { windowWidth, mainColor10Lighter, darkMode } = useElements();
   const [isScreenSmall, setIsScreenSmall] = useState(false);
   const [autoplay, setAutoplay] = useState(true);
+  const [isMobile, setIsMobile] = useState(windowWidth < 768);
 
   useEffect(() => {
     setIsScreenSmall(windowWidth < 1000);
+    setIsMobile(windowWidth < 768);
   }, [windowWidth]);
 
   const toggleAutoplay = () => {
@@ -90,6 +92,8 @@ const Projects = ({ projectsData }) => {
         interval={8000}
         infiniteLoop
         stopOnHover
+        swipeable={isMobile}
+        swipeScrollTolerance={5}
       >
         {chunkedProjects.map((group, groupIndex) => (
           <div key={groupIndex}>
