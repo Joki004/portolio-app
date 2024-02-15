@@ -159,6 +159,26 @@ const arrayOfImagesWebApp = [
   webappImage7,
 ];
 
+const blackjackImage1 = require("../assets/images/InfoScreenShot.png");
+const blackjackImage2 = require("../assets/images/Gameplay-screenShot.png");
+const blackjackImage3 = require("../assets/images/InfoScreenShot.png");
+
+const arrayOfImagesBlackJack = [
+  blackjackImage1,
+  blackjackImage2,
+  blackjackImage3,
+];
+
+const RockPaperScissorsImage1 = require("../assets/images/rockPaperSci1.png");
+const RockPaperScissorsImage2 = require("../assets/images/rockPaperSci2.png");
+const RockPaperScissorsImage3 = require("../assets/images/rockPaperSci3.png");
+
+
+const arrayOfImagesRockPaperScissors = [
+  RockPaperScissorsImage1,
+  RockPaperScissorsImage2,
+  RockPaperScissorsImage3,
+];
 const projectsData = [
   {
     name: "MoneyMinder",
@@ -191,32 +211,28 @@ const projectsData = [
     images: [arrayOfImagesWebApp],
   },
   {
-    name: "Project 4",
-    description: ["This is a project description"],
-    state: "In progress",
-    githublink: " ",
+    name: "BlackJack",
+    description: [
+      `Dive into the classic casino vibe with this vibrant, multiplayer Blackjack game interface, designed for four players to challenge the dealer. Each player starts with a pot of $8000, aiming to draw a winning hand close to 21.`,
+      ` The game kicks off on a colorful starter screen with playful avatars, leading to a sleek, virtual table where strategy meets luck. With Java and JavaFX powering the gameplay and XML structuring the UI, this application brings together intuitive design and solid back-end mechanics for a seamless gaming experience. `,
+      `Run 'App.java', place your bets, and enjoy a round of Blackjack right from your desktop!`,
+    ],
+    state: "Done",
+    githublink: "https://github.com/Joki004/blackjack",
     weblink: " ",
-    technologies: ["React", "Node", "Express", "MongoDB"],
-    images: [arrayOfImages],
+    technologies: ["Java"],
+    images: [arrayOfImagesBlackJack],
   },
   {
     name: "Project 5",
-    description: ["This is a project description"],
-    state: "In progress",
-    githublink: " ",
-    weblink: " ",
-    technologies: ["React", "Node", "Express", "MongoDB"],
-    images: [arrayOfImages],
+    description: [`This is a Rock Paper Scissors Game: A modern take on the classic game, designed using HTML, CSS, and JavaScript to create a fully interactive and auditory experience.`,`Play against the computer, with each choice accompanied by sound effects and a backdrop of music that you control. The game announces winners through speech synthesis, adding a personal touch to every round. Simple, fun, and engaging - a testament to the power of combining traditional games with new technology.`],
+    state: "Done",
+    githublink: "https://github.com/Joki004/Rock-Paper-Scissor",
+    weblink: "https://joki004.github.io/Rock-Paper-Scissor/",
+    technologies: ["Html", "Css", "Javascript"],
+    images: [arrayOfImagesRockPaperScissors],
   },
-  {
-    name: "Project 6",
-    description: ["This is a project description"],
-    state: "In progress",
-    githublink: " ",
-    weblink: " ",
-    technologies: ["React", "Node", "Express", "MongoDB"],
-    images: [arrayOfImages],
-  },
+
 ];
 
 const logos = {
