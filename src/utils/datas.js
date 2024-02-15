@@ -92,9 +92,7 @@ const timelineData = [
   },
 ];
 
-const projectImage = require("../assets/images/example.png");
-const projectImage2 = require("../assets/images/example2.png");
-const arrayOfImages = [projectImage, projectImage2];
+
 
 const moneyMinder1 = require("../assets/images/moneyMinde1.png");
 const moneyMinder2 = require("../assets/images/moneyMinde2.png");
