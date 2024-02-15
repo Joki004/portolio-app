@@ -16,7 +16,7 @@ const Technologies = ({ Technologies }) => {
     >
       {Technologies.map((technology, idx) => (
         <p
-          key={idx}
+          key={`technology-${idx}`}
           style={{ border: "1px solid", padding: "10px", borderRadius: "10px" }}
         >
           {technology}
@@ -27,7 +27,7 @@ const Technologies = ({ Technologies }) => {
 };
 
 const ProjectDetails = ({ project, color, isEvenIndex }) => {
-  console.log("Description:", project.description);
+  
   const { windowWidth } = useElements();
   const baseStyle = {
     boxSizing: "border-box",
@@ -106,7 +106,7 @@ const ProjectDetails = ({ project, color, isEvenIndex }) => {
         </h2>
         <p>{`Status : ${project.state}`}</p>
         {project.description.map((desc, index) => (
-          <p key={index} style={{ ...styles.content, ...mobileStyles.content }}>
+          <p key={`project${index}`} style={{ ...styles.content, ...mobileStyles.content }}>
             {desc}
           </p>
         ))}

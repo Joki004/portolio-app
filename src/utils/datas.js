@@ -222,7 +222,7 @@ const projectsData = [
     images: [arrayOfImagesBlackJack],
   },
   {
-    name: "Project 5",
+    name: "Rock Paper Scissors",
     description: [`This is a Rock Paper Scissors Game: A modern take on the classic game, designed using HTML, CSS, and JavaScript to create a fully interactive and auditory experience.`,`Play against the computer, with each choice accompanied by sound effects and a backdrop of music that you control. The game announces winners through speech synthesis, adding a personal touch to every round. Simple, fun, and engaging - a testament to the power of combining traditional games with new technology.`],
     state: "Done",
     githublink: "https://github.com/Joki004/Rock-Paper-Scissor",

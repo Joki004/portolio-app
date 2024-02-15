@@ -10,13 +10,11 @@ const SideBarSectionsMenus = ({
   mainColor10Lighter,
   menuItemStyles,
 }) => {
-
-
   return sideBarSections.map((section) =>
     section.subMenu ? (
       <SubMenu
         style={{ ...menuItemStyles.MenuItem }}
-        key={section.title}
+        key={`sideBarSection-${section.title}`}
         onClick={() => handleClickScroll(section.id)}
         icon={
           <CustomIcon
@@ -31,17 +29,14 @@ const SideBarSectionsMenus = ({
         }
         label={section.title}
       >
-        {section.subMenu.map((subItem) =>
-       
+        {section.subMenu.map((subItem, index) =>
           RenderMenuItem(
-            
             subItem,
             true,
             activeTitle,
             collapsed,
             mainColor10Lighter,
             menuItemStyles
-
           )
         )}
       </SubMenu>

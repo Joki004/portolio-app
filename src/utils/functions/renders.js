@@ -12,7 +12,7 @@ export const RenderMenuItem = (
 ) => {
   return (
     <MenuItem
-      key={item.title}
+      id={`sideBarSection-${item.title}`}
       style={{
         ...menuItemStyles.MenuItem,
         marginTop: isSubMenu ? "0" : "20px",

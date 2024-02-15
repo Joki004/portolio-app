@@ -158,7 +158,7 @@ const AboutMeSection = ({ name, texts, languageData }) => {
         <span style={{ ...AboutMeSectionStyle.ProgressBarBox }}>
           {languageData.map((language, index) => (
             <span
-              key={index}
+              key={`language${index}`}
               style={{ ...AboutMeSectionStyle.ProgressBarBody }}
             >
               <p style={{ ...AboutMeSectionStyle.p }}>{language.language}</p>

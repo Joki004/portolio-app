@@ -58,7 +58,7 @@ const ProjectImages = (images) => {
           style={{ border: "1px solid red" }}
         >
           {imageArray.map((imageUrl, index) => (
-            <div key={index} style={{ ...projectImagesStyles.carrousel }}>
+            <div key={`projectImage${index}`} style={{ ...projectImagesStyles.carrousel }}>
               <div style={{ ...projectImagesStyles.imageBox }}>
                 <img
                   src={imageUrl}

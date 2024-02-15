@@ -30,11 +30,12 @@ const Body = () => {
   };
 
   const handlePageClick = (e) => {
+    console.log(e.target.id);
     if (e.target.id !== "sidebar-toggle" && windowWidth < 700) {
       setShowSidebar(false);
     }
+   
   };
-
   function getsidebarStyles() {
     if (windowWidth < 700) {
       return {

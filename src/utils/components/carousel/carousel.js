@@ -8,7 +8,11 @@ import { ReactComponent as RadioButtonUnchecked } from "../../../assets/boxicons
 import { AnimatePresence } from "framer-motion";
 import { useElements } from "../../functions/context";
 export const MyCarousel = ({ projectList = [] }) => {
-  console.log(projectList);
+  const projectsDataWithIds = projectList.map((project, index) => ({
+    ...project,
+    id: `project-${index}` 
+  }));
+
   const { darkMode,mainColor10Lighter } = useElements();
   const [activeIndex, setActiveIndex] = useState(0);
   const [click, setClick] = useState("none");
@@ -40,9 +44,9 @@ export const MyCarousel = ({ projectList = [] }) => {
           />
         </button>
         <div className="indicators-button">
-          {projectList.map((_, idx) => (
+          {projectsDataWithIds.map((_, idx) => (
             <button
-              key={idx}
+              key={`indicator-${idx}`}
               className="indicator-buttons"
               onClick={() => updateIndex(idx, "none")}
             >
@@ -88,9 +92,9 @@ export const MyCarousel = ({ projectList = [] }) => {
             width: `${100}%`,
           }}
         >
-          {projectList.map((item, index) => (
+          {projectsDataWithIds.map((item, index) => (
             <CarouselItem
-              key={item.name}
+              key={`carousel-item-${index}`}
               item={item}
               index={index}
               activeIndex={activeIndex}
