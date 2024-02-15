@@ -93,7 +93,8 @@ export function SettingModal({ show, handleClose, handleShow }) {
     outlinesBox: {
       display: "flex",
       flexDirection: "row",
-      width: "50%",
+      flexWrap: "wrap",
+      width: "100%",
       alignItems: "center",
       padding: "10px",
       gap: "10px",
