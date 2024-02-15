@@ -12,7 +12,7 @@ import { sideBarSections } from "../utils/datas";
 import SectionDisplay from "../utils/components/sectionsDisplay";
 import { CustomIcon } from "../utils/components/icons";
 import "../utils/components/parallax/parallax.css";
-import { MyCarousel } from "../utils/components/carousel/carousel";
+
 const Informations = () => {
   const {
     activeTitle,
@@ -80,19 +80,6 @@ const Informations = () => {
             />
           </div>
         ) : null}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-            height: "100vh",
- 
-            backgroundColor: "#85a8c5",
-          }}
-        >
-          <MyCarousel />
-        </div>
       </div>
     </div>
   );

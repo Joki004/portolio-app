@@ -1,91 +1,51 @@
 .myCarousel {
-  overflow: hidden;
-  width: 700px;
+  width: 100%;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
+  gap: 20px;
+
 }
 
-.inner {
-  white-space: nowrap;
-  transition: transform 0.3s;
-  width: 300%;
-  border:2x solid red;
-  
+.myCarousel-inner {
+
+  min-height: 80vh;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+ 
 }
 
 .myCarousel-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 33.3333%; /* Each item should not grow or shrink and should take up 100% of the .inner width */
-  height: 490px;
-  background-color: #fff;
-  border: 1px solid green;
+
+
+  overflow: hidden;
 }
 
 .myCarousel-item-text {
-  font-size: 1.15rem;
-  margin: 40px 0 40px 0;
-  padding: 0 20px 0 20px;
-  white-space: normal;
-  color: #617d98;
-  border: 2px solid #26343f;
+ width: 50%;
+
 }
 .myCarousel-img {
-  width: 200px;
-  padding: 0 20px 0 20px;
-  display: block;
-  border: 2px solid #26343f;
+  width: 50%;
+  
 }
 
 /* final stage */
 
-.myCarousel-buttons {
+.ButtonsArows {
   display: flex;
+  min-width: 50%;
+  max-width: 100%;
+  align-items: center;
   justify-content: space-between;
-  position: absolute; /* Position your arrows absolutely within the carousel */
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-}
 
-.button-arrow {
-  background: none;
-  border: 2px solid #26343f;
-  cursor: pointer;
-  margin-top: 20px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.indicators {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 20px;
+  gap: 20px;
 }
 
 .indicator-buttons {
   border: none;
   cursor: pointer;
-}
-
-.indicators > button {
-  margin: 5px;
-  background: none;
-}
-
-.indicator-symbol {
-  color: #26343f;
-}
-
-.indicator-symbol-active {
-  color: #ffffff;
 }

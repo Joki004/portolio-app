@@ -1,37 +1,23 @@
 import React, { useState } from "react";
 import { CarouselItem } from "./carouselItems";
 import "./myCarousel.css";
-import { ReactComponent as ArrowBack } from "../../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-arrow-back.svg";
-import { ReactComponent as ArrowForward } from "../../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-arrow-to-right.svg";
+import { ReactComponent as ArrowBack } from "../../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/solid/bxs-left-arrow-circle.svg";
+import { ReactComponent as ArrowForward } from "../../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/solid/bxs-right-arrow-circle.svg";
 import { ReactComponent as RadioButtonChecked } from "../../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-radio-circle-marked.svg";
 import { ReactComponent as RadioButtonUnchecked } from "../../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-radio-circle.svg";
-export const MyCarousel = () => {
+import { AnimatePresence } from "framer-motion";
+import { useElements } from "../../functions/context";
+export const MyCarousel = ({ projectList = [] }) => {
+  console.log(projectList);
+  const { darkMode,mainColor10Lighter } = useElements();
   const [activeIndex, setActiveIndex] = useState(0);
-  const items = [
-    {
-      title: "Baseball",
-      description:
-        "Baseball is a bat-and-ball sport played between two teams of nine players each, taking turns batting and fielding. The game occurs over the course of several plays, with each play generally beginning when a player on the fielding team, called the pitcher.",
-      image: require("../../../assets/images/example1.svg"),
-    },
-    {
-      title: "Walking",
-      description:
-        "Walking (also known as ambulation) is one of the main gaits of terrestrial locomotion among legged animals. Walking is typically slower than running and other gaits. ",
-      image: require("../../../assets/images/example2.svg"),
-    },
-    {
-      title: "Weights",
-      description:
-        "Weightlifting generally refers to activities in which people lift weights, often in the form of dumbbells or barbells. People lift various kinds of weights for a variety of different reasons.",
-      image: require("../../../assets/images/example3.svg"),
-    },
-  ];
+  const [click, setClick] = useState("none");
 
-  const updateIndex = (newIndex) => {
+  const updateIndex = (newIndex, direction) => {
+    setClick(direction);
     if (newIndex < 0) {
-      newIndex = items.length - 1;
-    } else if (newIndex >= items.length) {
+      newIndex = projectList.length - 1;
+    } else if (newIndex >= projectList.length) {
       newIndex = 0;
     }
 
@@ -39,44 +25,81 @@ export const MyCarousel = () => {
   };
 
   return (
-    <div className="myCarousel">
-      <div
-        className="inner"
-        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-      >
-        {items.map((item, index) => (
-          <CarouselItem key={index} item={item} width={"100%"} index={index} />
-        ))}
-      </div>
-      <div className="myCarousel-buttons">
+    <AnimatePresence>
+      <div className="ButtonsArows">
         <button
-          className="button-arrow"
-          onClick={() => updateIndex(activeIndex - 1)}
+          className="direction-button"
+          onClick={() => updateIndex(activeIndex - 1, "left")}
         >
-          <ArrowBack />
+          <ArrowBack
+            style={{
+              width: "50px",
+              height: "50px",
+              fill: darkMode ? mainColor10Lighter : "black",
+            }}
+          />
         </button>
-        <div className="indicators">
-          {items.map((item, idx) => (
+        <div className="indicators-button">
+          {projectList.map((_, idx) => (
             <button
               key={idx}
               className="indicator-buttons"
-              onClick={() => updateIndex(idx)}
+              onClick={() => updateIndex(idx, "none")}
             >
               {idx === activeIndex ? (
-                <RadioButtonChecked />
+                <RadioButtonChecked
+                  style={{
+                    width: "40px",
+                    height: "50px",
+                    fill: darkMode ? mainColor10Lighter : "black",
+                  }}
+                />
               ) : (
-                <RadioButtonUnchecked />
+                <RadioButtonUnchecked
+                  style={{
+                    width: "20px",
+                    height: "50px",
+                    fill: darkMode ? mainColor10Lighter : "black",
+                  }}
+                />
               )}
             </button>
           ))}
         </div>
+
         <button
-          className="button-arrow"
-          onClick={() => updateIndex(activeIndex + 1)}
+          className="direction-button"
+          onClick={() => updateIndex(activeIndex + 1, "right")}
         >
-          <ArrowForward />
+          <ArrowForward
+            style={{
+              width: "50px",
+              height: "50px",
+              fill: darkMode ? mainColor10Lighter : "black",
+            }}
+          />
         </button>
       </div>
-    </div>
+
+      <div className="myCarousel">
+        <div
+          className="myCarousel-inner"
+          style={{
+            width: `${100}%`,
+          }}
+        >
+          {projectList.map((item, index) => (
+            <CarouselItem
+              key={item.name}
+              item={item}
+              index={index}
+              activeIndex={activeIndex}
+              width={`${100}%`}
+              click={click}
+            />
+          ))}
+        </div>
+      </div>
+    </AnimatePresence>
   );
 };

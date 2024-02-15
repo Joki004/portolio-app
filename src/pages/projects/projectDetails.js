@@ -6,10 +6,14 @@ import {
 
 const Technologies = ({ Technologies }) => {
   return (
-    <div style={{ display: "flex",
-      flexWrap: "wrap", // Allow the tags to wrap
-      gap: "10px",
-      justifyContent: "center", }}>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap", 
+        gap: "10px",
+        justifyContent: "center",
+      }}
+    >
       {Technologies.map((technology, idx) => (
         <p
           key={idx}
@@ -22,10 +26,11 @@ const Technologies = ({ Technologies }) => {
   );
 };
 
-const ProjectDetails = ({ project, color,isEvenIndex }) => {
-  const {windowWidth} = useElements();
+const ProjectDetails = ({ project, color, isEvenIndex }) => {
+  console.log("Description:", project.description);
+  const { windowWidth } = useElements();
   const baseStyle = {
-    boxSizing: 'border-box',
+    boxSizing: "border-box",
   };
 
   const styles = {
@@ -39,21 +44,16 @@ const ProjectDetails = ({ project, color,isEvenIndex }) => {
       maxWidth: "100%",
       height: "100%",
       padding: "10px",
-      
-      
-
     },
     box2: {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      alignItems: 'flex-start',
+      alignItems: "flex-start",
       gap: "10px",
-     
+
       height: "100%",
       padding: "10px",
-      
-
     },
     title: {
       ...baseStyle,
@@ -82,44 +82,59 @@ const ProjectDetails = ({ project, color,isEvenIndex }) => {
       cursor: "pointer",
     },
   };
-  const mobileStyles = windowWidth < 768 ? {
-    box: {
-      flexDirection: "column", 
-      alignItems: "center",
-      padding:'10px' 
-    },
-    title: {
-      fontSize: getFontSizeHeader("h3"),
-    },
-    content: {
-      padding: "5px", 
-    },
-
-  } : {};
+  const mobileStyles =
+    windowWidth < 768
+      ? {
+          box: {
+            flexDirection: "column",
+            alignItems: "center",
+            padding: "10px",
+          },
+          title: {
+            fontSize: getFontSizeHeader("h3"),
+          },
+          content: {
+            padding: "5px",
+          },
+        }
+      : {};
   return (
-    <div style={{ ...styles.box,...mobileStyles.box }}>
-      <div  style={{ ...styles.box2 }}>
-      <h2 style={{ ...styles.title,...mobileStyles.title  }}>{project.name}</h2>
-      <p>{`Status : ${project.state}`}</p>
-      <p style={{ ...styles.content , ...mobileStyles.content}}>{project.description}</p>
-      <div>
-        <Technologies Technologies={project.technologies} />
-      </div>
-      <div>
-        {project.weblink !== " " ? (
-          <a href={project.weblink} style={{ ...styles.links }}>
-            See{" "}
-          </a>
-        ) : null}
-        <a style={{ ...styles.links }} href={project.githublink}>
-          Github Link
-        </a>
-      </div>
-      </div>
+    <div style={{ ...styles.box, ...mobileStyles.box }}>
+      <div style={{ ...styles.box2 }}>
+        <h2 style={{ ...styles.title, ...mobileStyles.title }}>
+          {project.name}
+        </h2>
+        <p>{`Status : ${project.state}`}</p>
+        {project.description.map((desc, index) => (
+          <p key={index} style={{ ...styles.content, ...mobileStyles.content }}>
+            {desc}
+          </p>
+        ))}
 
+        <div>
+          <Technologies Technologies={project.technologies} />
+        </div>
+        <div style={{ display: "flex", gap: "20px" }}>
+          {project.weblink !== " " ? (
+            <a
+              href={project.weblink}
+              target="_blanck"
+              style={{ ...styles.links }}
+            >
+              See Project
+            </a>
+          ) : null}
+          <a
+            style={{ ...styles.links }}
+            target="_black"
+            href={project.githublink}
+          >
+            Github Link
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
-
 
 export default ProjectDetails;

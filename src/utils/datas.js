@@ -107,11 +107,62 @@ const moneyMinderImages = [
   moneyMinder3,
   moneyMinder4,
 ];
+
+let moneyMinderDesc1 = `MoneyMinder is a user-friendly shopping list and budget management app. Developed using a robust technology stack including Java, Spring Boot for the backend, PostgreSQL as the database, and React.js for the frontend. This project is a full-stack solution for personal finance management.`;
+let moneyMinderDesc2 = `It offers secure user authentication, real-time tracking of shopping tasks, and budget monitoring to help users manage their spending efficiently. With features like multi-list management, item categorization, and a responsive design for cross-device compatibility, MoneyMinder simplifies personal finance`;
+let moneyMinderDesc3 = `It also includes dark mode for comfort and interactive progress indicators for an enhanced user experience. Whether on desktop or mobile, MoneyMinder is an essential tool for smart shopping and budget control.`;
+const MoneyMinderDescription = [
+  moneyMinderDesc1,
+  moneyMinderDesc2,
+  moneyMinderDesc3,
+];
+
+let portolioDesc1 = `my personal portfolio is a vibrant canvas illustrating the synergy of design and functionality. Crafted meticulously with React, my portfolio is a testament to responsive design principles and modern web development techniques.`;
+let portolioDesc2 = `It embodies a dynamic user experience, featuring parallax scrolling that adds depth and motion, guiding you through the layers of my work. As a front-end developer, I've integrated interactive elements that invite you to explore my projects, each demonstrating a piece of the creative puzzle that is my expertise.`;
+let portolioDesc3 = `Although the guide section is a work in progress, it represents my journey of continuous learning and my commitment to evolving my craft.`;
+
+const PortfolioImage1 = require("../assets/images/portfolio1.png");
+const PortfolioImage2 = require("../assets/images/portfolio2.png");
+const PortfolioImage3 = require("../assets/images/portfolio3.png");
+const PortfolioImage4 = require("../assets/images/portfolio4.png");
+const PortfolioImage5 = require("../assets/images/portfolio5.png");
+const PortfolioImage6 = require("../assets/images/portfolio6.png");
+const PortfolioImage7 = require("../assets/images/portfolio7.png");
+const PortfolioImage8 = require("../assets/images/portfolio8.png");
+
+const arrayOfImagesPortfolio = [
+  PortfolioImage1,
+  PortfolioImage2,
+  PortfolioImage3,
+  PortfolioImage4,
+  PortfolioImage5,
+  PortfolioImage6,
+  PortfolioImage7,
+  PortfolioImage8,
+];
+
+const webappImage1 = require("../assets/images/webpage.png");
+const webappImage2 = require("../assets/images/webpage2.png");
+const webappImage3 = require("../assets/images/webpage3.png");
+const webappImage4 = require("../assets/images/webpage4.png");
+const webappImage5 = require("../assets/images/webapp5.png");
+const webappImage6 = require("../assets/images/webapp6.png");
+const webappImage7 = require("../assets/images/webapp7.png");
+
+const arrayOfImagesWebApp = [
+  webappImage1,
+  webappImage2,
+  webappImage3,
+  webappImage4,
+  webappImage5,
+  webappImage6,
+  webappImage7,
+];
+
 const projectsData = [
   {
     name: "MoneyMinder",
-    description: `MoneyMinder is a user-friendly shopping list and budget management appDeveloped using a robust technology stack including Java, Spring Boot for the backend, PostgreSQL as the database, and React.js for the frontend. 
-    This project is a full-stack solution for personal finance management.. It offers secure user authentication, real-time tracking of shopping tasks, and budget monitoring to help users manage their spending efficiently. With features like multi-list management, item categorization, and a responsive design for cross-device compatibility, MoneyMinder simplifies personal finance. It also includes dark mode for comfort and interactive progress indicators for an enhanced user experience. Whether on desktop or mobile, MoneyMinder is an essential tool for smart shopping and budget control.`,
+    description: MoneyMinderDescription,
     state: "In progress",
     githublink: "https://github.com/Verionn/MoneyMinder",
     weblink: " ",
@@ -119,26 +170,29 @@ const projectsData = [
     images: [moneyMinderImages],
   },
   {
-    name: "Project 2",
-    description: zfDescription,
+    name: "My Portfolio",
+    description: [portolioDesc1, portolioDesc2, portolioDesc3],
     state: "In progress",
     githublink: " ",
-    weblink: " ",
-    technologies: ["React", "Node", "Express", "MongoDB"],
-    images: [arrayOfImages],
+    weblink: "https://teal-gnome-5728ca.netlify.app/",
+    technologies: ["React.js"],
+    images: [arrayOfImagesPortfolio],
   },
   {
-    name: "Project 3",
-    description: "This is a project description",
-    state: "In progress",
-    githublink: " ",
-    weblink: " ",
-    technologies: ["React", "Node", "Express", "MongoDB"],
-    images: [arrayOfImages],
+    name: "Website on client request",
+    description: [
+      ` The site provides straightforward navigation with sections for services, pricing, detailed descriptions, and contact information, all underscored by warm, inviting visuals. Interactive elements and a simple contact form make for an engaging and accessible online presence.`,
+      ` This project showcases my initial journey into web development, utilizing HTML, CSS, and JavaScript to create a user-focused interface that emphasizes functionality and design.`,
+    ],
+    state: "Done",
+    githublink: "https://github.com/Joki004/webpage_frontend",
+    weblink: "https://joki004.github.io/webpage_frontend/index.html/",
+    technologies: ["Html", "Css", "Javascript"],
+    images: [arrayOfImagesWebApp],
   },
   {
     name: "Project 4",
-    description: "This is a project description",
+    description: ["This is a project description"],
     state: "In progress",
     githublink: " ",
     weblink: " ",
@@ -147,7 +201,7 @@ const projectsData = [
   },
   {
     name: "Project 5",
-    description: "This is a project description",
+    description: ["This is a project description"],
     state: "In progress",
     githublink: " ",
     weblink: " ",
@@ -156,7 +210,7 @@ const projectsData = [
   },
   {
     name: "Project 6",
-    description: "This is a project description",
+    description: ["This is a project description"],
     state: "In progress",
     githublink: " ",
     weblink: " ",
