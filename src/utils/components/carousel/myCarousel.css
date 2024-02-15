@@ -1,0 +1,51 @@
+.myCarousel {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+}
+
+.myCarousel-inner {
+
+  min-height: 80vh;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+ 
+}
+
+.myCarousel-item {
+
+
+  overflow: hidden;
+}
+
+.myCarousel-item-text {
+ width: 50%;
+
+}
+.myCarousel-img {
+  width: 50%;
+  
+}
+
+/* final stage */
+
+.ButtonsArows {
+  display: flex;
+  min-width: 50%;
+  max-width: 100%;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.indicator-buttons {
+  border: none;
+  cursor: pointer;
+}

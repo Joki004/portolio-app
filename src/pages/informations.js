@@ -12,6 +12,7 @@ import { sideBarSections } from "../utils/datas";
 import SectionDisplay from "../utils/components/sectionsDisplay";
 import { CustomIcon } from "../utils/components/icons";
 import "../utils/components/parallax/parallax.css";
+
 const Informations = () => {
   const {
     activeTitle,
@@ -22,7 +23,6 @@ const Informations = () => {
   const [scrollTop, setScrollTop] = useState(0);
   const elementRef = useRef(null);
   const mousePosition = useMousePosition();
- 
 
   const handleScroll = useCallback(() => {
     const newScrollTop = elementRef.current?.scrollTop || 0;
@@ -34,7 +34,7 @@ const Informations = () => {
 
   useEffect(() => {
     elementRef.current = document.getElementById("container");
-   
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -62,7 +62,6 @@ const Informations = () => {
       id="container"
       className={backgroundColorBody === "paralax" ? "parallax" : "regular"}
     >
-      
       <div className="content">
         <SectionDisplay />
         {getLastId(sideBarSections) === activeTitle ? (
