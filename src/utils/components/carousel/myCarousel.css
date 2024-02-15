@@ -4,20 +4,26 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .inner {
   white-space: nowrap;
   transition: transform 0.3s;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  width: 300%;
+  border:2x solid red;
+  
 }
 
 .myCarousel-item {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 33.3333%; /* Each item should not grow or shrink and should take up 100% of the .inner width */
   height: 490px;
   background-color: #fff;
+  border: 1px solid green;
 }
 
 .myCarousel-item-text {
@@ -26,18 +32,25 @@
   padding: 0 20px 0 20px;
   white-space: normal;
   color: #617d98;
+  border: 2px solid #26343f;
 }
 .myCarousel-img {
   width: 200px;
   padding: 0 20px 0 20px;
   display: block;
+  border: 2px solid #26343f;
 }
 
 /* final stage */
 
 .myCarousel-buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  position: absolute; /* Position your arrows absolutely within the carousel */
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
 }
 
 .button-arrow {
@@ -45,6 +58,11 @@
   border: 2px solid #26343f;
   cursor: pointer;
   margin-top: 20px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .indicators {
