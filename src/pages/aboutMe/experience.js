@@ -158,11 +158,7 @@ const Experience = ({ timeline, title }) => {
       <div style={{ width: "100%" }}>
         <h1 style={{ ...styles.h1 }}>{title}</h1>
         {timeline.map((data, index) => (
-          <div
-            key={index}
-            style={{ ...styles.body }}
-           
-          >
+          <div key={index} style={{ ...styles.body }}>
             <div
               style={{ ...styles.header }}
               onClick={() => {
@@ -192,7 +188,12 @@ const Experience = ({ timeline, title }) => {
             <div>
               {data.description && (
                 <div style={{ width: windowWidth > 1000 ? "50%" : "90%" }}>
-                  <div style={{ ...styles.description }}>
+                  <div
+                    style={{ ...styles.description }}
+                    onClick={() => {
+                      updateCollapsed(index);
+                    }}
+                  >
                     <p
                       style={{
                         ...styles.readMoreButton,
