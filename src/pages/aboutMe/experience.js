@@ -161,12 +161,13 @@ const Experience = ({ timeline, title }) => {
           <div
             key={index}
             style={{ ...styles.body }}
-            onClick={() => {
-              updateCollapsed(index);
-            }}
+           
           >
             <div
               style={{ ...styles.header }}
+              onClick={() => {
+                updateCollapsed(index);
+              }}
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={() => handleMouseLeave(index)}
             >

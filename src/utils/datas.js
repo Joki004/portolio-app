@@ -374,7 +374,7 @@ export const sideBarSections = [
     label: "Home",
   },
   {
-    title: "About me",
+    title: "About",
     id: "AboutMe",
     content: (
       <AboutMe
@@ -389,7 +389,7 @@ export const sideBarSections = [
     subMenu: [
       {
         title: "About me",
-        id: "AboutMe",
+        id: "About",
         content: "",
         icon: "aboutIcon",
         label: "About me",

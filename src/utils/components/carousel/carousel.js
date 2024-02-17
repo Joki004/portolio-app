@@ -5,7 +5,7 @@ import { ReactComponent as ArrowBack } from "../../../assets/boxicons-2.1.4/boxi
 import { ReactComponent as ArrowForward } from "../../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/solid/bxs-right-arrow-circle.svg";
 import { ReactComponent as RadioButtonChecked } from "../../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-radio-circle-marked.svg";
 import { ReactComponent as RadioButtonUnchecked } from "../../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-radio-circle.svg";
-import { AnimatePresence } from "framer-motion";
+
 import { useElements } from "../../functions/context";
 export const MyCarousel = ({ projectList = [] }) => {
   const projectsDataWithIds = projectList.map((project, index) => ({
@@ -29,7 +29,7 @@ export const MyCarousel = ({ projectList = [] }) => {
   };
 
   return (
-    <AnimatePresence>
+    <div>
       <div className="ButtonsArows">
         <button
           className="direction-button"
@@ -53,8 +53,8 @@ export const MyCarousel = ({ projectList = [] }) => {
               {idx === activeIndex ? (
                 <RadioButtonChecked
                   style={{
-                    width: "40px",
-                    height: "50px",
+                    width: "30px",
+                    height: "30px",
                     fill: darkMode ? mainColor10Lighter : "black",
                   }}
                 />
@@ -62,7 +62,7 @@ export const MyCarousel = ({ projectList = [] }) => {
                 <RadioButtonUnchecked
                   style={{
                     width: "20px",
-                    height: "50px",
+                    height: "30px",
                     fill: darkMode ? mainColor10Lighter : "black",
                   }}
                 />
@@ -104,6 +104,6 @@ export const MyCarousel = ({ projectList = [] }) => {
           ))}
         </div>
       </div>
-    </AnimatePresence>
+    </div>
   );
 };

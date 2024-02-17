@@ -29,26 +29,30 @@ const SideBarSectionsMenus = ({
         }
         label={section.title}
       >
-        {section.subMenu.map((subItem, index) =>
-          RenderMenuItem(
-            subItem,
-            true,
-            activeTitle,
-            collapsed,
-            mainColor10Lighter,
-            menuItemStyles
-          )
-        )}
+        {section.subMenu.map((subItem, index) => (
+          <div key={subItem.id}>
+            {RenderMenuItem(
+              subItem,
+              true,
+              activeTitle,
+              collapsed,
+              mainColor10Lighter,
+              menuItemStyles
+            )}
+          </div>
+        ))}
       </SubMenu>
     ) : (
-      RenderMenuItem(
-        section,
-        false,
-        activeTitle,
-        collapsed,
-        mainColor10Lighter,
-        menuItemStyles
-      )
+      <div key={`MenuItem-${section.id}`}>
+        {RenderMenuItem(
+          section,
+          false,
+          activeTitle,
+          collapsed,
+          mainColor10Lighter,
+          menuItemStyles
+        )}
+      </div>
     )
   );
 };

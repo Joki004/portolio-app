@@ -5,13 +5,15 @@ import { AnimatePresence } from "framer-motion";
 import { useElements } from "../../utils/functions/context";
 import { getBackground, getTextColor } from "../../utils/functions/function";
 import { ReactComponent as MenuIcon } from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-menu.svg";
+import { ReactComponent as CloseIcon } from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-x.svg";
 
 const Body = () => {
-  const { darkMode, backgroundColorBody, windowWidth } = useElements();
+  const { darkMode, backgroundColorBody, windowWidth,showSidebar,setShowSidebar } = useElements();
   const [textColor, setTextColor] = useState(
     getTextColor(darkMode, backgroundColorBody)
   );
-  const [showSidebar, setShowSidebar] = useState(windowWidth >= 700);
+
+
   useEffect(() => {
     setTextColor(getTextColor(darkMode, backgroundColorBody));
 
@@ -22,7 +24,7 @@ const Body = () => {
     handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [backgroundColorBody, darkMode]);
+  }, [backgroundColorBody, darkMode,setShowSidebar]);
 
   const toggleSidebar = (event) => {
     event.stopPropagation();
@@ -30,11 +32,10 @@ const Body = () => {
   };
 
   const handlePageClick = (e) => {
-    console.log(e.target.id);
     if (e.target.id !== "sidebar-toggle" && windowWidth < 700) {
       setShowSidebar(false);
     }
-   
+    console.log(e.target.className, e.target.id);
   };
   function getsidebarStyles() {
     if (windowWidth < 700) {
@@ -86,7 +87,6 @@ const Body = () => {
       position: "fixed",
       top: "15px",
       left: "15px",
-
       zIndex: "100",
       cursor: "pointer",
       display: windowWidth < 700 ? "block" : "none", // Only display the button on smaller screens
@@ -118,13 +118,23 @@ const Body = () => {
           onClick={toggleSidebar}
           style={BodyStyle.sidebarButton}
         >
-          <MenuIcon
-            style={{
-              fill: darkMode ? "white" : "black",
-              width: "50px",
-              height: "50px",
-            }}
-          />
+          {showSidebar ? (
+            <CloseIcon
+              style={{
+                fill: darkMode ? "white" : "black",
+                width: "50px",
+                height: "50px",
+              }}
+            />
+          ) : (
+            <MenuIcon
+              style={{
+                fill: darkMode ? "white" : "black",
+                width: "50px",
+                height: "50px",
+              }}
+            />
+          )}
         </div>
         <div style={{ ...sidebarStyles }}>{showSidebar && <SideBar />}</div>
 

@@ -1,6 +1,7 @@
 import { MenuItem } from "react-pro-sidebar";
 import { handleClickScroll } from "./function";
 import { CustomIcon } from "../components/icons";
+import { useElements } from "./context";
 
 export const RenderMenuItem = (
   item,
@@ -10,6 +11,11 @@ export const RenderMenuItem = (
   mainColor10Lighter,
   menuItemStyles
 ) => {
+  const { setShowSidebar } = useElements();
+  const handleOnClick = (id) => {
+    handleClickScroll(id);
+    setShowSidebar(false);
+  };
   return (
     <MenuItem
       id={`sideBarSection-${item.title}`}
@@ -17,7 +23,7 @@ export const RenderMenuItem = (
         ...menuItemStyles.MenuItem,
         marginTop: isSubMenu ? "0" : "20px",
       }}
-      onClick={() => handleClickScroll(item.id)}  
+      onClick={() => handleOnClick(item.id)}  
       icon={
         <CustomIcon
           size={parseInt(menuItemStyles.size.IconSize) + (isSubMenu ? 0 : 20)}
