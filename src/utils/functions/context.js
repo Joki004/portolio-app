@@ -24,7 +24,7 @@ export const ElementsProvider = ({ children }) => {
   );
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [sideBarBackgroundMode, setSideBarBackgroundMode] =
-    useLocalStorageState("sideBarBackground", "color");
+    useLocalStorageState("sideBarBackground", "image");
 
   const [darkMode, setDarkMode] = useLocalStorageState("darkMode", false);
   const [backgroundColorBody, setBackgroundColorBody] = useLocalStorageState('backgroundColor', 'regular');
