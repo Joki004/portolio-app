@@ -44,7 +44,7 @@ const Experience = ({ timeline, title }) => {
       borderColor: mainColor,
       width: windowWidth > 1000 ? "100%" : "100%",
       position: "relative",
-      cursor: "pointer",
+      
     },
     circle: {
       position: "absolute",
@@ -62,6 +62,7 @@ const Experience = ({ timeline, title }) => {
       justifyContent: "flex-start",
       width: "100%",
       gap: "20px",
+      cursor: "pointer",
     },
     date: {
       display: "flex",
