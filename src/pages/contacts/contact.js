@@ -52,6 +52,10 @@ const ContactForm = () => {
     });
   };
 
+  function alertMessage() {
+    alert("Implematation of this feature is in progress. Please try again later.");
+  }
+
   return (
     <div className="contact-form-wrapper">
       <div>
@@ -105,6 +109,7 @@ const ContactForm = () => {
           style={currentStyle}
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
+          onClick={alertMessage}
         >
           Send Message
         </button>

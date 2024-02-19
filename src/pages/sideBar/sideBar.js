@@ -11,7 +11,7 @@ import {
   determineSidebarColor,
 } from "../../utils/functions/function";
 import { sideBarSections } from "../../utils/datas";
-
+import { Helmet } from 'react-helmet';
 import SocialLinks from "../../utils/components/socialLinks";
 import SideBarSectionsMenus from "../../utils/components/sideBarSectionsMenus";
 
@@ -149,6 +149,9 @@ const SideBar = () => {
 
   return (
     <div className="SideBar" style={{ ...sideBarCss }}>
+       <Helmet>
+        <link rel="preload" href={ImageLinks.image1} as="image" />
+      </Helmet>
       <Sidebar
         style={{
           ...sideBarstyle,
