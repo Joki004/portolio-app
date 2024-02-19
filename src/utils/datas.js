@@ -21,7 +21,7 @@ import { ReactComponent as UnityIcon } from "../assets/boxicons-2.1.4/boxicons-2
 import { ReactComponent as JavascriptIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-javascript.svg";
 import { ReactComponent as linkedinIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-linkedin.svg";
 import { ReactComponent as envelopeIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-envelope.svg";
-const imageURL = require("../../src/assets/images/PictureOfMe.jpg");
+const imageURL = require("../../src/assets/images/PictureOfMe.webp");
 const person = {
   firstName: "Joram",
   lastName: "Mumb Mulaj Kambaj",
@@ -94,10 +94,10 @@ const timelineData = [
 
 
 
-const moneyMinder1 = require("../assets/images/moneyMinde1.png");
-const moneyMinder2 = require("../assets/images/moneyMinde2.png");
-const moneyMinder3 = require("../assets/images/moneyMinde3.png");
-const moneyMinder4 = require("../assets/images/moneyMinde4.png");
+const moneyMinder1 = require("../assets/images/moneyMinde1.webp");
+const moneyMinder2 = require("../assets/images/moneyMinde2.webp");
+const moneyMinder3 = require("../assets/images/moneyMinde3.webp");
+const moneyMinder4 = require("../assets/images/moneyMinde4.webp");
 
 const moneyMinderImages = [
   moneyMinder1,
@@ -119,14 +119,14 @@ let portolioDesc1 = `my personal portfolio is a vibrant canvas illustrating the 
 let portolioDesc2 = `It embodies a dynamic user experience, featuring parallax scrolling that adds depth and motion, guiding you through the layers of my work. As a front-end developer, I've integrated interactive elements that invite you to explore my projects, each demonstrating a piece of the creative puzzle that is my expertise.`;
 let portolioDesc3 = `Although the guide section is a work in progress, it represents my journey of continuous learning and my commitment to evolving my craft.`;
 
-const PortfolioImage1 = require("../assets/images/portfolio1.png");
-const PortfolioImage2 = require("../assets/images/portfolio2.png");
-const PortfolioImage3 = require("../assets/images/portfolio3.png");
-const PortfolioImage4 = require("../assets/images/portfolio4.png");
-const PortfolioImage5 = require("../assets/images/portfolio5.png");
-const PortfolioImage6 = require("../assets/images/portfolio6.png");
-const PortfolioImage7 = require("../assets/images/portfolio7.png");
-const PortfolioImage8 = require("../assets/images/portfolio8.png");
+const PortfolioImage1 = require("../assets/images/portfolio1.webp");
+const PortfolioImage2 = require("../assets/images/portfolio2.webp");
+const PortfolioImage3 = require("../assets/images/portfolio3.webp");
+const PortfolioImage4 = require("../assets/images/portfolio4.webp");
+const PortfolioImage5 = require("../assets/images/portfolio5.webp");
+const PortfolioImage6 = require("../assets/images/portfolio6.webp");
+const PortfolioImage7 = require("../assets/images/portfolio7.webp");
+const PortfolioImage8 = require("../assets/images/portfolio8.webp");
 
 const arrayOfImagesPortfolio = [
   PortfolioImage1,
@@ -139,13 +139,13 @@ const arrayOfImagesPortfolio = [
   PortfolioImage8,
 ];
 
-const webappImage1 = require("../assets/images/webpage.png");
-const webappImage2 = require("../assets/images/webpage2.png");
-const webappImage3 = require("../assets/images/webpage3.png");
-const webappImage4 = require("../assets/images/webpage4.png");
-const webappImage5 = require("../assets/images/webapp5.png");
-const webappImage6 = require("../assets/images/webapp6.png");
-const webappImage7 = require("../assets/images/webapp7.png");
+const webappImage1 = require("../assets/images/webpage.webp");
+const webappImage2 = require("../assets/images/webpage2.webp");
+const webappImage3 = require("../assets/images/webpage3.webp");
+const webappImage4 = require("../assets/images/webpage4.webp");
+const webappImage5 = require("../assets/images/webapp5.webp");
+const webappImage6 = require("../assets/images/webapp6.webp");
+const webappImage7 = require("../assets/images/webapp7.webp");
 
 const arrayOfImagesWebApp = [
   webappImage1,
@@ -157,9 +157,9 @@ const arrayOfImagesWebApp = [
   webappImage7,
 ];
 
-const blackjackImage1 = require("../assets/images/InfoScreenShot.png");
-const blackjackImage2 = require("../assets/images/Gameplay-screenShot.png");
-const blackjackImage3 = require("../assets/images/InfoScreenShot.png");
+const blackjackImage1 = require("../assets/images/InfoScreenShot.webp");
+const blackjackImage2 = require("../assets/images/Gameplay-screenShot.webp");
+const blackjackImage3 = require("../assets/images/InfoScreenShot.webp");
 
 const arrayOfImagesBlackJack = [
   blackjackImage1,
@@ -167,9 +167,9 @@ const arrayOfImagesBlackJack = [
   blackjackImage3,
 ];
 
-const RockPaperScissorsImage1 = require("../assets/images/rockPaperSci1.png");
-const RockPaperScissorsImage2 = require("../assets/images/rockPaperSci2.png");
-const RockPaperScissorsImage3 = require("../assets/images/rockPaperSci3.png");
+const RockPaperScissorsImage1 = require("../assets/images/rockPaperSci1.webp");
+const RockPaperScissorsImage2 = require("../assets/images/rockPaperSci2.webp");
+const RockPaperScissorsImage3 = require("../assets/images/rockPaperSci3.webp");
 
 
 const arrayOfImagesRockPaperScissors = [
