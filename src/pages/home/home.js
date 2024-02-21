@@ -101,6 +101,7 @@ const Home = ({ imageURL, person, text }) => {
         src={imageURL}
         alt={person.firstName}
         style={{ ...HomeStyle.image,objectFit:"fit" }}
+        
       />
       <h1 style={{ ...HomeStyle.person }}>
         {person.firstName} {person.lastName}

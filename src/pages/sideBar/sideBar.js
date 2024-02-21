@@ -11,16 +11,12 @@ import {
   determineSidebarColor,
 } from "../../utils/functions/function";
 import { sideBarSections } from "../../utils/datas";
-import { Helmet } from 'react-helmet';
 import SocialLinks from "../../utils/components/socialLinks";
 import SideBarSectionsMenus from "../../utils/components/sideBarSectionsMenus";
-
+import { ImageLinks } from "../../utils/datas";
 import Chevron from "./chevron";
 
-const ImageLinks = {
-  image1:
-    "https://images.unsplash.com/photo-1701086292958-f753f3bb5d27?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-};
+
 
 const SideBar = () => {
   const [collapsed, setCollapsed] = useLocalStorageState("collapsed", false);
@@ -149,9 +145,7 @@ const SideBar = () => {
 
   return (
     <div className="SideBar" style={{ ...sideBarCss }}>
-       <Helmet>
-        <link rel="preload" href={ImageLinks.image1} as="image" />
-      </Helmet>
+    
       <Sidebar
         style={{
           ...sideBarstyle,

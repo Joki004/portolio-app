@@ -47,6 +47,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.3.3"
+    "@craco/craco": "^7.1.0",
+    "@types/react-router-dom": "^5.3.3",
+    "terser-webpack-plugin": "^5.3.10"
   }
 }
