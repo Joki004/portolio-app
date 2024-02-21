@@ -6,13 +6,20 @@ import { useElements } from "../../utils/functions/context";
 import { getBackground, getTextColor } from "../../utils/functions/function";
 import { ReactComponent as MenuIcon } from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-menu.svg";
 import { ReactComponent as CloseIcon } from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-x.svg";
-
+import {updatePerformanceData} from "../../utils/functions/perfomances/perfomancesFunctions"
+import { preconnectUrls } from "../../utils/functions/perfomances/performancesDatas";
+import { imageUrls } from "../../utils/functions/perfomances/performancesDatas";
 const Body = () => {
-  const { darkMode, backgroundColorBody, windowWidth,showSidebar,setShowSidebar } = useElements();
+  const {
+    darkMode,
+    backgroundColorBody,
+    windowWidth,
+    showSidebar,
+    setShowSidebar,
+  } = useElements();
   const [textColor, setTextColor] = useState(
     getTextColor(darkMode, backgroundColorBody)
   );
-
 
   useEffect(() => {
     setTextColor(getTextColor(darkMode, backgroundColorBody));
@@ -24,7 +31,7 @@ const Body = () => {
     handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
-  }, [backgroundColorBody, darkMode,setShowSidebar]);
+  }, [backgroundColorBody, darkMode, setShowSidebar]);
 
   const toggleSidebar = (event) => {
     event.stopPropagation();
@@ -92,6 +99,9 @@ const Body = () => {
       display: windowWidth < 700 ? "block" : "none", // Only display the button on smaller screens
     },
   };
+  useEffect(() => {
+    updatePerformanceData(preconnectUrls,imageUrls);
+  }, []);
 
   return (
     <AnimatePresence>
@@ -112,7 +122,7 @@ const Body = () => {
           }
         `}
         </style>
-
+        
         <div
           id="sidebar-toggle"
           onClick={toggleSidebar}

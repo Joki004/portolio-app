@@ -197,3 +197,6 @@ export function getTextColor(darkMode, background) {
   }
   return "var(--light-theme-surface)";
 }
+
+
+
