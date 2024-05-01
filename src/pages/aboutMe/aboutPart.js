@@ -3,8 +3,8 @@ import {
   getFontSizeHeader,
   getFontsizeContent,
 } from "../../utils/functions/function";
-import ProgressBar from "react-bootstrap/ProgressBar";
-
+//import ProgressBar from "react-bootstrap/ProgressBar";
+import { ProgressBar } from "../../utils/components/progressBar/progressBar";
 import "./aboutMe.css";
 const AboutMeSectionStyle = {
   box: {
@@ -164,10 +164,9 @@ const AboutMeSection = ({ name, texts, languageData }) => {
               <p style={{ ...AboutMeSectionStyle.p }}>{language.language}</p>
               <div style={{ ...AboutMeSectionStyle.div }}>
                 <ProgressBar
-                  style={{ ...AboutMeSectionStyle.ProgressBar }}
-                  now={language.proficiency}
-                  label={`${language.level}`}
-                  variant="ProgressColor"
+                 progress={language.proficiency}
+                 color={mainColor}
+                 level={language.level}
                 />
               </div>
             </span>

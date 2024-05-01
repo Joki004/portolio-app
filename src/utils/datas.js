@@ -12,7 +12,6 @@ import { ReactComponent as AngularIcon } from "../assets/boxicons-2.1.4/boxicons
 import { ReactComponent as JavaIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-java.svg";
 import { ReactComponent as PythonIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-python.svg";
 import { ReactComponent as NodejsIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-nodejs.svg";
-import { ReactComponent as SpringIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-spring-boot.svg";
 import { ReactComponent as BootstrapIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-bootstrap.svg";
 import { ReactComponent as GithubIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-github.svg";
 import { ReactComponent as GitIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-git.svg";
@@ -27,7 +26,7 @@ const person = {
   lastName: "Mumb Mulaj Kambaj",
 };
 
-const jobTitle = "Frontend developper";
+const jobTitle = "Developer / Web Developer";
 
 let aboutmeText1 = `Talking about myself is challenging because I'm enthusiastic about so many things. But if I had to pick one word, it would be "DISCOVERING." I love uncovering new domains, ideas, concepts, or solutions, much like a Swiss Army Knife simplifying complexity into clarity.`;
 
@@ -91,8 +90,6 @@ const timelineData = [
     description: freeLance,
   },
 ];
-
-
 
 const moneyMinder1 = require("../assets/images/moneyMinde1.webp");
 const moneyMinder2 = require("../assets/images/moneyMinde2.webp");
@@ -171,7 +168,6 @@ const RockPaperScissorsImage1 = require("../assets/images/rockPaperSci1.webp");
 const RockPaperScissorsImage2 = require("../assets/images/rockPaperSci2.webp");
 const RockPaperScissorsImage3 = require("../assets/images/rockPaperSci3.webp");
 
-
 const arrayOfImagesRockPaperScissors = [
   RockPaperScissorsImage1,
   RockPaperScissorsImage2,
@@ -223,14 +219,16 @@ const projectsData = [
   },
   {
     name: "Rock Paper Scissors",
-    description: [`This is a Rock Paper Scissors Game: A modern take on the classic game, designed using HTML, CSS, and JavaScript to create a fully interactive and auditory experience.`,`Play against the computer, with each choice accompanied by sound effects and a backdrop of music that you control. The game announces winners through speech synthesis, adding a personal touch to every round. Simple, fun, and engaging - a testament to the power of combining traditional games with new technology.`],
+    description: [
+      `This is a Rock Paper Scissors Game: A modern take on the classic game, designed using HTML, CSS, and JavaScript to create a fully interactive and auditory experience.`,
+      `Play against the computer, with each choice accompanied by sound effects and a backdrop of music that you control. The game announces winners through speech synthesis, adding a personal touch to every round. Simple, fun, and engaging - a testament to the power of combining traditional games with new technology.`,
+    ],
     state: "Done",
     githublink: "https://github.com/Joki004/Rock-Paper-Scissor",
     weblink: "https://joki004.github.io/Rock-Paper-Scissor/",
     technologies: ["Html", "Css", "Javascript"],
     images: [arrayOfImagesRockPaperScissors],
   },
-
 ];
 
 const logos = {
@@ -300,12 +298,7 @@ const logos = {
     typeBoxIcon: "logo",
     SvgComponent: NodejsIcon,
   },
-  spring: {
-    name: "Spring",
-    nameBoxIcon: "spring-boot",
-    typeBoxIcon: "logo",
-    SvgComponent: SpringIcon,
-  },
+
   bootstrap: {
     name: "Bootstrap",
     nameBoxIcon: "bootstrap",
@@ -353,13 +346,7 @@ const skillsData = [
   },
   {
     type: "frameworks & libraries",
-    skills: [
-      logos.react,
-      logos.angular,
-      logos.bootstrap,
-      logos.nodejs,
-      logos.spring,
-    ],
+    skills: [logos.react, logos.angular, logos.bootstrap, logos.nodejs],
   },
   { type: "tools", skills: [logos.github, logos.git] },
   { type: "design", skills: [logos.blender, logos.unity] },
