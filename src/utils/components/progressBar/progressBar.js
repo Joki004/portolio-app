@@ -1,9 +1,8 @@
 import React from 'react';
 import './progressBar.css'; 
-import { useElements } from "../../../utils/functions/context";
 export const ProgressBar = ({ progress,color,level }) => {
 
-  const { mainColor} = useElements();
+
   const fillerStyles = {
     width: `${progress}%`,
     backgroundColor: color, 
