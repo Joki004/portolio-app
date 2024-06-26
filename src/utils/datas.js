@@ -164,14 +164,23 @@ const arrayOfImagesBlackJack = [
   blackjackImage3,
 ];
 
-const RockPaperScissorsImage1 = require("../assets/images/rockPaperSci1.webp");
-const RockPaperScissorsImage2 = require("../assets/images/rockPaperSci2.webp");
-const RockPaperScissorsImage3 = require("../assets/images/rockPaperSci3.webp");
 
-const arrayOfImagesRockPaperScissors = [
-  RockPaperScissorsImage1,
-  RockPaperScissorsImage2,
-  RockPaperScissorsImage3,
+
+const arrayImagesTodoList = [
+  require("../assets/images/todoList (1).webp"),
+  require("../assets/images/todoList (2).webp"),
+  require("../assets/images/todoList (3).webp"),
+  require("../assets/images/todoList (4).webp"),
+  require("../assets/images/todoList (5).webp"),
+  require("../assets/images/todoList (6).webp"),
+  require("../assets/images/todoList (7).webp"),
+  require("../assets/images/todoList (8).webp"),
+  require("../assets/images/todoList (9).webp"),
+  require("../assets/images/todoList (10).webp"),
+  require("../assets/images/todoList (11).webp"),
+  require("../assets/images/todoList (12).webp"),
+  require("../assets/images/todoList (13).webp"),
+  require("../assets/images/todoList (14).webp")
 ];
 const projectsData = [
   {
@@ -182,6 +191,16 @@ const projectsData = [
     weblink: " ",
     technologies: ["Java Sping Boot", "Postgresql", "React.js"],
     images: [moneyMinderImages],
+  },
+  {
+    name: "TodoList",
+    description:["The To-Do List application is a simple yet powerful task management app developed using Kotlin for Android. It features adding, updating, and deleting tasks, file attachments, notifications, and filtering tasks by status. The app uses Room Database for data storage and leverages ViewModel and LiveData for efficient state management."],
+      
+    state: "Done",
+    githublink: "https://github.com/Joki004/TodoList",
+    weblink: " ",
+    technologies: ["Kotlin"],
+    images: [arrayImagesTodoList],
   },
   {
     name: "My Portfolio",
@@ -217,18 +236,7 @@ const projectsData = [
     technologies: ["Java"],
     images: [arrayOfImagesBlackJack],
   },
-  {
-    name: "Rock Paper Scissors",
-    description: [
-      `This is a Rock Paper Scissors Game: A modern take on the classic game, designed using HTML, CSS, and JavaScript to create a fully interactive and auditory experience.`,
-      `Play against the computer, with each choice accompanied by sound effects and a backdrop of music that you control. The game announces winners through speech synthesis, adding a personal touch to every round. Simple, fun, and engaging - a testament to the power of combining traditional games with new technology.`,
-    ],
-    state: "Done",
-    githublink: "https://github.com/Joki004/Rock-Paper-Scissor",
-    weblink: "https://joki004.github.io/Rock-Paper-Scissor/",
-    technologies: ["Html", "Css", "Javascript"],
-    images: [arrayOfImagesRockPaperScissors],
-  },
+
 ];
 
 const logos = {

@@ -4,7 +4,7 @@ import { useElements } from "../../utils/functions/context";
 import {
   getFontSizeHeader,
   getFontsizeContent,
-  getTextColor
+  getTextColor,
 } from "../../utils/functions/function";
 const HomeStyle = {
   HomeBox: {
@@ -78,7 +78,6 @@ const Home = ({ imageURL, person, text }) => {
   HomeStyle.description.backgroundColor = mainColor;
   HomeStyle.social.borderColor = mainColor10Lighter;
   HomeStyle.image.backgroundColor = mainColor;
- 
 
   useEffect(() => {
     setTextColor(getTextColor(darkMode, backgroundColorBody));
@@ -87,7 +86,13 @@ const Home = ({ imageURL, person, text }) => {
     return () => {
       window.removeEventListener("resize", updateWindowWidth);
     };
-  }, [windowWidth, darkMode, backgroundColorBody,textColor,updateWindowWidth]);
+  }, [
+    windowWidth,
+    darkMode,
+    backgroundColorBody,
+    textColor,
+    updateWindowWidth,
+  ]);
 
   HomeStyle.image.width = windowWidth > 1000 ? "18%" : "50%";
   HomeStyle.description.width = windowWidth > 1000 ? "15em" : "80%";
@@ -100,8 +105,7 @@ const Home = ({ imageURL, person, text }) => {
       <img
         src={imageURL}
         alt={person.firstName}
-        style={{ ...HomeStyle.image,objectFit:"fit" }}
-        
+        style={{ ...HomeStyle.image, objectFit: "fit" }}
       />
       <h1 style={{ ...HomeStyle.person }}>
         {person.firstName} {person.lastName}
