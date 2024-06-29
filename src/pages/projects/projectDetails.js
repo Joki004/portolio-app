@@ -12,6 +12,7 @@ const Technologies = ({ Technologies }) => {
         flexWrap: "wrap", 
         gap: "10px",
         justifyContent: "center",
+        fontSize: getFontsizeContent("body1"),
       }}
     >
       {Technologies.map((technology, idx) => (
@@ -48,10 +49,9 @@ const ProjectDetails = ({ project, color, isEvenIndex }) => {
     box2: {
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",
+      justifyContent: "flex-start",
       alignItems: "flex-start",
       gap: "10px",
-
       height: "100%",
       padding: "10px",
     },
@@ -70,7 +70,7 @@ const ProjectDetails = ({ project, color, isEvenIndex }) => {
       borderColor: color,
       textAlign: "justify",
       padding: "10px",
-      fontSize: getFontsizeContent("body2"),
+      fontSize: getFontsizeContent("body1"),
     },
     links: {
       border: "1px solid",
@@ -80,6 +80,7 @@ const ProjectDetails = ({ project, color, isEvenIndex }) => {
       textDecoration: "none",
       color: "inherit",
       cursor: "pointer",
+      fontSize: getFontsizeContent("body1"),
     },
   };
   const mobileStyles =
@@ -104,7 +105,7 @@ const ProjectDetails = ({ project, color, isEvenIndex }) => {
         <h2 style={{ ...styles.title, ...mobileStyles.title }}>
           {project.name}
         </h2>
-        <p>{`Status : ${project.state}`}</p>
+        <p style={{ fontSize: getFontsizeContent("body1")}}>{`Status : ${project.state}`}</p>
         {project.description.map((desc, index) => (
           <p key={`project${index}`} style={{ ...styles.content, ...mobileStyles.content }}>
             {desc}
@@ -114,7 +115,7 @@ const ProjectDetails = ({ project, color, isEvenIndex }) => {
         <div>
           <Technologies Technologies={project.technologies} />
         </div>
-        <div style={{ display: "flex", gap: "20px" }}>
+        <div style={{ display: "flex", gap: "20px",  }}>
           {project.weblink !== " " ? (
             <a
               href={project.weblink}

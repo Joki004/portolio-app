@@ -46,6 +46,7 @@
 }
 
 .indicator-buttons {
+  border: solid;
   border: none;
   cursor: pointer;
 }

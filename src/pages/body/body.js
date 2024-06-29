@@ -96,7 +96,7 @@ const Body = () => {
       left: "15px",
       zIndex: "100",
       cursor: "pointer",
-      display: windowWidth < 700 ? "block" : "none", // Only display the button on smaller screens
+      display: windowWidth < 700 ? "block" : "none", 
     },
   };
   useEffect(() => {
