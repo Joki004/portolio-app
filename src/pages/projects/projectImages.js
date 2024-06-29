@@ -1,13 +1,17 @@
 import { useElements } from "../../utils/functions/context";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ImageModal from "../../utils/components/imageModal";
 const ProjectImages = (images) => {
-  const { mainColor10Lighter, darkMode } = useElements();
+  const { mainColor10Lighter, darkMode,windowWidth } = useElements();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isMobile, setIsMobile] = useState(windowWidth < 768);
 
+  useEffect(() => {
+    setIsMobile(windowWidth < 768);
+  }, [windowWidth]);
   const projectImagesStyles = {
     box: {
       display: "flex",
@@ -21,7 +25,7 @@ const ProjectImages = (images) => {
     },
     carrousel: {
       width: "100%",
-      height: "900px",
+      height: isMobile?"400px":"900px",
       display: "flex",
       flexDirection: "row",
       alignItems: "center",
