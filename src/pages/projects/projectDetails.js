@@ -20,7 +20,7 @@ const ProjectDetails = ({ project, color, isEvenIndex }) => {
     >
       <Typography
         variant={windowWidth < 768 ? "h4" : "h2"}
-        sx={{ marginBottom: "10px" }}
+        sx={{ marginBottom: "10px", color:'black' }}
       >
         {project.name}
       </Typography>
@@ -37,6 +37,7 @@ const ProjectDetails = ({ project, color, isEvenIndex }) => {
             marginBottom: "10px",
             borderLeft: `3px solid ${color}`,
             paddingLeft: "10px",
+            color:"black"
           }}
         >
           {desc}
