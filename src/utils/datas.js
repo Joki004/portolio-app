@@ -20,6 +20,8 @@ import { ReactComponent as UnityIcon } from "../assets/boxicons-2.1.4/boxicons-2
 import { ReactComponent as JavascriptIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-javascript.svg";
 import { ReactComponent as linkedinIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-linkedin.svg";
 import { ReactComponent as envelopeIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-envelope.svg";
+import { arrayImagesTournamentBlazorDescription } from "./imagesArrays";
+import { TournamentBlazorDescription } from "./descriptionsArrays";
 const imageURL = require("../../src/assets/images/PictureOfMe.webp");
 const person = {
   firstName: "Joram",
@@ -164,8 +166,6 @@ const arrayOfImagesBlackJack = [
   blackjackImage3,
 ];
 
-
-
 const arrayImagesTodoList = [
   require("../assets/images/todoList (1).webp"),
   require("../assets/images/todoList (2).webp"),
@@ -180,7 +180,7 @@ const arrayImagesTodoList = [
   require("../assets/images/todoList (11).webp"),
   require("../assets/images/todoList (12).webp"),
   require("../assets/images/todoList (13).webp"),
-  require("../assets/images/todoList (14).webp")
+  require("../assets/images/todoList (14).webp"),
 ];
 
 let kartyMaturalneDesc1 = `Karty Maturalne is a mobile app designed to help high school students prepare for the matura exam. Developed with React Native, it offers a seamless experience on both iOS and Android platforms.`;
@@ -192,14 +192,16 @@ const KartyMaturalneDescription = [
   kartyMaturalneDesc3,
 ];
 
-const arrayImagesTabliceMaturalne=[
+const arrayImagesTabliceMaturalne = [
   require("../assets/images/tablice_maturalne (2).webp"),
   require("../assets/images/tablice_maturalne (1).webp"),
   require("../assets/images/tablice_maturalne (3).webp"),
   require("../assets/images/tablice_maturalne (4).webp"),
   require("../assets/images/tablice_maturalne (5).webp"),
-]
-const projectsData = [
+];
+
+
+export const projectsData = [
   {
     name: "Tablice maturalne",
     description: KartyMaturalneDescription,
@@ -209,19 +211,31 @@ const projectsData = [
     technologies: ["React Native"],
     images: [arrayImagesTabliceMaturalne],
   },
+
+  {
+    name: "Tournament Management Blazor App",
+    description: TournamentBlazorDescription,
+    state: "In progress",
+    githublink: "https://github.com/Joki004/tournament_blazor",
+    weblink: " ",
+    technologies: [".NET", "SQL Server","C#"],
+    images: [arrayImagesTournamentBlazorDescription],
+  },
   {
     name: "MoneyMinder",
     description: MoneyMinderDescription,
     state: "In progress",
     githublink: "https://github.com/Verionn/MoneyMinder",
     weblink: " ",
-    technologies: ["Java Sping Boot", "Postgresql", "React.js"],
+    technologies: ["Spring Boot", "Postgresql", "React"],
     images: [moneyMinderImages],
   },
   {
     name: "TodoList",
-    description:["The To-Do List application is a simple yet powerful task management app developed using Kotlin for Android. It features adding, updating, and deleting tasks, file attachments, notifications, and filtering tasks by status. The app uses Room Database for data storage and leverages ViewModel and LiveData for efficient state management."],
-      
+    description: [
+      "The To-Do List application is a simple yet powerful task management app developed using Kotlin for Android. It features adding, updating, and deleting tasks, file attachments, notifications, and filtering tasks by status. The app uses Room Database for data storage and leverages ViewModel and LiveData for efficient state management.",
+    ],
+
     state: "Done",
     githublink: "https://github.com/Joki004/TodoList",
     weblink: " ",
@@ -234,7 +248,7 @@ const projectsData = [
     state: "In progress",
     githublink: " ",
     weblink: "https://teal-gnome-5728ca.netlify.app/",
-    technologies: ["React.js"],
+    technologies: ["React"],
     images: [arrayOfImagesPortfolio],
   },
   {
@@ -246,7 +260,7 @@ const projectsData = [
     state: "Done",
     githublink: "https://github.com/Joki004/webpage_frontend",
     weblink: "https://joki004.github.io/webpage_frontend/index.html/",
-    technologies: ["Html", "Css", "Javascript"],
+    technologies: ["HTML", "CSS", "JavaScript"],
     images: [arrayOfImagesWebApp],
   },
   {
@@ -262,7 +276,6 @@ const projectsData = [
     technologies: ["Java"],
     images: [arrayOfImagesBlackJack],
   },
-
 ];
 
 const logos = {

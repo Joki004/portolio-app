@@ -32,7 +32,7 @@ const Projects = ({ projectsData }) => {
         flexDirection: "column",
       }}
     >
-      <MyCarousel projectList={projectsData}></MyCarousel>
+      <MyCarousel projectList={projectsData.slice(0,5)}></MyCarousel>
     </div>
   );
 };

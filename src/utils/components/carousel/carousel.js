@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { CarouselItem } from "./carouselItems";
 import "./myCarousel.css";
-import { ReactComponent as ArrowBack } from "../../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/solid/bxs-left-arrow-circle.svg";
-import { ReactComponent as ArrowForward } from "../../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/solid/bxs-right-arrow-circle.svg";
+import {  IconButton, Box, Button, Typography } from "@mui/material";
+import ArrowBackIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForwardIos';
 import { getFontSizeHeader } from "../../functions/function";
-
 import { useElements } from "../../functions/context";
+import { useNavigate } from 'react-router-dom';
 export const MyCarousel = ({ projectList = [] }) => {
   const projectsDataWithIds = projectList.map((project, index) => ({
     ...project,
@@ -15,6 +16,7 @@ export const MyCarousel = ({ projectList = [] }) => {
   const { darkMode, mainColor10Lighter } = useElements();
   const [activeIndex, setActiveIndex] = useState(0);
   const [click, setClick] = useState("none");
+  const navigate = useNavigate();
 
   const updateIndex = (newIndex, direction) => {
     setClick(direction);
@@ -23,61 +25,68 @@ export const MyCarousel = ({ projectList = [] }) => {
     } else if (newIndex >= projectList.length) {
       newIndex = 0;
     }
-
     setActiveIndex(newIndex);
   };
+
   return (
-    <div>
-      <div className="ButtonsArows">
-        <button
-          className="direction-button"
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 4 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+       
+        <IconButton
           onClick={() => updateIndex(activeIndex - 1, "left")}
-        >
-          <ArrowBack
-            style={{
-              width: "50px",
-              height: "50px",
-              fill: darkMode ? mainColor10Lighter : "black",
-            }}
-          />
-        </button>
-        <div className="indicators-button" style={{fontSize:getFontSizeHeader("h1")}}>
-          {`${activeIndex + 1}/${projectsDataWithIds.length}`}
-        </div>
-
-        <button
-          className="direction-button"
-          onClick={() => updateIndex(activeIndex + 1, "right")}
-        >
-          <ArrowForward
-            style={{
-              width: "50px",
-              height: "50px",
-              fill: darkMode ? mainColor10Lighter : "black",
-            }}
-          />
-        </button>
-      </div>
-
-      <div className="myCarousel">
-        <div
-          className="myCarousel-inner"
-          style={{
-            width: `${100}%`,
+          sx={{
+            backgroundColor: darkMode ? mainColor10Lighter : "#fff",
+            color: darkMode ? "#000" : "black",
+            '&:hover': {
+              backgroundColor: darkMode ? '#fff' : '#e0e0e0',
+            },
           }}
         >
+          <ArrowBackIcon sx={{ fontSize: 40 }} />
+        </IconButton>
+
+        <Typography variant="h5" sx={{ fontSize: getFontSizeHeader("h1"), color: darkMode ? mainColor10Lighter : 'black' }}>
+          {`${activeIndex + 1}/${projectsDataWithIds.length}`}
+        </Typography>
+
+        <IconButton
+          onClick={() => updateIndex(activeIndex + 1, "right")}
+          sx={{
+            backgroundColor: darkMode ? mainColor10Lighter : "#fff",
+            color: darkMode ? "#000" : "black",
+            '&:hover': {
+              backgroundColor: darkMode ? '#fff' : '#e0e0e0',
+            },
+          }}
+        >
+          <ArrowForwardIcon sx={{ fontSize: 40 }} />
+        </IconButton>
+      </Box>
+
+      <Box sx={{ width: '100%', mt: 3 }}>
+        <Box className="myCarousel-inner" sx={{ width: '100%' }}>
           {projectsDataWithIds.map((item, index) => (
             <CarouselItem
               key={`carousel-item-${index}`}
               item={item}
               index={index}
               activeIndex={activeIndex}
-              width={`${100}%`}
+              width="100%"
               click={click}
             />
           ))}
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => navigate('/all-projects')}
+        sx={{ marginTop: '20px',textTransform: "none", backgroundColor: mainColor10Lighter }}
+      >
+        See All Projects
+      </Button>
+
+    </Box>
   );
 };
