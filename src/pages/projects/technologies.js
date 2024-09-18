@@ -12,7 +12,7 @@ import { ReactComponent as ReactNativeIcon } from "../../assets/svg/React.svg";
 import { ReactComponent as SrpingBootIcon } from "../../assets/svg/Spring.svg";
 import { ReactComponent as PostgreSQLIcon } from "../../assets/svg/PostgresSQL.svg";
 import { ReactComponent as KotlinIcon } from "../../assets/svg/Kotlin.svg";
-import { ReactComponent as CSharpeIcon } from "../../assets/svg/C# (CSharp).svg";
+import { ReactComponent as CSharpeIcon } from "../../assets/svg/CSharp.svg";
 export const Technologies = ({ technologies }) => {
   const { darkMode } = useElements();
   const techIcons = {
