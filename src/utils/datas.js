@@ -22,6 +22,12 @@ import { ReactComponent as linkedinIcon } from "../assets/boxicons-2.1.4/boxicon
 import { ReactComponent as envelopeIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-envelope.svg";
 import { arrayImagesTournamentBlazorDescription } from "./imagesArrays";
 import { TournamentBlazorDescription } from "./descriptionsArrays";
+import {
+  LendAHandDescription,
+  imageArrayLendAHandDescription,
+} from "../utils/projects/lendAHand";
+import { imageArrayPolifansDescription, MarketplaceAppDescription } from "./projects/polifans";
+import { arrayImagesTabliceMaturalne, KartyMaturalneDescription } from "./projects/kartyMaturalne";
 const imageURL = require("../../src/assets/images/PictureOfMe.webp");
 const person = {
   firstName: "Joram",
@@ -58,9 +64,17 @@ const universityDescription = `I am currently pursuing a Bachelor's degree in Co
 Science at Lodz University of Technology, specializing in Exploration, Analysis, and Database. This program is allowing me to deepen 
 my understanding and enhance my expertise in software development, data structures, and algorithms, alongside gaining specialized 
 knowledge in data exploration, analysis techniques, and database management systems.`;
+const philipsDescription = `During my internship at Philips from September 2024 to February 2025, I had the opportunity to step beyond my computer science background and delve into the logistics field. As part of the Customer Order team, I gained valuable insights into key operational processes within a global organization. Leveraging my technical expertise, I developed and implemented macros to automate repetitive tasks, significantly improving efficiency and workflow management. This experience not only broadened my skill set but also deepened my understanding of how technical solutions can optimize business processes in a large-scale environment.`;
 
 const LanguageCourse = `I embarked on an enriching journey at the Language Center for Foreigners at the University of Łódź (UŁ), where I completed a one-year intensive course designed to prepare students for studies in Polish. This rigorous program not only deepened my understanding of the Polish language but also equipped me with the cultural insights necessary to navigate academic and everyday life in Poland. I am proud to have achieved a B2 Level certification in Polish, a testament to my dedication and the high-quality education provided by the Language Center at UŁ.`;
 const timelineData = [
+  {
+    date: "09-2024-02-2025",
+    organization: "Philips",
+    position: "Customer Order intership",
+    description: philipsDescription,
+  },
+
   {
     date: "11-2023 - 02-2024",
     organization: "Soft Smart Solution",
@@ -183,29 +197,31 @@ const arrayImagesTodoList = [
   require("../assets/images/todoList (14).webp"),
 ];
 
-let kartyMaturalneDesc1 = `Karty Maturalne is a mobile app designed to help high school students prepare for the matura exam. Developed with React Native, it offers a seamless experience on both iOS and Android platforms.`;
-let kartyMaturalneDesc2 = `The app features comprehensive study materials for subjects like mathematics, physics, chemistry, and English, all accessible offline. It includes a helper function that provides explanations and hints for each chapter.`;
-let kartyMaturalneDesc3 = `With its user-friendly design, intuitive navigation, and compliance with WCAG 2.1 standards, Karty Maturalne ensures accessibility for all students, making exam preparation more efficient and effective.`;
-const KartyMaturalneDescription = [
-  kartyMaturalneDesc1,
-  kartyMaturalneDesc2,
-  kartyMaturalneDesc3,
-];
-
-const arrayImagesTabliceMaturalne = [
-  require("../assets/images/tablice_maturalne (2).webp"),
-  require("../assets/images/tablice_maturalne (1).webp"),
-  require("../assets/images/tablice_maturalne (3).webp"),
-  require("../assets/images/tablice_maturalne (4).webp"),
-  require("../assets/images/tablice_maturalne (5).webp"),
-];
 
 
 export const projectsData = [
   {
+    name: "LendAHand",
+    description: LendAHandDescription,
+    state: "Done",
+    githublink: "",
+    weblink: "",
+    technologies: ["React Native", "Spring Boot", "Postgresql"],
+    images: [imageArrayLendAHandDescription],
+  },
+  {
+    name: "Polifans",
+    description: MarketplaceAppDescription,
+    state: "Done",
+    githublink: "",
+    weblink: "",
+    technologies: ["React Native", "Spring Boot", "Postgresql"],
+    images: [imageArrayPolifansDescription],
+  },
+  {
     name: "Tablice maturalne",
     description: KartyMaturalneDescription,
-    state: "In progress",
+    state: "Done",
     githublink: "https://github.com/Verionn/karty-maturalne",
     weblink: " ",
     technologies: ["React Native"],
@@ -215,10 +231,10 @@ export const projectsData = [
   {
     name: "Tournament Management Blazor App",
     description: TournamentBlazorDescription,
-    state: "In progress",
+    state: "Done",
     githublink: "https://github.com/Joki004/tournament_blazor",
     weblink: " ",
-    technologies: [".NET", "SQL Server","C#"],
+    technologies: [".NET", "SQL Server", "C#"],
     images: [arrayImagesTournamentBlazorDescription],
   },
   {
