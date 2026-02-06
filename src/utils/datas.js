@@ -28,7 +28,7 @@ import {
 } from "../utils/projects/lendAHand";
 import { imageArrayPolifansDescription, MarketplaceAppDescription } from "./projects/polifans";
 import { arrayImagesTabliceMaturalne, KartyMaturalneDescription } from "./projects/kartyMaturalne";
-const imageURL = require("../../src/assets/images/PictureOfMe.webp");
+const imageURL = require("../../src/assets/images/pictureOfme.jpeg");
 const person = {
   firstName: "Joram",
   lastName: "Mumb Mulaj Kambaj",
