@@ -6,31 +6,16 @@ import ContactForm from "../pages/contacts/contact";
 import {projectsData} from "../utils/projects/projectsData";
 import { ReactComponent as CppIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-c-plus-plus.svg";
 import { ReactComponent as TypeScriptIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-typescript.svg";
-import { ReactComponent as CssIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-css3.svg";
 import { ReactComponent as HtmlIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-html5.svg";
 import { ReactComponent as ReactIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-react.svg";
-import { ReactComponent as AngularIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-angular.svg";
 import { ReactComponent as JavaIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-java.svg";
 import { ReactComponent as PythonIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-python.svg";
 import { ReactComponent as NodejsIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-nodejs.svg";
-import { ReactComponent as BootstrapIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-bootstrap.svg";
 import { ReactComponent as GithubIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-github.svg";
 import { ReactComponent as GitIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-git.svg";
-import { ReactComponent as BlenderIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-blender.svg";
-import { ReactComponent as UnityIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-unity.svg";
 import { ReactComponent as JavascriptIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-javascript.svg";
 import { ReactComponent as linkedinIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-linkedin.svg";
 import { ReactComponent as envelopeIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-envelope.svg";
-// Skill icons
-
-
-
-
-
-
-
-
-
 import { ReactComponent as FirebaseIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-firebase.svg";
 import { ReactComponent as FlaskIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-flask.svg";
 import { ReactComponent as StripeIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-stripe.svg";
