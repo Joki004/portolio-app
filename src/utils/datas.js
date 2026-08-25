@@ -3,6 +3,7 @@ import AboutMe from "../pages/aboutMe/aboutMe";
 import Projects from "../pages/projects/projects";
 import Skills from "../pages/skills/skills";
 import ContactForm from "../pages/contacts/contact";
+import {projectsData} from "../utils/projects/projectsData";
 import { ReactComponent as CppIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-c-plus-plus.svg";
 import { ReactComponent as TypeScriptIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-typescript.svg";
 import { ReactComponent as CssIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-css3.svg";
@@ -20,27 +21,39 @@ import { ReactComponent as UnityIcon } from "../assets/boxicons-2.1.4/boxicons-2
 import { ReactComponent as JavascriptIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-javascript.svg";
 import { ReactComponent as linkedinIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-linkedin.svg";
 import { ReactComponent as envelopeIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-envelope.svg";
-import { arrayImagesTournamentBlazorDescription } from "./imagesArrays";
-import { TournamentBlazorDescription } from "./descriptionsArrays";
-import {
-  LendAHandDescription,
-  imageArrayLendAHandDescription,
-} from "../utils/projects/lendAHand";
-import { imageArrayPolifansDescription, MarketplaceAppDescription } from "./projects/polifans";
-import { arrayImagesTabliceMaturalne, KartyMaturalneDescription } from "./projects/kartyMaturalne";
+// Skill icons
+
+
+
+
+
+
+
+
+
+import { ReactComponent as FirebaseIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-firebase.svg";
+import { ReactComponent as FlaskIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-flask.svg";
+import { ReactComponent as StripeIcon } from "../assets/boxicons-2.1.4/boxicons-2.1.4/svg/logos/bxl-stripe.svg";
+
+import { ReactComponent as SpringBootIcon } from "../assets/svg/Spring.svg";
+import { ReactComponent as PostgreSQLIcon } from "../assets/svg/PostgresSQL.svg";
+import { ReactComponent as SqlServerIcon } from "../assets/svg/MicrosoftSQLServer.svg";
+
+
 const imageURL = require("../../src/assets/images/pictureOfme.jpeg");
 const person = {
   firstName: "Joram",
   lastName: "Mumb Mulaj Kambaj",
 };
 
-const jobTitle = "Developer / Web Developer";
+const jobTitle = "Full-Stack Software Developer";
+const secondaryTitle = "Business-Minded Problem Solver • CS Master’s Candidate";
 
-let aboutmeText1 = `Talking about myself is challenging because I'm enthusiastic about so many things. But if I had to pick one word, it would be "DISCOVERING." I love uncovering new domains, ideas, concepts, or solutions, much like a Swiss Army Knife simplifying complexity into clarity.`;
+let aboutmeText1 = `Talking about myself is challenging because I'm enthusiastic about so many things. But if I had to pick one word, it would be "DISCOVERING." I am naturally curious and enjoy uncovering new domains, ideas and approaches to solving problems. I bring a Swiss Army Knife mindset: combining different perspectives and tools to turn complexity into clear, practical solutions.`;
 
-let aboutmeText2 = `As a third-year computer science student, I'm deeply passionate about programming and eager to grow. I'm open to exploring various fields, including those not directly related to my studies. Proficient in web applications, I actively seek out new technologies to contribute innovative solutions across domains. My ultimate goal is to become a versatile professional, excelling in multiple areas while retaining expertise in programming to become a full-stack developer.`;
+let aboutmeText2 = `I hold a Bachelor’s degree in Computer Science and am currently pursuing a Master’s degree specializing in Intelligent Database Systems. As a full-stack software developer, I am strengthening my experience across application development, databases, automation and AI. At Philips, my role as a Services & Solutions Delivery Specialist and AI Champion allows me to connect technical thinking with process improvement and business needs. Alongside this experience, I am developing practical knowledge of Azure and Databricks to expand my capabilities in cloud and data-driven systems.`;
 
-let aboutmeText3 = `Outside of academia, I enjoy sports, cuisine, and music, enriching both my personal and professional life. Continuously sharpening my software development skills, I also dedicate time to personal growth, ensuring I'm well-prepared to tackle any challenge.`;
+let aboutmeText3 = `My curiosity also extends beyond IT. It helps me understand operations, strategy, customers and the wider context in which technology creates value. Outside work and study, I enjoy sports, music, reading and discovering new cultures and experiences—interests that continue to shape how I learn, communicate and approach challenges.`;
 
 const aboutMeText = {
   aboutmeText1,
@@ -56,370 +69,275 @@ const languageData = [
   { language: "Spanish", proficiency: 50, level: "Intermediate" },
 ];
 
-const zfDescription = `I've been an essential contributor to the 'Innovation' project at Lodz University of Technology, where we partnered with industry leaders to tackle real-world challenges. My focus revolved around developing a platform leveraging MySQL, Ansible, HTML, and PHP to automate software installations and configurations on virtual machines within the ZF network. From enabling seamless machine selection to facilitating the installation process, my role was instrumental in optimizing our workflow and enhancing efficiency."`;
-const freeLance = `During 2018-2019, I freelanced as a small business manager, overseeing operations for a taxi service. My responsibilities included tracking entries and expenses meticulously using Excel sheets. Additionally, I collaborated with companies specializing in data sales for online platforms, ensuring accurate record-keeping and efficient management of our business operations.`;
-
-const SSSDescription = `I've been part of a groundbreaking project named 'Innovation.' Here, at Lodz University of Technology, we collaborated with leading companies, tackling real-world tasks throughout the semester. I took charge of developing the frontend interface using React Native, enhancing user experience and pushing boundaries!" 🚀`;
-const universityDescription = `I am currently pursuing a Bachelor's degree in Computer 
-Science at Lodz University of Technology, specializing in Exploration, Analysis, and Database. This program is allowing me to deepen 
-my understanding and enhance my expertise in software development, data structures, and algorithms, alongside gaining specialized 
-knowledge in data exploration, analysis techniques, and database management systems.`;
-const philipsDescription = `During my internship at Philips from September 2024 to February 2025, I had the opportunity to step beyond my computer science background and delve into the logistics field. As part of the Customer Order team, I gained valuable insights into key operational processes within a global organization. Leveraging my technical expertise, I developed and implemented macros to automate repetitive tasks, significantly improving efficiency and workflow management. This experience not only broadened my skill set but also deepened my understanding of how technical solutions can optimize business processes in a large-scale environment.`;
-
-const LanguageCourse = `I embarked on an enriching journey at the Language Center for Foreigners at the University of Łódź (UŁ), where I completed a one-year intensive course designed to prepare students for studies in Polish. This rigorous program not only deepened my understanding of the Polish language but also equipped me with the cultural insights necessary to navigate academic and everyday life in Poland. I am proud to have achieved a B2 Level certification in Polish, a testament to my dedication and the high-quality education provided by the Language Center at UŁ.`;
-const timelineData = [
+const experienceSections = [
   {
-    date: "09-2024-02-2025",
-    organization: "Philips",
-    position: "Customer Order intership",
-    description: philipsDescription,
-  },
-
-  {
-    date: "11-2023 - 02-2024",
-    organization: "Soft Smart Solution",
-    position: "Internship",
-    description: SSSDescription,
-  },
-  {
-    date: "04-2023 - 09-2023",
-    organization: "ZF friedrichshafen",
-    position: "Internship",
-    description: zfDescription,
-  },
-  {
-    date: "2021 - present",
-    organization: "Politechnika Łódzka",
-    position: "Bachelor Degree in Computer Science",
-    description: universityDescription,
-  },
-  {
-    date: "09-2020 - 06-2021",
-    organization: "University of Lodz",
-    position: "Language Center for Foreigners",
-    description: LanguageCourse,
-  },
-  {
-    date: "2018 - 2019",
-    organization: "Free lancer",
-    position: "management of a small business",
-    description: freeLance,
-  },
-];
-
-const moneyMinder1 = require("../assets/images/moneyMinde1.webp");
-const moneyMinder2 = require("../assets/images/moneyMinde2.webp");
-const moneyMinder3 = require("../assets/images/moneyMinde3.webp");
-const moneyMinder4 = require("../assets/images/moneyMinde4.webp");
-
-const moneyMinderImages = [
-  moneyMinder1,
-  moneyMinder2,
-  moneyMinder3,
-  moneyMinder4,
-];
-
-let moneyMinderDesc1 = `MoneyMinder is a user-friendly shopping list and budget management app. Developed using a robust technology stack including Java, Spring Boot for the backend, PostgreSQL as the database, and React.js for the frontend. This project is a full-stack solution for personal finance management.`;
-let moneyMinderDesc2 = `It offers secure user authentication, real-time tracking of shopping tasks, and budget monitoring to help users manage their spending efficiently. With features like multi-list management, item categorization, and a responsive design for cross-device compatibility, MoneyMinder simplifies personal finance`;
-let moneyMinderDesc3 = `It also includes dark mode for comfort and interactive progress indicators for an enhanced user experience. Whether on desktop or mobile, MoneyMinder is an essential tool for smart shopping and budget control.`;
-const MoneyMinderDescription = [
-  moneyMinderDesc1,
-  moneyMinderDesc2,
-  moneyMinderDesc3,
-];
-
-let portolioDesc1 = `my personal portfolio is a vibrant canvas illustrating the synergy of design and functionality. Crafted meticulously with React, my portfolio is a testament to responsive design principles and modern web development techniques.`;
-let portolioDesc2 = `It embodies a dynamic user experience, featuring parallax scrolling that adds depth and motion, guiding you through the layers of my work. As a front-end developer, I've integrated interactive elements that invite you to explore my projects, each demonstrating a piece of the creative puzzle that is my expertise.`;
-let portolioDesc3 = `Although the guide section is a work in progress, it represents my journey of continuous learning and my commitment to evolving my craft.`;
-
-const PortfolioImage1 = require("../assets/images/portfolio1.webp");
-const PortfolioImage2 = require("../assets/images/portfolio2.webp");
-const PortfolioImage3 = require("../assets/images/portfolio3.webp");
-const PortfolioImage4 = require("../assets/images/portfolio4.webp");
-const PortfolioImage5 = require("../assets/images/portfolio5.webp");
-const PortfolioImage6 = require("../assets/images/portfolio6.webp");
-const PortfolioImage7 = require("../assets/images/portfolio7.webp");
-const PortfolioImage8 = require("../assets/images/portfolio8.webp");
-
-const arrayOfImagesPortfolio = [
-  PortfolioImage1,
-  PortfolioImage2,
-  PortfolioImage3,
-  PortfolioImage4,
-  PortfolioImage5,
-  PortfolioImage6,
-  PortfolioImage7,
-  PortfolioImage8,
-];
-
-const webappImage1 = require("../assets/images/webpage.webp");
-const webappImage2 = require("../assets/images/webpage2.webp");
-const webappImage3 = require("../assets/images/webpage3.webp");
-const webappImage4 = require("../assets/images/webpage4.webp");
-const webappImage5 = require("../assets/images/webapp5.webp");
-const webappImage6 = require("../assets/images/webapp6.webp");
-const webappImage7 = require("../assets/images/webapp7.webp");
-
-const arrayOfImagesWebApp = [
-  webappImage1,
-  webappImage2,
-  webappImage3,
-  webappImage4,
-  webappImage5,
-  webappImage6,
-  webappImage7,
-];
-
-const blackjackImage1 = require("../assets/images/InfoScreenShot.webp");
-const blackjackImage2 = require("../assets/images/Gameplay-screenShot.webp");
-const blackjackImage3 = require("../assets/images/InfoScreenShot.webp");
-
-const arrayOfImagesBlackJack = [
-  blackjackImage1,
-  blackjackImage2,
-  blackjackImage3,
-];
-
-const arrayImagesTodoList = [
-  require("../assets/images/todoList (1).webp"),
-  require("../assets/images/todoList (2).webp"),
-  require("../assets/images/todoList (3).webp"),
-  require("../assets/images/todoList (4).webp"),
-  require("../assets/images/todoList (5).webp"),
-  require("../assets/images/todoList (6).webp"),
-  require("../assets/images/todoList (7).webp"),
-  require("../assets/images/todoList (8).webp"),
-  require("../assets/images/todoList (9).webp"),
-  require("../assets/images/todoList (10).webp"),
-  require("../assets/images/todoList (11).webp"),
-  require("../assets/images/todoList (12).webp"),
-  require("../assets/images/todoList (13).webp"),
-  require("../assets/images/todoList (14).webp"),
-];
-
-
-
-export const projectsData = [
-  {
-    name: "LendAHand",
-    description: LendAHandDescription,
-    state: "Done",
-    githublink: "",
-    weblink: "",
-    technologies: ["React Native", "Spring Boot", "Postgresql"],
-    images: [imageArrayLendAHandDescription],
-  },
-  {
-    name: "Polifans",
-    description: MarketplaceAppDescription,
-    state: "Done",
-    githublink: "",
-    weblink: "",
-    technologies: ["React Native", "Spring Boot", "Postgresql"],
-    images: [imageArrayPolifansDescription],
-  },
-  {
-    name: "Tablice maturalne",
-    description: KartyMaturalneDescription,
-    state: "Done",
-    githublink: "https://github.com/Verionn/karty-maturalne",
-    weblink: " ",
-    technologies: ["React Native"],
-    images: [arrayImagesTabliceMaturalne],
-  },
-
-  {
-    name: "Tournament Management Blazor App",
-    description: TournamentBlazorDescription,
-    state: "Done",
-    githublink: "https://github.com/Joki004/tournament_blazor",
-    weblink: " ",
-    technologies: [".NET", "SQL Server", "C#"],
-    images: [arrayImagesTournamentBlazorDescription],
-  },
-  {
-    name: "MoneyMinder",
-    description: MoneyMinderDescription,
-    state: "In progress",
-    githublink: "https://github.com/Verionn/MoneyMinder",
-    weblink: " ",
-    technologies: ["Spring Boot", "Postgresql", "React"],
-    images: [moneyMinderImages],
-  },
-  {
-    name: "TodoList",
-    description: [
-      "The To-Do List application is a simple yet powerful task management app developed using Kotlin for Android. It features adding, updating, and deleting tasks, file attachments, notifications, and filtering tasks by status. The app uses Room Database for data storage and leverages ViewModel and LiveData for efficient state management.",
+    id: "professional",
+    title: "Professional Experience",
+    entries: [
+      {
+        date: "Mar 2025 - Present",
+        organization: "Philips",
+        location: "Lodz, Poland",
+        position: "Services & Solutions Delivery Specialist | AI Champion",
+        current: true,
+        summary:
+          "Support services and solutions delivery for international operations while applying technology to workflow and process improvement.",
+        highlights: [
+          "Coordinate operational data flows and customer communication across international delivery processes.",
+          "Analyze internal workflows and contribute to automation and AI solutions using Microsoft Power Apps and Copilot Studio.",
+          "Use Power BI for service-performance analysis and SAP to support invoice-dispute and operational data processes.",
+        ],
+        tags: ["Power Apps", "Copilot Studio", "Power BI", "SAP", "Smax (Salesforce)"],
+      },
+      {
+        date: "Sep 2024 - Feb 2025",
+        organization: "Philips",
+        location: "Lodz, Poland",
+        position: "Customer Order Intern",
+        summary:
+          "Supported global customer-order and logistics processes while applying technical skills to operational improvement.",
+        highlights: [
+          "Collaborated with the Customer Order team to support international logistics workflows.",
+          "Built macros to automate repetitive tasks and improve workflow efficiency.",
+          "Applied technical analysis to identify and optimize operational steps.",
+        ],
+        tags: ["Excel", "VBA", "Process Automation", "SAP"],
+      },
+      {
+        date: "Oct 2023 - Feb 2024",
+        organization: "Smart Soft Solution",
+        location: "Lodz, Poland",
+        position: "Frontend Developer Intern",
+        summary:
+          "Contributed to a real-time animal-health monitoring application as part of a four-person development team.",
+        highlights: [
+          "Developed frontend functionality using React Native.",
+          "Contributed to user-focused UI and UX decisions throughout development.",
+          "Worked collaboratively using Agile practices.",
+        ],
+        tags: ["React Native", "UI/UX", "Agile"],
+      },
+      {
+        date: "Apr 2023 - Sep 2023",
+        organization: "ZF Friedrichshafen",
+        location: "Lodz, Poland",
+        position: "Software Developer Intern",
+        summary:
+          "Worked on an industry-university project that automated software installation and configuration on virtual machines.",
+        highlights: [
+          "Developed platform functionality for selecting virtual machines and managing software setup.",
+          "Used MySQL, Ansible, HTML and PHP to support automation and configuration workflows.",
+          "Collaborated with university and industry stakeholders on a practical engineering challenge.",
+        ],
+        tags: ["MySQL", "Ansible", "HTML", "PHP"],
+      },
     ],
+  },
 
-    state: "Done",
-    githublink: "https://github.com/Joki004/TodoList",
-    weblink: " ",
-    technologies: ["Kotlin"],
-    images: [arrayImagesTodoList],
-  },
   {
-    name: "My Portfolio",
-    description: [portolioDesc1, portolioDesc2, portolioDesc3],
-    state: "In progress",
-    githublink: " ",
-    weblink: "https://teal-gnome-5728ca.netlify.app/",
-    technologies: ["React"],
-    images: [arrayOfImagesPortfolio],
-  },
-  {
-    name: "Website on client request",
-    description: [
-      ` The site provides straightforward navigation with sections for services, pricing, detailed descriptions, and contact information, all underscored by warm, inviting visuals. Interactive elements and a simple contact form make for an engaging and accessible online presence.`,
-      ` This project showcases my initial journey into web development, utilizing HTML, CSS, and JavaScript to create a user-focused interface that emphasizes functionality and design.`,
+    id: "education",
+    title: "Education",
+    entries: [
+      {
+        date: "Mar 2026 - Jul 2027",
+        organization: "Lodz University of Technology",
+        location: "Lodz, Poland",
+        position: "Master of Science in Computer Science - Expected Jul 2027",
+        current: true,
+        summary: "Specialization: Intelligent Database Systems.",
+        highlights: [
+          "Study data warehousing, Business Objects and enterprise intelligence concepts.",
+          "Explore AI tools in database systems and database-engine performance.",
+          "Develop skills in information-systems design and modelling.",
+        ],
+        tags: ["Databases", "Data Warehousing", "AI", "System Design"],
+      },
+      {
+        date: "Sep 2021 - Jul 2025",
+        organization: "Lodz University of Technology",
+        location: "Lodz, Poland",
+        position: "Bachelor of Computer Science",
+        summary: "Specialization: Data Exploration, Analysis and Databases.",
+        highlights: [
+          "Completed advanced coursework in programming, database management and software engineering.",
+          "Built practical experience through collaborative projects involving IoT and AI.",
+        ],
+        tags: ["Software Engineering", "Databases", "IoT", "AI"],
+      },
+      {
+        date: "Oct 2020 - Jun 2021",
+        organization: "University of Lodz",
+        location: "Lodz, Poland",
+        position: "Polish Language Proficiency Course - B2",
+        summary:
+          "Completed an intensive Polish-language programme preparing international students for academic study and everyday communication.",
+        tags: ["Polish B2", "Cross-Cultural Communication"],
+      },
     ],
-    state: "Done",
-    githublink: "https://github.com/Joki004/webpage_frontend",
-    weblink: "https://joki004.github.io/webpage_frontend/index.html/",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    images: [arrayOfImagesWebApp],
   },
+
   {
-    name: "BlackJack",
-    description: [
-      `Dive into the classic casino vibe with this vibrant, multiplayer Blackjack game interface, designed for four players to challenge the dealer. Each player starts with a pot of $8000, aiming to draw a winning hand close to 21.`,
-      ` The game kicks off on a colorful starter screen with playful avatars, leading to a sleek, virtual table where strategy meets luck. With Java and JavaFX powering the gameplay and XML structuring the UI, this application brings together intuitive design and solid back-end mechanics for a seamless gaming experience. `,
-      `Run 'App.java', place your bets, and enjoy a round of Blackjack right from your desktop!`,
+    id: "development",
+    title: "Business, Leadership & Development",
+    entries: [
+      {
+        date: "Jun 2024 - Present",
+        organization: "Erasmus Student Network, TUL",
+        location: "Lodz, Poland",
+        position: "Active Member & Coordinator",
+        current: true,
+        summary:
+          "Support international student exchange, community integration and cultural understanding.",
+        tags: ["Coordination", "Community", "Cross-Cultural Communication"],
+      },
+      {
+        date: "2022 - Present",
+        organization: "NoHate",
+        location: "Lodz, Poland",
+        position: "Volunteer",
+        current: true,
+        summary:
+          "Contribute to community initiatives supporting people in need and improving living conditions.",
+        tags: ["Volunteering", "Community Support"],
+      },
+      {
+        date: "2024",
+        organization: "Youth Entrepreneurship Program",
+        position: "Certificate of Attendance and Completion",
+        summary:
+          "Completed an interdisciplinary programme focused on entrepreneurship in the food and health sectors.",
+        highlights: [
+          "Studied Lean Startup, business models, go-to-market strategy, growth and scaling.",
+          "Developed skills in creative thinking, opportunity analysis and business-value creation.",
+        ],
+        tags: ["Entrepreneurship", "Lean Startup", "Business Strategy"],
+      },
+      {
+        date: "2023",
+        organization: "Oracle",
+        position: "Artificial Intelligence with Machine Learning Certificate",
+        summary:
+          "Completed foundational professional development in artificial intelligence and machine learning.",
+        tags: ["AI", "Machine Learning"],
+      },
+      {
+        date: "2018 - 2019",
+        organization: "Independent",
+        position: "Freelance Business Manager",
+        summary:
+          "Managed day-to-day operations and financial record-keeping for a small taxi-service business.",
+        highlights: [
+          "Tracked income and expenses using Excel.",
+          "Maintained accurate operational records and coordinated external business relationships.",
+        ],
+        tags: ["Business Operations", "Excel", "Financial Tracking"],
+      },
     ],
-    state: "Done",
-    githublink: "https://github.com/Joki004/blackjack",
-    weblink: " ",
-    technologies: ["Java"],
-    images: [arrayOfImagesBlackJack],
   },
 ];
 
-const logos = {
-  cpp: {
-    name: "C++",
-    nameBoxIcon: "c-plus-plus",
-    typeBoxIcon: "logo",
-    SvgComponent: CppIcon,
-  },
-  typescript: {
-    name: "TypeScript",
-    nameBoxIcon: "typescript",
-    typeBoxIcon: "logo",
-    SvgComponent: TypeScriptIcon,
-  },
-  css: {
-    name: "CSS",
-    nameBoxIcon: "css3",
-    typeBoxIcon: "logo",
-    SvgComponent: CssIcon,
-  },
-  html: {
-    name: "HTML",
-    nameBoxIcon: "html5",
-    typeBoxIcon: "logo",
-    SvgComponent: HtmlIcon,
-  },
-  react: {
-    name: "React",
-    nameBoxIcon: "react",
-    typeBoxIcon: "logo",
-    SvgComponent: ReactIcon,
-  },
-  javascript: {
-    name: "JavaScript",
-    nameBoxIcon: "javascript",
-    typeBoxIcon: "logo",
-    SvgComponent: JavascriptIcon,
-  },
-  blender: {
-    name: "Blender",
-    nameBoxIcon: "blender",
-    typeBoxIcon: "logo",
-    SvgComponent: BlenderIcon,
-  },
-  python: {
-    name: "Python",
-    nameBoxIcon: "python",
-    typeBoxIcon: "logo",
-    SvgComponent: PythonIcon,
-  },
 
-  java: {
-    name: "Java",
-    nameBoxIcon: "java",
-    typeBoxIcon: "logo",
-    SvgComponent: JavaIcon,
-  },
-  c: {
-    name: "C",
-    nameBoxIcon: "c",
-    typeBoxIcon: "logo",
-  },
-  nodejs: {
-    name: "NodeJs",
-    nameBoxIcon: "nodejs",
-    typeBoxIcon: "logo",
-    SvgComponent: NodejsIcon,
-  },
 
-  bootstrap: {
-    name: "Bootstrap",
-    nameBoxIcon: "bootstrap",
-    typeBoxIcon: "logo",
-    SvgComponent: BootstrapIcon,
-  },
-  angular: {
-    name: "Angular",
-    nameBoxIcon: "angular",
-    typeBoxIcon: "logo",
-    SvgComponent: AngularIcon,
-  },
-  github: {
-    name: "Github",
-    nameBoxIcon: "github",
-    typeBoxIcon: "logo",
-    SvgComponent: GithubIcon,
-  },
-  git: {
-    name: "Git",
-    nameBoxIcon: "git",
-    typeBoxIcon: "logo",
-    SvgComponent: GitIcon,
-  },
-  unity: {
-    name: "Unity",
-    nameBoxIcon: "unity",
-    typeBoxIcon: "logo",
-    SvgComponent: UnityIcon,
-  },
-};
+const createSkill = (name, experience, SvgComponent) => ({
+  name,
+  experience,
+  SvgComponent,
+});
 
 const skillsData = [
   {
-    type: "Languages",
+    type: "Core programming",
+    description:
+      "Languages used across software, data and academic projects.",
     skills: [
-      logos.typescript,
-      logos.javascript,
-      logos.html,
-      logos.css,
-      logos.cpp,
-      logos.python,
-      logos.java,
+      createSkill("Java", "projects", JavaIcon),
+      createSkill("Python", "projects", PythonIcon),
+      createSkill("TypeScript", "projects", TypeScriptIcon),
+      createSkill("JavaScript", "projects", JavascriptIcon),
+      createSkill("SQL", "projects"),
+      createSkill("C++", "foundation", CppIcon),
     ],
   },
   {
-    type: "frameworks & libraries",
-    skills: [logos.react, logos.angular, logos.bootstrap, logos.nodejs],
+    type: "Web & mobile",
+    description:
+      "Customer-facing applications for web and mobile platforms.",
+    skills: [
+      createSkill("React", "projects", ReactIcon),
+      createSkill("Next.js", "projects"),
+      createSkill("React Native", "work", ReactIcon),
+      createSkill("Expo", "projects"),
+      createSkill("Material UI", "projects"),
+      createSkill("HTML & CSS", "projects", HtmlIcon),
+    ],
   },
-  { type: "tools", skills: [logos.github, logos.git] },
-  { type: "design", skills: [logos.blender, logos.unity] },
+  {
+    type: "Backend & APIs",
+    description:
+      "Backend services, application security and API integration.",
+    skills: [
+      createSkill("Spring Boot", "projects", SpringBootIcon),
+      createSkill("Node.js", "projects", NodejsIcon),
+      createSkill("Flask", "projects", FlaskIcon),
+      createSkill("REST APIs", "projects"),
+      createSkill("Spring Security & JWT", "projects"),
+      createSkill("Swagger / OpenAPI", "projects"),
+    ],
+  },
+  {
+    type: "Data & cloud",
+    description:
+      "Relational, NoSQL and cloud technologies for data-driven systems.",
+    skills: [
+      createSkill("PostgreSQL", "projects", PostgreSQLIcon),
+      createSkill("SQL Server", "projects", SqlServerIcon),
+      createSkill("Firebase / NoSQL", "projects", FirebaseIcon),
+      createSkill("Supabase", "projects"),
+      createSkill("Microsoft Azure", "developing"),
+      createSkill("Databricks", "developing"),
+      createSkill("Azure IoT", "developing"),
+    ],
+  },
+  {
+    type: "Automation & analytics",
+    description:
+      "Enterprise tools used to improve workflows and decision-making.",
+    skills: [
+      createSkill("Power Apps", "work"),
+      createSkill("Copilot Studio", "work"),
+      createSkill("Power BI", "work"),
+      createSkill("SAP", "work"),
+      createSkill("Excel & VBA", "work"),
+      createSkill("Fuzzy Logic", "projects"),
+    ],
+  },
+  {
+    type: "Engineering & delivery",
+    description:
+      "Development, testing, collaboration and deployment tooling.",
+    skills: [
+      createSkill("Git", "projects", GitIcon),
+      createSkill("GitHub", "projects", GithubIcon),
+      createSkill("Postman", "projects"),
+      createSkill("Stripe", "projects", StripeIcon),
+      createSkill("Vercel & Netlify", "projects"),
+      createSkill("Railway", "projects"),
+    ],
+  },
 ];
 
 export const sideBarSections = [
   {
     title: "Home",
     id: "Home",
-    content: <Home imageURL={imageURL} person={person} text={jobTitle} />,
+    content: (
+      <Home
+        imageURL={imageURL}
+        person={person}
+        text={jobTitle}
+        secondaryText={secondaryTitle}
+      />
+    ),
     icon: "HomeIcon",
     label: "Home",
   },
@@ -431,7 +349,7 @@ export const sideBarSections = [
         person={person}
         aboutMeText={aboutMeText}
         languageData={languageData}
-        timelineData={timelineData}
+        experienceSections={experienceSections}
       />
     ),
     icon: "aboutIcon",
@@ -478,7 +396,7 @@ export const sideBarSections = [
 
 export const socialLinks = [
   {
-    type: "link", // 'link' or 'email
+    type: "link",
     href: "https://www.linkedin.com/in/joki-8b40a7244/",
     icon: "linkedin",
     backgroundColor: "#0a66c2",
@@ -488,7 +406,7 @@ export const socialLinks = [
     SvgComponent: linkedinIcon,
   },
   {
-    type: "link", // 'link' or 'email
+    type: "link",
     href: "https://github.com/Joki004",
     icon: "github",
     color: "#000000",
@@ -497,7 +415,7 @@ export const socialLinks = [
   },
   {
     type: "email",
-    href: "jorammumb15.jm@gmail.com",
+    href: "jorammumb.mk@gmail.com",
     icon: "envelope",
     color: "#000000",
     typeIcon: null,

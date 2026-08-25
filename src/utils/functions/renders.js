@@ -11,11 +11,17 @@ export const RenderMenuItem = (
   mainColor10Lighter,
   menuItemStyles
 ) => {
-  const { setShowSidebar } = useElements();
+  const { setShowSidebar, windowWidth } = useElements();
+
   const handleOnClick = (id) => {
     handleClickScroll(id);
-    setShowSidebar(false);
+
+    // Only close the sidebar when it is being used as a mobile drawer.
+    if (windowWidth < 700) {
+      setShowSidebar(false);
+    }
   };
+
   return (
     <MenuItem
       id={`sideBarSection-${item.title}`}
@@ -23,12 +29,16 @@ export const RenderMenuItem = (
         ...menuItemStyles.MenuItem,
         marginTop: isSubMenu ? "0" : "20px",
       }}
-      onClick={() => handleOnClick(item.id)}  
+      onClick={() => handleOnClick(item.id)}
       icon={
         <CustomIcon
-          size={parseInt(menuItemStyles.size.IconSize) + (isSubMenu ? 0 : 20)}
+          size={
+            parseInt(menuItemStyles.size.IconSize) +
+            (isSubMenu ? 0 : 20)
+          }
           boxsize={
-            parseInt(menuItemStyles.size.IconBorder) + (isSubMenu ? 0 : 10)
+            parseInt(menuItemStyles.size.IconBorder) +
+            (isSubMenu ? 0 : 10)
           }
           sectionId={item.id}
           iconName={item.icon}
@@ -37,7 +47,6 @@ export const RenderMenuItem = (
           colorIcon={mainColor10Lighter}
         />
       }
-      
     >
       {item.label}
     </MenuItem>
