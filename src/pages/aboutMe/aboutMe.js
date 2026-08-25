@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
+
 import Experience from "./experience";
 import AboutMeSection from "./aboutPart";
-import { useElements } from "../../utils/functions/context";
 
 const aboutMeStyle = {
   box: {
@@ -12,25 +12,32 @@ const aboutMeStyle = {
     justifyContent: "center",
     display: "flex",
     flexDirection: "column",
-    textAlign: "justify",
+    textAlign: "left",
+    width: "100%",
+    maxWidth: "1600px",
+    margin: "0 auto",
   },
 };
 
-const AboutMe = ({ person, aboutMeText, languageData, timelineData }) => {
-  const { darkMode } = useElements();
-  useEffect(() => {}, [darkMode]);
+const AboutMe = ({
+  person,
+  aboutMeText,
+  languageData,
+  experienceSections,
+}) => {
   return (
-    <div style={{ ...aboutMeStyle.box }}>
+    <div style={aboutMeStyle.box}>
       <AboutMeSection
         id="AboutMe"
         name={person.firstName}
         texts={aboutMeText}
         languageData={languageData}
       />
+
       <Experience
         id="EducationExperience"
-        timeline={timelineData}
-        title={"Education & Experience"}
+        sections={experienceSections}
+        title="Experience & Growth"
       />
     </div>
   );

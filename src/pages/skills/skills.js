@@ -1,136 +1,91 @@
 import "./skills.css";
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { useElements } from "../../utils/functions/context";
-import { getFontSizeHeader } from "../../utils/functions/function";
 
-const Skills = ({ skillsData }) => {
-  const [hoveredCategoryIndex, setHoveredCategoryIndex] = useState(null);
-  const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null);
-  const { mainColor10Lighter, mainColor20Lighter, darkMode } = useElements();
-  const handleCategoryHover = (index) => {
-    setHoveredCategoryIndex(index);
-  };
+const experienceLabels = {
+  work: "Used at work",
+  projects: "Used in projects",
+  developing: "Developing",
+  foundation: "Foundation",
+};
 
-  const handleCategoryLeave = () => {
-    setHoveredCategoryIndex(null);
-  };
-  function setTitleColor(index, darkMode) {
-    if (darkMode || index === hoveredCategoryIndex) {
-      return "white";
-    }
-    return "black";
-  }
-  const getTitleStyles = (index) => {
-    return {
-      backgroundColor:
-        hoveredCategoryIndex === index ? mainColor10Lighter : "transparent",
-      color: setTitleColor(index, darkMode),
-    };
-  };
+const getInitials = (name) =>
+  name
+    .split(/[\s/.&-]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
 
-  const handleSkillBoxHover = (categoryIndex, skillIndex) => {
-    setHoveredSkillIndex({ categoryIndex, skillIndex });
-  };
-
-  const handleSkillBoxLeave = () => {
-    setHoveredSkillIndex(null);
-  };
-
-  const getSkillBoxStyles = (categoryIndex, skillIndex) => {
-    const borderBottom =
-      hoveredSkillIndex &&
-      hoveredSkillIndex.categoryIndex === categoryIndex &&
-      hoveredSkillIndex.skillIndex === skillIndex
-        ? `5px solid ${mainColor20Lighter}`
-        : "1px solid #ccc";
-    return { borderBottom };
-  };
-  const styles = {
-    title: {
-      fontSize: getFontSizeHeader("h2"),
-      transition: "all 0.3s ease",
-    },
-  };
+const Skills = ({ skillsData = [] }) => {
+  const { mainColor, mainColor10Lighter, darkMode } = useElements();
 
   return (
-    <div className="grid-container">
-      {skillsData.map((category, index) => (
-        <React.Fragment key={index}>
-          {index === 0 ? (
-            // Render the first category to take full width
-            <div
-              className="category"
-              onMouseEnter={() => handleCategoryHover(index)}
-              onMouseLeave={handleCategoryLeave}
-            >
-              <h2 style={{ ...styles.title, ...getTitleStyles(index) }}>
-                {category.type}
-              </h2>
-              <ul className="skills">
-                {category.skills.map((skill, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="skillsBox"
-                    whileHover={{ scale: 1.2 }}
-                    onMouseEnter={() => handleSkillBoxHover(index, idx)}
-                    onMouseLeave={handleSkillBoxLeave}
-                    style={getSkillBoxStyles(index, idx)}
-                  >
-                    <li>
-                      {skill.logo}
-                      {skill.SvgComponent && (
-                        <skill.SvgComponent
-                          style={{ width: "50px", height: "50px", fill: darkMode ? "white" : "black" }}
-                        />
-                      )}
-                    </li>
-                    <li>{skill.name}</li>
-                  </motion.div>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-        </React.Fragment>
-      ))}
+    <section
+      className={`skills-section ${darkMode ? "skills-section--dark" : ""}`}
+      style={{
+        "--skills-accent": mainColor,
+        "--skills-accent-light": mainColor10Lighter,
+      }}
+    >
+      <header className="skills-intro">
+        <span className="skills-eyebrow">Technical profile</span>
+        <h2>Skills developed through work and real projects.</h2>
+        <p>
+          A practical stack spanning software development, databases, cloud,
+          analytics and enterprise automation.
+        </p>
 
-      <div className="category-flex-container">
-        {skillsData.slice(1).map((category, index) => (
-          <div
-            key={index + 1}
-            className="category"
-            onMouseEnter={() => handleCategoryHover(index + 1)}
-            onMouseLeave={handleCategoryLeave}
-          >
-            <h2 style={{ ...styles.title, ...getTitleStyles(index + 1) }}>
-              {category.type}
-            </h2>
-            <ul className="skills">
-              {category.skills.map((skill, idx) => (
-                <motion.div
-                  key={idx}
-                  className="skillsBox"
-                  whileHover={{ scale: 1.2 }}
-                  onMouseEnter={() => handleSkillBoxHover(index + 1, idx)}
-                  onMouseLeave={handleSkillBoxLeave}
-                  style={getSkillBoxStyles(index + 1, idx)}
-                >
-                  <li>
-                    {skill.logo}
-                    {skill.SvgComponent && (
-                      <skill.SvgComponent
-                        style={{ width: "50px", height: "50px", fill: darkMode ? "white" : "black"}}
-                      />
-                    )}
-                  </li>
-                  <li>{skill.name}</li>
-                </motion.div>
-              ))}
-            </ul>
-          </div>
+        <div className="skills-legend" aria-label="Experience labels">
+          {Object.entries(experienceLabels).map(([key, label]) => (
+            <span key={key} className={`experience-badge experience-${key}`}>
+              {label}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className="skills-category-grid">
+        {skillsData.map((category) => (
+          <article className="skills-category-card" key={category.type}>
+            <div className="skills-category-heading">
+              <h3>{category.type}</h3>
+              <p>{category.description}</p>
+            </div>
+
+            <div className="skills-list">
+              {category.skills.map((skill) => {
+                const Icon = skill.SvgComponent;
+
+                return (
+                  <motion.div
+                    key={skill.name}
+                    className="skill-item"
+                    whileHover={{ y: -2 }}
+                    transition={{ duration: 0.16 }}
+                  >
+                    <span className="skill-icon" aria-hidden="true">
+                      {Icon ? <Icon /> : getInitials(skill.name)}
+                    </span>
+
+                    <span className="skill-details">
+                      <span className="skill-name">{skill.name}</span>
+                      <span
+                        className={`experience-badge experience-${skill.experience}`}
+                      >
+                        {experienceLabels[skill.experience]}
+                      </span>
+                    </span>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

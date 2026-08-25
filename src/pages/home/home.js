@@ -7,7 +7,7 @@ import {
   getTextColor,
 } from "../../utils/functions/function";
 
-const Home = ({ imageURL, person, text }) => {
+const Home = ({ imageURL, person, text, secondaryText }) => {
   const {
     mainColor,
     mainColor10Lighter,
@@ -42,21 +42,45 @@ const Home = ({ imageURL, person, text }) => {
       backgroundColor: mainColor,
       objectFit: "cover",
     },
+    headlineGroup: {
+      width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "12px",
+    },
     description: {
       fontSize: getFontSizeHeader("h3"),
       fontWeight: "bold",
-      borderRadius: "20px",
+      borderRadius: "999px",
       backgroundColor: mainColor,
-      height: "55px",
-      width: windowWidth > 1000 ? "15em" : "80%",
+      minHeight: "55px",
+      width: "fit-content",
+      maxWidth: windowWidth > 1000 ? "720px" : "90%",
       textAlign: "center",
-      whiteSpace: "nowrap",
       border: "1px solid",
-      padding: "2px",
+      padding: "10px 26px",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       color: "white",
+      lineHeight: 1.2,
+    },
+    secondaryDescription: {
+      fontSize: getFontsizeContent("body1"),
+      fontWeight: "600",
+      borderRadius: "999px",
+      minHeight: "48px",
+      width: "fit-content",
+      maxWidth: windowWidth > 1000 ? "760px" : "90%",
+      textAlign: "center",
+      border: `2px solid ${mainColor10Lighter}`,
+      padding: "9px 24px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      color: textColor,
+      lineHeight: 1.25,
     },
     social: {
       borderRadius: "20px",
@@ -102,9 +126,16 @@ const Home = ({ imageURL, person, text }) => {
         style={{ ...HomeStyle.image, objectFit: "cover" }}
       />
       <h1 style={{ ...HomeStyle.person }}>
-        {person.firstName} {person.lastName}
+       Engr.  {person.firstName} {person.lastName}
       </h1>
-      <p style={{ ...HomeStyle.description }}>{text}</p>
+      <div style={{ ...HomeStyle.headlineGroup }}>
+        <p style={{ ...HomeStyle.description }}>{text}</p>
+        {secondaryText && (
+          <p style={{ ...HomeStyle.secondaryDescription }}>
+            {secondaryText}
+          </p>
+        )}
+      </div>
       <div style={{ ...HomeStyle.social }}>
         {" "}
         <SocialLinks size={"18px"} />

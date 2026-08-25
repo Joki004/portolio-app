@@ -6,7 +6,7 @@ import { useElements } from "../../utils/functions/context";
 import { getBackground, getTextColor } from "../../utils/functions/function";
 import { ReactComponent as MenuIcon } from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-menu.svg";
 import { ReactComponent as CloseIcon } from "../../assets/boxicons-2.1.4/boxicons-2.1.4/svg/regular/bx-x.svg";
-import {updatePerformanceData} from "../../utils/functions/perfomances/perfomancesFunctions"
+import { updatePerformanceData } from "../../utils/functions/perfomances/perfomancesFunctions";
 import { preconnectUrls } from "../../utils/functions/perfomances/performancesDatas";
 import { imageUrls } from "../../utils/functions/perfomances/performancesDatas";
 const Body = () => {
@@ -16,34 +16,40 @@ const Body = () => {
     windowWidth,
     showSidebar,
     setShowSidebar,
+    updateWindowWidth,
   } = useElements();
   const [textColor, setTextColor] = useState(
-    getTextColor(darkMode, backgroundColorBody)
+    getTextColor(darkMode, backgroundColorBody),
   );
 
   useEffect(() => {
     setTextColor(getTextColor(darkMode, backgroundColorBody));
 
-    const handleResize = () => setShowSidebar(window.innerWidth >= 700);
+    const handleResize = () => {
+      updateWindowWidth();
+      setShowSidebar(window.innerWidth >= 700);
+    };
 
     window.addEventListener("resize", handleResize);
-
     handleResize();
 
-    return () => window.removeEventListener("resize", handleResize);
-  }, [backgroundColorBody, darkMode, setShowSidebar]);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [backgroundColorBody, darkMode, setShowSidebar, updateWindowWidth]);
 
   const toggleSidebar = (event) => {
     event.stopPropagation();
-    setShowSidebar(!showSidebar);
+
+    setShowSidebar((current) => !current);
   };
 
   const handlePageClick = (e) => {
     if (e.target.id !== "sidebar-toggle" && windowWidth < 700) {
       setShowSidebar(false);
     }
-    console.log(e.target.className, e.target.id);
   };
+
   function getsidebarStyles() {
     if (windowWidth < 700) {
       return {
@@ -62,6 +68,7 @@ const Body = () => {
     }
   }
   const sidebarStyles = getsidebarStyles();
+  const shouldRenderSidebar = windowWidth >= 700 || showSidebar;
 
   const BodyStyle = {
     body: {
@@ -96,11 +103,11 @@ const Body = () => {
       left: "15px",
       zIndex: "100",
       cursor: "pointer",
-      display: windowWidth < 700 ? "block" : "none", 
+      display: windowWidth < 700 ? "block" : "none",
     },
   };
   useEffect(() => {
-    updatePerformanceData(preconnectUrls,imageUrls);
+    updatePerformanceData(preconnectUrls, imageUrls);
   }, []);
 
   return (
@@ -122,7 +129,7 @@ const Body = () => {
           }
         `}
         </style>
-        
+
         <div
           id="sidebar-toggle"
           onClick={toggleSidebar}
@@ -146,7 +153,9 @@ const Body = () => {
             />
           )}
         </div>
-        <div style={{ ...sidebarStyles }}>{showSidebar && <SideBar />}</div>
+        <div style={{ ...sidebarStyles }}>
+          {shouldRenderSidebar && <SideBar />}
+        </div>
 
         <div style={{ ...BodyStyle.container }} onClick={handlePageClick}>
           <Informations />
